@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="shortcut_expense"
+        android:shortcutLongLabel="@string/shortcut_expense_long"
+        android:shortcutShortLabel="@string/shortcut_expense_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="lanjo://route/transactions/new?type=expense"
+            android:targetClass="com.example.lanjo.MainActivity"
+            android:targetPackage="com.example.lanjo" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="shortcut_ai"
+        android:shortcutLongLabel="@string/shortcut_ai_long"
+        android:shortcutShortLabel="@string/shortcut_ai_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="lanjo://route/ai/quick-expense"
+            android:targetClass="com.example.lanjo.MainActivity"
+            android:targetPackage="com.example.lanjo" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="shortcut_scan"
+        android:shortcutLongLabel="@string/shortcut_scan_long"
+        android:shortcutShortLabel="@string/shortcut_scan_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="lanjo://route/ai/receipt-scanner"
+            android:targetClass="com.example.lanjo.MainActivity"
+            android:targetPackage="com.example.lanjo" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="shortcut_voice"
+        android:shortcutLongLabel="@string/shortcut_voice_long"
+        android:shortcutShortLabel="@string/shortcut_voice_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="lanjo://route/ai/quick-expense?voice=1"
+            android:targetClass="com.example.lanjo.MainActivity"
+            android:targetPackage="com.example.lanjo" />
+    </shortcut>
+</shortcuts>

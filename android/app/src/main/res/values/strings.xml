@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lanjo</string>
+    <string name="widget_name">Lanjo Safe-to-Spend</string>
+    <string name="widget_description">Pantau batas aman belanja harian &amp; catat cepat 1-ketuk dari layar utama.</string>
+    <string name="quick_tile_label">Catat Lanjo</string>
+    <string name="notif_listener_label">Deteksi Otomatis Transaksi Lanjo</string>
+    <string name="shortcut_expense_short">Catat Keluar</string>
+    <string name="shortcut_expense_long">Catat Pengeluaran Baru</string>
+    <string name="shortcut_ai_short">Catat via AI</string>
+    <string name="shortcut_ai_long">Catat Cepat dengan AI</string>
+    <string name="shortcut_scan_short">Scan Struk</string>
+    <string name="shortcut_scan_long">Scan Foto Struk / Bukti Bayar</string>
+    <string name="shortcut_voice_short">Input Suara</string>
+    <string name="shortcut_voice_long">Catat Transaksi dengan Suara</string>
+</resources>

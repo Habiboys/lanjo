@@ -22,14 +22,39 @@ class ArusApp extends ConsumerStatefulWidget {
   ConsumerState<ArusApp> createState() => _ArusAppState();
 }
 
-class _ArusAppState extends ConsumerState<ArusApp> {
+class _ArusAppState extends ConsumerState<ArusApp> with WidgetsBindingObserver {
   bool _servicesInitialized = false;
 
   @override
   void initState() {
     super.initState();
     if (widget.enableBackgroundServices) {
+      WidgetsBinding.instance.addObserver(this);
       WidgetsBinding.instance.addPostFrameCallback((_) => _initBackgroundServices());
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.enableBackgroundServices) {
+      WidgetsBinding.instance.removeObserver(this);
+    }
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && widget.enableBackgroundServices) {
+      _scanClipboardOnResume();
+    }
+  }
+
+  Future<void> _scanClipboardOnResume() async {
+    final added = await ref
+        .read(nativeBridgeServiceProvider)
+        .scanClipboardForBankTransaction();
+    if (added != null && mounted) {
+      ref.read(smartInboxRevisionProvider.notifier).state++;
     }
   }
 
@@ -39,6 +64,7 @@ class _ArusAppState extends ConsumerState<ArusApp> {
 
     final router = ref.read(appRouterProvider);
     final localNotif = ref.read(localNotificationServiceProvider);
+    final bridge = ref.read(nativeBridgeServiceProvider);
     await localNotif.initialize(
       onTap: (deepLink) {
         if (deepLink != null && deepLink.isNotEmpty) {
@@ -47,11 +73,18 @@ class _ArusAppState extends ConsumerState<ArusApp> {
       },
     );
 
-    await ref.read(nativeBridgeServiceProvider).initialize(
+    await bridge.initialize(
       onNavigateRoute: (route) {
         if (route.isNotEmpty) router.push(route);
       },
-      onSharedText: (sharedText) {
+      onSharedText: (sharedText) async {
+        final queued = await bridge.enqueueFinancialText(
+          title: 'Bagikan Teks Mutasi',
+          body: sharedText,
+        );
+        if (queued != null && mounted) {
+          ref.read(smartInboxRevisionProvider.notifier).state++;
+        }
         router.push(
           Uri(
             path: '/ai/quick-expense',
@@ -81,6 +114,9 @@ class _ArusAppState extends ConsumerState<ArusApp> {
       settings = null;
     }
     if (settings != null) {
+      if (settings.localNotificationsEnabled) {
+        await localNotif.requestPermissions();
+      }
       await localNotif.scheduleDailyReminder(
         hour: settings.dailyReminderHour,
         minute: settings.dailyReminderMinute,
@@ -88,6 +124,7 @@ class _ArusAppState extends ConsumerState<ArusApp> {
       );
       await ref.read(fcmServiceProvider).initialize(enabled: settings.fcmEnabled);
     }
+    await _scanClipboardOnResume();
   }
 
   void _syncAndroidHomeWidget() {

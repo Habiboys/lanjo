@@ -281,7 +281,15 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 250));
     expect(tester.takeException(), isNull);
-    expect(find.text('Fitur Pintar Android & Widget'), findsOneWidget);
+    expect(find.text('Fitur Pintar Android & Izin'), findsOneWidget);
+    expect(find.text('Minta Semua Izin'), findsOneWidget);
+
+    final pasted = await bridge.enqueueFinancialText(
+      body: 'Transfer Rp75.000 ke PLN via BRImo berhasil.',
+    );
+    expect(pasted, isNotNull);
+    expect(pasted!.amount, 75000);
+    expect(pasted.sourceApp, 'BRImo');
 
     await tester.pumpWidget(const SizedBox.shrink());
     await tester.pump(const Duration(seconds: 1));

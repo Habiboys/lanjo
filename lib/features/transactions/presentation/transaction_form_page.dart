@@ -103,6 +103,24 @@ class _TransactionFormPageState extends ConsumerState<TransactionFormPage> {
   }
 
   Future<void> _pickAttachment() async {
+    final bridge = ref.read(nativeBridgeServiceProvider);
+    final granted = await bridge.requestPermission('photos');
+    if (!granted) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'Izin Galeri/Foto diperlukan untuk melampirkan foto struk.',
+          ),
+          action: SnackBarAction(
+            label: 'Pengaturan',
+            onPressed: bridge.openAppSettings,
+          ),
+        ),
+      );
+      return;
+    }
+
     final picker = ImagePicker();
     final picked = await picker.pickImage(
       source: ImageSource.gallery,

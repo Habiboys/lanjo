@@ -219,9 +219,9 @@ class SettingsPage extends ConsumerWidget {
                 _SettingsRow(
                   icon: LucideIcons.smartphone,
                   color: ArusColors.primaryLight,
-                  title: 'Fitur Pintar Android & Widget',
+                  title: 'Fitur Pintar Android & Izin',
                   subtitle:
-                      'Home Screen Widget, Deteksi Otomatis Notifikasi Bank, Quick Tile & Share Struk',
+                      'Izin Kamera/Galeri/Notif, Widget, Auto-Deteksi Clipboard & Share Struk',
                   onTap: () => context.push('/settings/android-native'),
                 ),
                 const Divider(indent: 66),

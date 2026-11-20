@@ -56,6 +56,27 @@ class _ReceiptScannerPageState extends ConsumerState<ReceiptScannerPage> {
   }
 
   Future<void> _pickImage(ImageSource source) async {
+    final permKey = source == ImageSource.camera ? 'camera' : 'photos';
+    final bridge = ref.read(nativeBridgeServiceProvider);
+    final granted = await bridge.requestPermission(permKey);
+    if (!granted) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            source == ImageSource.camera
+                ? 'Izin Kamera diperlukan untuk memotret struk.'
+                : 'Izin Galeri/Foto diperlukan untuk memilih foto struk.',
+          ),
+          action: SnackBarAction(
+            label: 'Pengaturan',
+            onPressed: bridge.openAppSettings,
+          ),
+        ),
+      );
+      return;
+    }
+
     final picker = ImagePicker();
     final picked = await picker.pickImage(
       source: source,

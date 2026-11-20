@@ -1,16 +1,20 @@
 package com.example.lanjo
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 import org.json.JSONArray
-import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 
@@ -18,6 +22,7 @@ class MainActivity : FlutterFragmentActivity() {
 
     private var methodChannel: MethodChannel? = null
     private var pendingNativeAction: Map<String, Any?>? = null
+    private var pendingPermissionResult: MethodChannel.Result? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +43,82 @@ class MainActivity : FlutterFragmentActivity() {
         extractIntentAction(intent, notifyFlutter = true)
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQ_CODE_PERMISSION) {
+            val result = pendingPermissionResult
+            pendingPermissionResult = null
+            if (result != null) {
+                val allGranted = grantResults.isNotEmpty() &&
+                    grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+                result.success(allGranted)
+            }
+        }
+    }
+
+    private fun isGranted(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun currentPermissionStatuses(): Map<String, Boolean> {
+        val notifGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            isGranted(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            NotificationManagerCompat.from(this).areNotificationsEnabled()
+        }
+        val cameraGranted = isGranted(Manifest.permission.CAMERA)
+        val photosGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            isGranted(Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            isGranted(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        val micGranted = isGranted(Manifest.permission.RECORD_AUDIO)
+        return mapOf(
+            "notifications" to notifGranted,
+            "camera" to cameraGranted,
+            "photos" to photosGranted,
+            "microphone" to micGranted
+        )
+    }
+
+    private fun permissionsForKey(key: String): List<String> {
+        val list = mutableListOf<String>()
+        when (key) {
+            "notifications" -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    list.add(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+            "camera" -> list.add(Manifest.permission.CAMERA)
+            "photos" -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    list.add(Manifest.permission.READ_MEDIA_IMAGES)
+                } else {
+                    list.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+            }
+            "microphone" -> list.add(Manifest.permission.RECORD_AUDIO)
+            "all" -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    list.add(Manifest.permission.POST_NOTIFICATIONS)
+                    list.add(Manifest.permission.READ_MEDIA_IMAGES)
+                } else {
+                    list.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+                list.add(Manifest.permission.CAMERA)
+                list.add(Manifest.permission.RECORD_AUDIO)
+            }
+        }
+        return list.filter { !isGranted(it) }
+    }
+
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         val channel = MethodChannel(
@@ -56,6 +137,42 @@ class MainActivity : FlutterFragmentActivity() {
                     val action = pendingNativeAction
                     pendingNativeAction = null
                     result.success(action)
+                }
+
+                "getPermissionStatuses" -> {
+                    result.success(currentPermissionStatuses())
+                }
+
+                "requestPermission" -> {
+                    val key = call.argument<String>("key") ?: "all"
+                    val missing = permissionsForKey(key)
+                    if (missing.isEmpty()) {
+                        result.success(true)
+                    } else if (pendingPermissionResult != null) {
+                        result.success(false)
+                    } else {
+                        pendingPermissionResult = result
+                        ActivityCompat.requestPermissions(
+                            this,
+                            missing.toTypedArray(),
+                            REQ_CODE_PERMISSION
+                        )
+                    }
+                }
+
+                "openAppSettings" -> {
+                    try {
+                        val settingsIntent = Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.fromParts("package", packageName, null)
+                        ).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        }
+                        startActivity(settingsIntent)
+                        result.success(true)
+                    } catch (_: Exception) {
+                        result.success(false)
+                    }
                 }
 
                 "updateWidget" -> {
@@ -100,6 +217,20 @@ class MainActivity : FlutterFragmentActivity() {
                 "clearSmartInbox" -> {
                     prefs.edit().putString("smart_inbox_queue", "[]").apply()
                     result.success(true)
+                }
+
+                "enqueueSmartText" -> {
+                    val title = call.argument<String>("title") ?: "Notifikasi Terdeteksi"
+                    val body = call.argument<String>("body") ?: ""
+                    val pkg = call.argument<String>("app") ?: ""
+                    val created = LanjoNotificationListener.parseAndEnqueue(
+                        context = applicationContext,
+                        packageName = pkg,
+                        title = title,
+                        body = body,
+                        requireKnownAppOrKeyword = false
+                    )
+                    result.success(created?.toString())
                 }
 
                 "isNotificationListenerEnabled" -> {
@@ -181,7 +312,7 @@ class MainActivity : FlutterFragmentActivity() {
                     )
                 }
             } else if (mime.startsWith("image/")) {
-                val uri = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                val uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
                 } else {
                     @Suppress("DEPRECATION")
@@ -235,6 +366,7 @@ class MainActivity : FlutterFragmentActivity() {
 
     companion object {
         private const val CHANNEL_NAME = "com.example.lanjo/native"
+        private const val REQ_CODE_PERMISSION = 4102
         private var instance: MainActivity? = null
 
         fun notifySmartInboxUpdated() {

@@ -83,6 +83,23 @@ class _AiQuickExpensePageState extends ConsumerState<AiQuickExpensePage> {
     );
     if (proceed != true || !mounted) return;
 
+    final bridge = ref.read(nativeBridgeServiceProvider);
+    final micGranted = await bridge.requestPermission('microphone');
+    if (!micGranted) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Izin Mikrofon diperlukan untuk input suara.'),
+            action: SnackBarAction(
+              label: 'Pengaturan',
+              onPressed: bridge.openAppSettings,
+            ),
+          ),
+        );
+      }
+      return;
+    }
+
     try {
       final available = await _stt.initialize();
       if (!available) {

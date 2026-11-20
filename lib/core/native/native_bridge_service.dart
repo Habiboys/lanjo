@@ -77,11 +77,59 @@ class NativeBridgeService {
 
   final List<SmartInboxItem> _fallbackQueue = [];
   bool _fallbackAutoDetectEnabled = true;
+  String? _lastClipboardScanned;
 
   bool get _isAndroidNative =>
       useNativeChannel &&
       !kIsWeb &&
       defaultTargetPlatform == TargetPlatform.android;
+
+  /// Returns runtime permission states: notifications, camera, photos, microphone.
+  Future<Map<String, bool>> getPermissionStatuses() async {
+    if (!_isAndroidNative) {
+      return const {
+        'notifications': true,
+        'camera': true,
+        'photos': true,
+        'microphone': true,
+      };
+    }
+    try {
+      final raw = await _channel
+          .invokeMapMethod<String, dynamic>('getPermissionStatuses');
+      if (raw == null) return const {};
+      return {
+        'notifications': raw['notifications'] == true,
+        'camera': raw['camera'] == true,
+        'photos': raw['photos'] == true,
+        'microphone': raw['microphone'] == true,
+      };
+    } catch (_) {
+      return const {};
+    }
+  }
+
+  /// Requests Android runtime permission(s) cleanly (`notifications`, `camera`,
+  /// `photos`, `microphone`, or `all`). Returns true if granted.
+  Future<bool> requestPermission(String key) async {
+    if (!_isAndroidNative) return true;
+    try {
+      return await _channel.invokeMethod<bool>(
+            'requestPermission',
+            {'key': key},
+          ) ??
+          false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<void> openAppSettings() async {
+    if (!_isAndroidNative) return;
+    try {
+      await _channel.invokeMethod<void>('openAppSettings');
+    } catch (_) {}
+  }
 
   Future<void> initialize({
     required void Function(String route) onNavigateRoute,
@@ -252,6 +300,87 @@ class NativeBridgeService {
     } catch (_) {}
   }
 
+  Future<SmartInboxItem?> enqueueFinancialText({
+    required String body,
+    String title = 'Deteksi Transaksi',
+    String app = '',
+  }) async {
+    final trimmed = body.trim();
+    if (trimmed.isEmpty) return null;
+
+    if (_isAndroidNative) {
+      try {
+        final raw = await _channel.invokeMethod<String>(
+          'enqueueSmartText',
+          {'app': app, 'title': title, 'body': trimmed},
+        );
+        if (raw != null && raw.isNotEmpty) {
+          final map = jsonDecode(raw) as Map<String, dynamic>;
+          return SmartInboxItem.fromJson(map);
+        }
+      } catch (_) {}
+    }
+
+    final parsed = parseFinancialNotificationLocal(
+      packageName: app,
+      title: title,
+      body: trimmed,
+    );
+    if (parsed != null) {
+      _fallbackQueue.insert(0, parsed);
+    }
+    return parsed;
+  }
+
+  /// Checks clipboard text once per unique payload for banking / e-wallet mutation text.
+  Future<SmartInboxItem?> scanClipboardForBankTransaction({
+    bool force = false,
+  }) async {
+    final enabled = await getAutoDetectEnabled();
+    if (!enabled && !force) return null;
+
+    try {
+      final clip = await Clipboard.getData(Clipboard.kTextPlain);
+      final text = clip?.text?.trim() ?? '';
+      if (text.isEmpty || text.length > 800) return null;
+      if (!force && text == _lastClipboardScanned) return null;
+
+      final lower = text.toLowerCase();
+      const cues = [
+        'bca',
+        'mandiri',
+        'livin',
+        'bri',
+        'brimo',
+        'bni',
+        'wondr',
+        'jago',
+        'seabank',
+        'blu',
+        'gopay',
+        'ovo',
+        'dana',
+        'shopeepay',
+        'qris',
+        'transfer',
+        'pembayaran',
+        'berhasil',
+        'diterima',
+        'uang masuk',
+        'debit',
+      ];
+      if (!cues.any(lower.contains)) return null;
+
+      _lastClipboardScanned = text;
+      return await enqueueFinancialText(
+        title: 'Terdeteksi dari Clipboard',
+        body: text,
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+
   /// Simulates an incoming bank / e-wallet notification so users can test
   /// Smart Auto-Detect immediately on Android, Web, or tests.
   Future<SmartInboxItem?> simulateBankNotification({
@@ -332,7 +461,7 @@ class NativeBridgeService {
       'id.dana' => 'DANA',
       'ovo.id' => 'OVO',
       'com.shopee.id' => 'ShopeePay',
-      _ => lower.contains('qris') ? 'QRIS' : 'Notifikasi Bank',
+      _ => _inferSourceAppFromText(lower),
     };
 
     return SmartInboxItem(
@@ -345,5 +474,27 @@ class NativeBridgeService {
       type: isIncome ? 'income' : 'expense',
       detectedAtMs: DateTime.now().millisecondsSinceEpoch,
     );
+  }
+
+  static final _sourcePatterns = <(RegExp, String)>[
+    (RegExp(r'qris'), 'QRIS'),
+    (RegExp(r'brimo|\bbri\b'), 'BRImo'),
+    (RegExp(r'mybca|\bbca\b'), 'BCA mobile'),
+    (RegExp(r'livin|mandiri'), "Livin' Mandiri"),
+    (RegExp(r'wondr|\bbni\b'), 'wondr BNI'),
+    (RegExp(r'gopay'), 'GoPay'),
+    (RegExp(r'\bdana\b'), 'DANA'),
+    (RegExp(r'\bovo\b'), 'OVO'),
+    (RegExp(r'shopee'), 'ShopeePay'),
+    (RegExp(r'\bjago\b'), 'Bank Jago'),
+    (RegExp(r'seabank'), 'SeaBank'),
+    (RegExp(r'linkaja'), 'LinkAja'),
+  ];
+
+  static String _inferSourceAppFromText(String lower) {
+    for (final (pattern, label) in _sourcePatterns) {
+      if (pattern.hasMatch(lower)) return label;
+    }
+    return 'Notifikasi Bank';
   }
 }

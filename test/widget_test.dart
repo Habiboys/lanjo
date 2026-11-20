@@ -15,6 +15,7 @@ import 'package:lanjo/features/ai_assistant/presentation/ai_quick_expense_page.d
 import 'package:lanjo/features/dashboard/presentation/dashboard_page.dart';
 import 'package:lanjo/features/plans/presentation/plans_hub_page.dart';
 import 'package:lanjo/features/settings/presentation/android_native_settings_page.dart';
+import 'package:lanjo/features/settings/presentation/appearance_settings_page.dart';
 import 'package:lanjo/features/transactions/presentation/transaction_form_page.dart';
 
 void main() {
@@ -322,6 +323,84 @@ void main() {
     expect(pasted, isNotNull);
     expect(pasted!.amount, 75000);
     expect(pasted.sourceApp, 'BRImo');
+
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(seconds: 1));
+    await db.close();
+  });
+
+  testWidgets('Custom Theme & Color Studio updates live theme palette and parses hex',
+      (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(320, 740);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+
+    expect(LanjoThemePalette.fromStorageValue('ocean'), LanjoThemePresets.ocean);
+    final customParsed = LanjoThemePalette.fromStorageValue('custom:#7C3AED');
+    expect(customParsed.isCustom, isTrue);
+    expect(customParsed.hexCode, '#7C3AED');
+    expect(customParsed.toStorageValue(), 'custom:#7C3AED');
+    expect(
+      LanjoThemePalette.fromStorageValue('invalid'),
+      LanjoThemePresets.emerald,
+    );
+
+    late AppDatabase db;
+    await tester.runAsync(() async {
+      db = AppDatabase(NativeDatabase.memory());
+      await db.select(db.appSettings).get();
+    });
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          appDatabaseProvider.overrideWithValue(db),
+        ],
+        child: Consumer(
+          builder: (context, ref, _) {
+            final palette = ref.watch(themeAccentProvider);
+            return MaterialApp(
+              theme: ArusTheme.light(palette: palette),
+              home: const AppearanceSettingsPage(),
+            );
+          },
+        ),
+      ),
+    );
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 250));
+    expect(tester.takeException(), isNull);
+    expect(find.text('Tema & Warna Kustom'), findsOneWidget);
+
+    await tester.scrollUntilVisible(
+      find.text('Samudra'),
+      250,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.tap(find.text('Samudra'));
+    await tester.pumpAndSettle();
+    expect(find.text('Samudra'), findsWidgets);
+
+    await tester.scrollUntilVisible(
+      find.text('Terapkan'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.enterText(find.byType(TextField), '#E11D48');
+    await tester.tap(find.text('Terapkan'));
+    await tester.pumpAndSettle();
+    expect(
+      Theme.of(tester.element(find.text('Terapkan'))).colorScheme.primary,
+      LanjoThemePalette.fromSeed(const Color(0xFFE11D48)).primary,
+    );
+    await tester.scrollUntilVisible(
+      find.text('Kustom #E11D48'),
+      -300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Kustom #E11D48'), findsOneWidget);
+    expect(tester.takeException(), isNull);
 
     await tester.pumpWidget(const SizedBox.shrink());
     await tester.pump(const Duration(seconds: 1));

@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/theme/app_theme.dart';
 import '../database/app_database.dart';
 import '../database/ledger_engine.dart';
 import '../native/native_bridge_service.dart';
@@ -126,5 +129,43 @@ final transactionTagsMapProvider =
     }
     return map;
   });
+});
+
+class ThemeAccentNotifier extends StateNotifier<LanjoThemePalette> {
+  ThemeAccentNotifier(this._storage) : super(LanjoThemePresets.emerald) {
+    _restore();
+  }
+
+  final SecureStorageService _storage;
+  bool _userUpdated = false;
+
+  Future<void> _restore() async {
+    final raw = await _storage.getThemeAccentRaw();
+    if (_userUpdated || raw == null || raw.isEmpty) return;
+    state = LanjoThemePalette.fromStorageValue(raw);
+  }
+
+  Future<void> selectPreset(LanjoThemePalette preset) async {
+    _userUpdated = true;
+    state = preset;
+    await _storage.saveThemeAccentRaw(preset.toStorageValue());
+  }
+
+  void previewCustomColor(Color seed) {
+    _userUpdated = true;
+    state = LanjoThemePalette.fromSeed(seed);
+  }
+
+  Future<void> setCustomColor(Color seed) async {
+    final palette = LanjoThemePalette.fromSeed(seed);
+    await selectPreset(palette);
+  }
+
+  Future<void> resetDefault() => selectPreset(LanjoThemePresets.emerald);
+}
+
+final themeAccentProvider =
+    StateNotifierProvider<ThemeAccentNotifier, LanjoThemePalette>((ref) {
+  return ThemeAccentNotifier(ref.watch(secureStorageProvider));
 });
 

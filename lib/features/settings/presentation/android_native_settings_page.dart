@@ -497,13 +497,13 @@ class _AndroidNativeSettingsPageState
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  ArusColors.heroDeep,
-                  ArusColors.heroMid,
-                  ArusColors.heroEnd,
+                  context.lanjoHeroDeep,
+                  context.lanjoHeroMid,
+                  context.lanjoHeroEnd,
                 ],
               ),
               borderRadius: BorderRadius.circular(20),

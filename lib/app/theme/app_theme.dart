@@ -41,9 +41,267 @@ abstract final class ArusColors {
   static const Color subtleDark = Color(0xFF64748B);
 }
 
+/// Customizable accent & hero-gradient palette for Lanjo.
+@immutable
+class LanjoThemePalette {
+  const LanjoThemePalette({
+    required this.id,
+    required this.name,
+    required this.seed,
+    required this.primary,
+    required this.primaryLight,
+    required this.heroDeep,
+    required this.heroMid,
+    required this.heroEnd,
+    required this.primaryContainerLight,
+    required this.onPrimaryContainerLight,
+    required this.primaryContainerDark,
+    required this.onPrimaryContainerDark,
+    required this.lightButtonBg,
+  });
+
+  final String id;
+  final String name;
+  final Color seed;
+  final Color primary;
+  final Color primaryLight;
+  final Color heroDeep;
+  final Color heroMid;
+  final Color heroEnd;
+  final Color primaryContainerLight;
+  final Color onPrimaryContainerLight;
+  final Color primaryContainerDark;
+  final Color onPrimaryContainerDark;
+  final Color lightButtonBg;
+
+  bool get isCustom => id == 'custom';
+
+  String get hexCode =>
+      '#${seed.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
+
+  String toStorageValue() => isCustom ? 'custom:$hexCode' : id;
+
+  factory LanjoThemePalette.fromSeed(
+    Color seed, {
+    String id = 'custom',
+    String name = 'Kustom',
+  }) {
+    final hsl = HSLColor.fromColor(seed);
+    final sat = hsl.saturation;
+    final primary =
+        hsl.withLightness(hsl.lightness.clamp(0.28, 0.44)).toColor();
+    final primaryLight = hsl
+        .withLightness((hsl.lightness + 0.16).clamp(0.46, 0.64))
+        .withSaturation((sat * 0.95).clamp(0.22, 0.88))
+        .toColor();
+    final heroDeep = hsl
+        .withLightness(0.11)
+        .withSaturation((sat * 0.78).clamp(0.16, 0.78))
+        .toColor();
+    final heroMid = hsl
+        .withLightness(0.20)
+        .withSaturation((sat * 0.86).clamp(0.20, 0.85))
+        .toColor();
+    final heroEnd = hsl
+        .withLightness(0.29)
+        .withSaturation((sat * 0.92).clamp(0.22, 0.88))
+        .toColor();
+    final primaryContainerLight = hsl
+        .withLightness(0.94)
+        .withSaturation((sat * 0.42).clamp(0.10, 0.52))
+        .toColor();
+    final onPrimaryContainerLight = hsl.withLightness(0.18).toColor();
+    final primaryContainerDark = hsl
+        .withLightness(0.15)
+        .withSaturation((sat * 0.65).clamp(0.16, 0.65))
+        .toColor();
+    final onPrimaryContainerDark = hsl
+        .withLightness(0.82)
+        .withSaturation((sat * 0.65).clamp(0.18, 0.72))
+        .toColor();
+
+    return LanjoThemePalette(
+      id: id,
+      name: name,
+      seed: seed,
+      primary: primary,
+      primaryLight: primaryLight,
+      heroDeep: heroDeep,
+      heroMid: heroMid,
+      heroEnd: heroEnd,
+      primaryContainerLight: primaryContainerLight,
+      onPrimaryContainerLight: onPrimaryContainerLight,
+      primaryContainerDark: primaryContainerDark,
+      onPrimaryContainerDark: onPrimaryContainerDark,
+      lightButtonBg: heroMid,
+    );
+  }
+
+  static Color? tryParseHex(String raw) {
+    final cleaned = raw.trim().replaceFirst('#', '');
+    if (cleaned.length == 6 && RegExp(r'^[0-9a-fA-F]{6}$').hasMatch(cleaned)) {
+      return Color(int.parse('FF$cleaned', radix: 16));
+    }
+    if (cleaned.length == 8 && RegExp(r'^[0-9a-fA-F]{8}$').hasMatch(cleaned)) {
+      return Color(int.parse(cleaned, radix: 16));
+    }
+    return null;
+  }
+
+  static LanjoThemePalette fromStorageValue(String? raw) {
+    if (raw == null || raw.isEmpty) return LanjoThemePresets.emerald;
+    for (final preset in LanjoThemePresets.all) {
+      if (preset.id == raw) return preset;
+    }
+    if (raw.startsWith('custom:')) {
+      final color = tryParseHex(raw.substring('custom:'.length));
+      if (color != null) return LanjoThemePalette.fromSeed(color);
+    }
+    final direct = tryParseHex(raw);
+    if (direct != null) return LanjoThemePalette.fromSeed(direct);
+    return LanjoThemePresets.emerald;
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LanjoThemePalette &&
+          id == other.id &&
+          seed.toARGB32() == other.seed.toARGB32();
+
+  @override
+  int get hashCode => Object.hash(id, seed.toARGB32());
+}
+
+abstract final class LanjoThemePresets {
+  static const LanjoThemePalette emerald = LanjoThemePalette(
+    id: 'emerald',
+    name: 'Zamrud',
+    seed: ArusColors.primary,
+    primary: ArusColors.primary,
+    primaryLight: ArusColors.primaryLight,
+    heroDeep: ArusColors.heroDeep,
+    heroMid: ArusColors.heroMid,
+    heroEnd: ArusColors.heroEnd,
+    primaryContainerLight: Color(0xFFE6F4F1),
+    onPrimaryContainerLight: Color(0xFF064E46),
+    primaryContainerDark: Color(0xFF0D332D),
+    onPrimaryContainerDark: Color(0xFF8CE9CD),
+    lightButtonBg: Color(0xFF141D21),
+  );
+
+  static final LanjoThemePalette ocean = LanjoThemePalette.fromSeed(
+    const Color(0xFF1D4ED8),
+    id: 'ocean',
+    name: 'Samudra',
+  );
+
+  static final LanjoThemePalette indigo = LanjoThemePalette.fromSeed(
+    const Color(0xFF6D28D9),
+    id: 'indigo',
+    name: 'Nila Senja',
+  );
+
+  static final LanjoThemePalette rose = LanjoThemePalette.fromSeed(
+    const Color(0xFFBE123C),
+    id: 'rose',
+    name: 'Krimson',
+  );
+
+  static final LanjoThemePalette amber = LanjoThemePalette.fromSeed(
+    const Color(0xFFB45309),
+    id: 'amber',
+    name: 'Amber Emas',
+  );
+
+  static final LanjoThemePalette forest = LanjoThemePalette.fromSeed(
+    const Color(0xFF15803D),
+    id: 'forest',
+    name: 'Matcha Hutan',
+  );
+
+  static final LanjoThemePalette slate = LanjoThemePalette.fromSeed(
+    const Color(0xFF334155),
+    id: 'slate',
+    name: 'Grafit',
+  );
+
+  static final List<LanjoThemePalette> all = [
+    emerald,
+    ocean,
+    indigo,
+    rose,
+    amber,
+    forest,
+    slate,
+  ];
+}
+
+class LanjoThemeExtension extends ThemeExtension<LanjoThemeExtension> {
+  const LanjoThemeExtension(this.palette);
+
+  final LanjoThemePalette palette;
+
+  @override
+  LanjoThemeExtension copyWith({LanjoThemePalette? palette}) =>
+      LanjoThemeExtension(palette ?? this.palette);
+
+  @override
+  LanjoThemeExtension lerp(
+    covariant ThemeExtension<LanjoThemeExtension>? other,
+    double t,
+  ) {
+    if (other is! LanjoThemeExtension) return this;
+    return LanjoThemeExtension(
+      LanjoThemePalette(
+        id: t < 0.5 ? palette.id : other.palette.id,
+        name: t < 0.5 ? palette.name : other.palette.name,
+        seed: Color.lerp(palette.seed, other.palette.seed, t)!,
+        primary: Color.lerp(palette.primary, other.palette.primary, t)!,
+        primaryLight:
+            Color.lerp(palette.primaryLight, other.palette.primaryLight, t)!,
+        heroDeep: Color.lerp(palette.heroDeep, other.palette.heroDeep, t)!,
+        heroMid: Color.lerp(palette.heroMid, other.palette.heroMid, t)!,
+        heroEnd: Color.lerp(palette.heroEnd, other.palette.heroEnd, t)!,
+        primaryContainerLight: Color.lerp(
+          palette.primaryContainerLight,
+          other.palette.primaryContainerLight,
+          t,
+        )!,
+        onPrimaryContainerLight: Color.lerp(
+          palette.onPrimaryContainerLight,
+          other.palette.onPrimaryContainerLight,
+          t,
+        )!,
+        primaryContainerDark: Color.lerp(
+          palette.primaryContainerDark,
+          other.palette.primaryContainerDark,
+          t,
+        )!,
+        onPrimaryContainerDark: Color.lerp(
+          palette.onPrimaryContainerDark,
+          other.palette.onPrimaryContainerDark,
+          t,
+        )!,
+        lightButtonBg:
+            Color.lerp(palette.lightButtonBg, other.palette.lightButtonBg, t)!,
+      ),
+    );
+  }
+}
+
 /// Extension on [BuildContext] for quick access to adaptive minimalist tokens.
 extension LanjoThemeContext on BuildContext {
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
+  LanjoThemePalette get lanjoPalette =>
+      Theme.of(this).extension<LanjoThemeExtension>()?.palette ??
+      LanjoThemePresets.emerald;
+  Color get lanjoPrimary =>
+      isDark ? lanjoPalette.primaryLight : lanjoPalette.primary;
+  Color get lanjoPrimaryLight => lanjoPalette.primaryLight;
+  Color get lanjoHeroDeep => lanjoPalette.heroDeep;
+  Color get lanjoHeroMid => lanjoPalette.heroMid;
+  Color get lanjoHeroEnd => lanjoPalette.heroEnd;
   Color get lanjoBg =>
       isDark ? ArusColors.neutralSurfaceDark : ArusColors.neutralSurfaceLight;
   Color get lanjoCard => isDark ? ArusColors.cardDark : ArusColors.cardLight;
@@ -160,14 +418,16 @@ abstract final class ArusTheme {
     );
   }
 
-  static ThemeData light() {
-    const scheme = ColorScheme(
+  static ThemeData light({
+    LanjoThemePalette palette = LanjoThemePresets.emerald,
+  }) {
+    final scheme = ColorScheme(
       brightness: Brightness.light,
-      primary: ArusColors.primary,
+      primary: palette.primary,
       onPrimary: Colors.white,
-      primaryContainer: Color(0xFFE6F4F1),
-      onPrimaryContainer: Color(0xFF064E46),
-      secondary: Color(0xFF182226),
+      primaryContainer: palette.primaryContainerLight,
+      onPrimaryContainer: palette.onPrimaryContainerLight,
+      secondary: const Color(0xFF182226),
       onSecondary: Colors.white,
       secondaryContainer: ArusColors.surfaceSecondaryLight,
       onSecondaryContainer: ArusColors.inkLight,
@@ -175,17 +435,17 @@ abstract final class ArusTheme {
       onTertiary: Colors.white,
       error: ArusColors.expense,
       onError: Colors.white,
-      errorContainer: Color(0xFFFFE4E6),
-      onErrorContainer: Color(0xFF881337),
+      errorContainer: const Color(0xFFFFE4E6),
+      onErrorContainer: const Color(0xFF881337),
       surface: ArusColors.neutralSurfaceLight,
       onSurface: ArusColors.inkLight,
       surfaceContainerLowest: ArusColors.cardLight,
-      surfaceContainerLow: Color(0xFFFAFBFC),
+      surfaceContainerLow: const Color(0xFFFAFBFC),
       surfaceContainer: ArusColors.cardLight,
       surfaceContainerHigh: ArusColors.surfaceSecondaryLight,
-      surfaceContainerHighest: Color(0xFFE8ECEF),
+      surfaceContainerHighest: const Color(0xFFE8ECEF),
       onSurfaceVariant: ArusColors.mutedLight,
-      outline: Color(0xFFD0D7DE),
+      outline: const Color(0xFFD0D7DE),
       outlineVariant: ArusColors.borderLight,
     );
 
@@ -195,6 +455,7 @@ abstract final class ArusTheme {
       useMaterial3: true,
       fontFamily: ArusColors.fontFamily,
       colorScheme: scheme,
+      extensions: [LanjoThemeExtension(palette)],
       textTheme: textTheme,
       scaffoldBackgroundColor: ArusColors.neutralSurfaceLight,
       dividerColor: ArusColors.borderLight,
@@ -260,7 +521,7 @@ abstract final class ArusTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: ArusColors.primary, width: 1.5),
+          borderSide: BorderSide(color: palette.primary, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
@@ -269,7 +530,7 @@ abstract final class ArusTheme {
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          backgroundColor: const Color(0xFF141D21),
+          backgroundColor: palette.lightButtonBg,
           foregroundColor: Colors.white,
           elevation: 0,
           minimumSize: const Size(48, 48),
@@ -305,7 +566,7 @@ abstract final class ArusTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: ArusColors.primary,
+          foregroundColor: palette.primary,
           textStyle: const TextStyle(
             fontFamily: ArusColors.fontFamily,
             fontSize: 13.5,
@@ -318,7 +579,7 @@ abstract final class ArusTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: ArusColors.cardLight,
-        selectedColor: const Color(0xFF141D21),
+        selectedColor: palette.lightButtonBg,
         disabledColor: ArusColors.surfaceSecondaryLight,
         labelStyle: const TextStyle(
           fontFamily: ArusColors.fontFamily,
@@ -370,7 +631,7 @@ abstract final class ArusTheme {
         ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: ArusColors.primary,
+        backgroundColor: palette.primary,
         foregroundColor: Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -382,7 +643,7 @@ abstract final class ArusTheme {
           return Colors.white;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) return ArusColors.primary;
+          if (states.contains(WidgetState.selected)) return palette.primary;
           return const Color(0xFFD5DCE2);
         }),
         trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
@@ -395,7 +656,7 @@ abstract final class ArusTheme {
           visualDensity: VisualDensity.compact,
           backgroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return const Color(0xFF141D21);
+              return palette.lightButtonBg;
             }
             return ArusColors.cardLight;
           }),
@@ -414,32 +675,40 @@ abstract final class ArusTheme {
     );
   }
 
-  static ThemeData dark() {
-    const scheme = ColorScheme(
+  static ThemeData dark({
+    LanjoThemePalette palette = LanjoThemePresets.emerald,
+  }) {
+    final onAccent =
+        ThemeData.estimateBrightnessForColor(palette.primaryLight) ==
+                Brightness.light
+            ? const Color(0xFF041C14)
+            : Colors.white;
+
+    final scheme = ColorScheme(
       brightness: Brightness.dark,
-      primary: ArusColors.primaryLight,
-      onPrimary: Color(0xFF042219),
-      primaryContainer: Color(0xFF0D332D),
-      onPrimaryContainer: Color(0xFF8CE9CD),
+      primary: palette.primaryLight,
+      onPrimary: onAccent,
+      primaryContainer: palette.primaryContainerDark,
+      onPrimaryContainer: palette.onPrimaryContainerDark,
       secondary: ArusColors.inkDark,
-      onSecondary: Color(0xFF0A0E12),
+      onSecondary: const Color(0xFF0A0E12),
       secondaryContainer: ArusColors.surfaceSecondaryDark,
       onSecondaryContainer: ArusColors.inkDark,
-      tertiary: Color(0xFF818CF8),
-      onTertiary: Color(0xFF0A0E12),
-      error: Color(0xFFFB7185),
-      onError: Color(0xFF4C0519),
-      errorContainer: Color(0xFF4C0519),
-      onErrorContainer: Color(0xFFFFCCD5),
+      tertiary: const Color(0xFF818CF8),
+      onTertiary: const Color(0xFF0A0E12),
+      error: const Color(0xFFFB7185),
+      onError: const Color(0xFF4C0519),
+      errorContainer: const Color(0xFF4C0519),
+      onErrorContainer: const Color(0xFFFFCCD5),
       surface: ArusColors.neutralSurfaceDark,
       onSurface: ArusColors.inkDark,
-      surfaceContainerLowest: Color(0xFF070A0D),
+      surfaceContainerLowest: const Color(0xFF070A0D),
       surfaceContainerLow: ArusColors.cardDark,
       surfaceContainer: ArusColors.cardDark,
       surfaceContainerHigh: ArusColors.surfaceSecondaryDark,
-      surfaceContainerHighest: Color(0xFF232E3B),
+      surfaceContainerHighest: const Color(0xFF232E3B),
       onSurfaceVariant: ArusColors.mutedDark,
-      outline: Color(0xFF2B3543),
+      outline: const Color(0xFF2B3543),
       outlineVariant: ArusColors.borderDark,
     );
 
@@ -449,6 +718,7 @@ abstract final class ArusTheme {
       useMaterial3: true,
       fontFamily: ArusColors.fontFamily,
       colorScheme: scheme,
+      extensions: [LanjoThemeExtension(palette)],
       textTheme: textTheme,
       scaffoldBackgroundColor: ArusColors.neutralSurfaceDark,
       dividerColor: ArusColors.borderDark,
@@ -513,13 +783,13 @@ abstract final class ArusTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: ArusColors.primaryLight, width: 1.5),
+          borderSide: BorderSide(color: palette.primaryLight, width: 1.5),
         ),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          backgroundColor: ArusColors.primaryLight,
-          foregroundColor: const Color(0xFF041C14),
+          backgroundColor: palette.primaryLight,
+          foregroundColor: onAccent,
           elevation: 0,
           minimumSize: const Size(48, 48),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
@@ -554,7 +824,7 @@ abstract final class ArusTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: ArusColors.primaryLight,
+          foregroundColor: palette.primaryLight,
           textStyle: const TextStyle(
             fontFamily: ArusColors.fontFamily,
             fontSize: 13.5,
@@ -567,20 +837,20 @@ abstract final class ArusTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: ArusColors.cardDark,
-        selectedColor: ArusColors.primaryLight,
+        selectedColor: palette.primaryLight,
         labelStyle: const TextStyle(
           fontFamily: ArusColors.fontFamily,
           fontSize: 12.5,
           fontWeight: FontWeight.w600,
           color: ArusColors.inkDark,
         ),
-        secondaryLabelStyle: const TextStyle(
+        secondaryLabelStyle: TextStyle(
           fontFamily: ArusColors.fontFamily,
           fontSize: 12.5,
           fontWeight: FontWeight.w700,
-          color: Color(0xFF041C14),
+          color: onAccent,
         ),
-        checkmarkColor: const Color(0xFF041C14),
+        checkmarkColor: onAccent,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         side: const BorderSide(color: ArusColors.borderDark),
         shape: RoundedRectangleBorder(
@@ -619,8 +889,8 @@ abstract final class ArusTheme {
         ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: ArusColors.primaryLight,
-        foregroundColor: const Color(0xFF041C14),
+        backgroundColor: palette.primaryLight,
+        foregroundColor: onAccent,
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -634,13 +904,13 @@ abstract final class ArusTheme {
           visualDensity: VisualDensity.compact,
           backgroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return ArusColors.primaryLight;
+              return palette.primaryLight;
             }
             return ArusColors.cardDark;
           }),
           foregroundColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return const Color(0xFF041C14);
+              return onAccent;
             }
             return ArusColors.inkDark;
           }),

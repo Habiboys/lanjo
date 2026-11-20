@@ -44,6 +44,23 @@ class SecureStorageService {
   static const _kPinHash = 'arus_pin_hash';
   static const _kPinSalt = 'arus_pin_salt';
   static const _kRecoveryPhraseHash = 'arus_recovery_hash';
+  static const _kThemeAccent = 'arus_theme_accent';
+
+  Future<String?> getThemeAccentRaw() async {
+    try {
+      return await _storage.read(key: _kThemeAccent);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<void> saveThemeAccentRaw(String value) async {
+    try {
+      await _storage.write(key: _kThemeAccent, value: value);
+    } catch (_) {
+      // Ignore on unsupported test environments without secure storage plugin.
+    }
+  }
 
   Future<void> saveAiProvider(AiProvider provider) =>
       _storage.write(key: _kAiProvider, value: provider.storageValue);

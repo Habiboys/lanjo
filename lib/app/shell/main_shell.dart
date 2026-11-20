@@ -194,18 +194,18 @@ class _CatatCenterAction extends StatelessWidget {
                 width: 48,
                 height: 44,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      ArusColors.heroMid,
-                      ArusColors.primaryLight,
+                      context.lanjoHeroMid,
+                      context.lanjoPrimaryLight,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
-                      color: ArusColors.primary.withValues(alpha: 0.24),
+                      color: context.lanjoPrimary.withValues(alpha: 0.24),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),

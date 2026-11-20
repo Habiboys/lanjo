@@ -924,8 +924,8 @@ class _CashflowHeatmapCalendarCardState
                             width: 4,
                             height: 4,
                             margin: const EdgeInsets.only(top: 2),
-                            decoration: const BoxDecoration(
-                              color: ArusColors.primary,
+                            decoration: BoxDecoration(
+                              color: context.lanjoPrimary,
                               shape: BoxShape.circle,
                             ),
                           ),

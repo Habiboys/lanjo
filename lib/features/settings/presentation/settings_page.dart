@@ -106,6 +106,7 @@ class SettingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final settings = ref.watch(appSettingsProvider).valueOrNull;
+    final accentPalette = ref.watch(themeAccentProvider);
     final aiProvider = ref.watch(aiProviderTypeProvider).valueOrNull;
     final db = ref.watch(appDatabaseProvider);
 
@@ -121,12 +122,21 @@ class SettingsPage extends ConsumerWidget {
                 children: [
                   _SettingsRow(
                     icon: LucideIcons.user,
-                    color: ArusColors.primary,
+                    color: context.lanjoPrimary,
                     title: 'Profil & Periode Keuangan',
                     subtitle:
                         '${settings.nickname ?? 'Pengguna Lanjo'} • Gajian: ${settings.paydayDay != null ? 'Tgl ${settings.paydayDay}' : 'Akhir bulan'}'
                         '${settings.monthlySalary != null ? ' (${MoneyFormatter.formatCompact(settings.monthlySalary!)})' : ''}',
                     onTap: () => _editProfileDialog(context, ref, settings),
+                  ),
+                  const Divider(indent: 66),
+                  _SettingsRow(
+                    icon: LucideIcons.palette,
+                    color: accentPalette.seed,
+                    title: 'Tema & Warna Kustom',
+                    subtitle:
+                        '${switch (settings.themeMode) { 'light' => 'Mode Terang', 'dark' => 'Mode Gelap', _ => 'Ikuti Sistem' }} • Warna ${accentPalette.isCustom ? accentPalette.hexCode : accentPalette.name}',
+                    onTap: () => context.push('/settings/appearance'),
                   ),
                   const Divider(indent: 66),
                   Padding(
@@ -144,7 +154,7 @@ class SettingsPage extends ConsumerWidget {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'Tampilan (Theme)',
+                            'Mode Terang / Gelap',
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontSize: 14.5,
                             ),

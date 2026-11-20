@@ -21,6 +21,7 @@ import '../../features/reports/presentation/reports_page.dart';
 import '../../features/salary_day/presentation/salary_day_page.dart';
 import '../../features/settings/presentation/ai_settings_page.dart';
 import '../../features/settings/presentation/android_native_settings_page.dart';
+import '../../features/settings/presentation/appearance_settings_page.dart';
 import '../../features/settings/presentation/notification_settings_page.dart';
 import '../../features/settings/presentation/security_settings_page.dart';
 import '../../features/settings/presentation/settings_page.dart';
@@ -201,6 +202,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: '/ai/chat',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const AiChatPage(),
+      ),
+      GoRoute(
+        path: '/settings/appearance',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const AppearanceSettingsPage(),
       ),
       GoRoute(
         path: '/settings/android-native',

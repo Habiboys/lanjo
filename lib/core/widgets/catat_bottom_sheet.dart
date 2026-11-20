@@ -80,7 +80,7 @@ class CatatBottomSheet extends ConsumerWidget {
                   children: [
                     _QuickRow(
                       icon: LucideIcons.sparkles,
-                      color: ArusColors.primary,
+                      color: context.lanjoPrimary,
                       title: 'Catat dengan AI',
                       subtitle: 'Ketik kalimat bebas: "Makan 25rb pakai BCA"',
                       badge: 'AI',

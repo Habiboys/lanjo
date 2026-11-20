@@ -980,7 +980,7 @@ class _BudgetMiniRow extends StatelessWidget {
         ? ArusColors.expense
         : progress.isWarning80
             ? ArusColors.warning
-            : ArusColors.primaryLight;
+            : context.lanjoPrimaryLight;
     final pct = (progress.ratio * 100).clamp(0, 999).round();
 
     return InkWell(
@@ -1147,7 +1147,7 @@ class _SafeToSpendHeroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final gradientColors = sts.isShortfall
         ? const [Color(0xFF4C0519), Color(0xFF881337), Color(0xFF9F1239)]
-        : const [ArusColors.heroDeep, ArusColors.heroMid, ArusColors.heroEnd];
+        : [context.lanjoHeroDeep, context.lanjoHeroMid, context.lanjoHeroEnd];
 
     return Container(
       decoration: BoxDecoration(
@@ -1159,7 +1159,7 @@ class _SafeToSpendHeroCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
-            color: (sts.isShortfall ? const Color(0xFF881337) : ArusColors.heroDeep)
+            color: (sts.isShortfall ? const Color(0xFF881337) : context.lanjoHeroDeep)
                 .withValues(alpha: context.isDark ? 0.35 : 0.18),
             blurRadius: 20,
             offset: const Offset(0, 8),

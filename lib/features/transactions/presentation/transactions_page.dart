@@ -667,11 +667,18 @@ class _FilterPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onDarkAccent =
+        ThemeData.estimateBrightnessForColor(context.lanjoPrimaryLight) ==
+                Brightness.light
+            ? const Color(0xFF041C14)
+            : Colors.white;
     final bg = selected
-        ? (context.isDark ? ArusColors.primaryLight : const Color(0xFF141D21))
+        ? (context.isDark
+            ? context.lanjoPrimaryLight
+            : context.lanjoPalette.lightButtonBg)
         : context.lanjoCard;
     final fg = selected
-        ? (context.isDark ? const Color(0xFF041C14) : Colors.white)
+        ? (context.isDark ? onDarkAccent : Colors.white)
         : context.lanjoInk;
 
     return Material(

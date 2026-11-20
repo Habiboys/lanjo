@@ -158,6 +158,7 @@ class _ArusAppState extends ConsumerState<ArusApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final router = ref.watch(appRouterProvider);
     final settings = ref.watch(appSettingsProvider).valueOrNull;
+    final accentPalette = ref.watch(themeAccentProvider);
 
     ref.listen(safeToSpendProvider, (_, _) => _syncAndroidHomeWidget());
     ref.listen(transactionsStreamProvider, (_, _) => _syncAndroidHomeWidget());
@@ -172,8 +173,8 @@ class _ArusAppState extends ConsumerState<ArusApp> with WidgetsBindingObserver {
     return MaterialApp.router(
       title: 'Lanjo',
       debugShowCheckedModeBanner: false,
-      theme: ArusTheme.light(),
-      darkTheme: ArusTheme.dark(),
+      theme: ArusTheme.light(palette: accentPalette),
+      darkTheme: ArusTheme.dark(palette: accentPalette),
       themeMode: themeMode,
       locale: const Locale('id', 'ID'),
       supportedLocales: const [

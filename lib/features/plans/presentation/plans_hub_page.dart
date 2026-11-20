@@ -25,7 +25,7 @@ class PlansHubPage extends ConsumerWidget {
     final controlGroup = <_PlanModuleItem>[
       (
         icon: LucideIcons.pieChart,
-        color: ArusColors.primary,
+        color: context.lanjoPrimary,
         title: 'Anggaran (Budget)',
         subtitle: budgets.isEmpty
             ? 'Atur batas pengeluaran per kategori atau periode'
@@ -96,10 +96,10 @@ class PlansHubPage extends ConsumerWidget {
               child: Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [ArusColors.heroDeep, ArusColors.heroMid],
+                    colors: [context.lanjoHeroDeep, context.lanjoHeroMid],
                   ),
                   borderRadius: BorderRadius.circular(20),
                 ),

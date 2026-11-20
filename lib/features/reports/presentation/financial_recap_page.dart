@@ -57,7 +57,7 @@ class _FinancialRecapPageState extends ConsumerState<FinancialRecapPage> {
             String sub,
           })>[
             (
-              gradient: const [ArusColors.heroDeep, ArusColors.heroEnd],
+              gradient: [context.lanjoHeroDeep, context.lanjoHeroEnd],
               kicker: 'Ringkasan Lanjo Periode Ini',
               hero: MoneyFormatter.format(s.totalConsumptionExpense),
               sub: 'Total pemasukan ${MoneyFormatter.format(s.totalIncome)}'

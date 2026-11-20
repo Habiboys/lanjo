@@ -74,16 +74,10 @@ class MainActivity : FlutterFragmentActivity() {
             NotificationManagerCompat.from(this).areNotificationsEnabled()
         }
         val cameraGranted = isGranted(Manifest.permission.CAMERA)
-        val photosGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            isGranted(Manifest.permission.READ_MEDIA_IMAGES)
-        } else {
-            isGranted(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
         val micGranted = isGranted(Manifest.permission.RECORD_AUDIO)
         return mapOf(
             "notifications" to notifGranted,
             "camera" to cameraGranted,
-            "photos" to photosGranted,
             "microphone" to micGranted
         )
     }
@@ -97,20 +91,10 @@ class MainActivity : FlutterFragmentActivity() {
                 }
             }
             "camera" -> list.add(Manifest.permission.CAMERA)
-            "photos" -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    list.add(Manifest.permission.READ_MEDIA_IMAGES)
-                } else {
-                    list.add(Manifest.permission.READ_EXTERNAL_STORAGE)
-                }
-            }
             "microphone" -> list.add(Manifest.permission.RECORD_AUDIO)
             "all" -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     list.add(Manifest.permission.POST_NOTIFICATIONS)
-                    list.add(Manifest.permission.READ_MEDIA_IMAGES)
-                } else {
-                    list.add(Manifest.permission.READ_EXTERNAL_STORAGE)
                 }
                 list.add(Manifest.permission.CAMERA)
                 list.add(Manifest.permission.RECORD_AUDIO)

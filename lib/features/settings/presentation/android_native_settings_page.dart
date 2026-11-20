@@ -11,8 +11,8 @@ import '../../../core/widgets/lanjo_ui.dart';
 
 /// Dedicated configuration and testing hub for Android native features:
 /// Home Screen Widget, Runtime Device Permissions (Notifications, Camera,
-/// Photos, Microphone), Clipboard/Share Bank Auto-Detector, Quick Settings Tile,
-/// Launcher App Shortcuts, and Share Target.
+/// Microphone; Gallery uses permissionless System Photo Picker), Clipboard/Share
+/// Bank Auto-Detector, Quick Settings Tile, Launcher App Shortcuts, and Share Target.
 class AndroidNativeSettingsPage extends ConsumerStatefulWidget {
   const AndroidNativeSettingsPage({super.key});
 
@@ -228,7 +228,6 @@ class _AndroidNativeSettingsPageState
 
     final notifOk = _permStatuses['notifications'] ?? false;
     final cameraOk = _permStatuses['camera'] ?? false;
-    final photosOk = _permStatuses['photos'] ?? false;
     final micOk = _permStatuses['microphone'] ?? false;
 
     return Scaffold(
@@ -266,16 +265,6 @@ class _AndroidNativeSettingsPageState
                 ),
                 const Divider(indent: 66),
                 _PermissionTile(
-                  icon: LucideIcons.image,
-                  color: ArusColors.transfer,
-                  title: 'Galeri & Foto',
-                  subtitle: 'Memilih foto struk / lampiran bukti transaksi',
-                  granted: photosOk,
-                  loading: _loading,
-                  onRequest: () => _requestPerm('photos'),
-                ),
-                const Divider(indent: 66),
-                _PermissionTile(
                   icon: LucideIcons.mic,
                   color: ArusColors.income,
                   title: 'Mikrofon (Input Suara)',
@@ -283,6 +272,17 @@ class _AndroidNativeSettingsPageState
                   granted: micOk,
                   loading: _loading,
                   onRequest: () => _requestPerm('microphone'),
+                ),
+                const Divider(indent: 66),
+                _PermissionTile(
+                  icon: LucideIcons.image,
+                  color: ArusColors.transfer,
+                  title: 'Galeri & Foto (System Photo Picker)',
+                  subtitle:
+                      'Memilih foto struk lewat Android Photo Picker bawaan — aman tanpa izin akses seluruh galeri (sesuai kebijakan Google Play)',
+                  granted: true,
+                  loading: false,
+                  onRequest: () {},
                 ),
                 const Divider(),
                 Padding(

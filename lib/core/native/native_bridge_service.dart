@@ -84,13 +84,12 @@ class NativeBridgeService {
       !kIsWeb &&
       defaultTargetPlatform == TargetPlatform.android;
 
-  /// Returns runtime permission states: notifications, camera, photos, microphone.
+  /// Returns runtime permission states: notifications, camera, microphone.
   Future<Map<String, bool>> getPermissionStatuses() async {
     if (!_isAndroidNative) {
       return const {
         'notifications': true,
         'camera': true,
-        'photos': true,
         'microphone': true,
       };
     }
@@ -101,7 +100,6 @@ class NativeBridgeService {
       return {
         'notifications': raw['notifications'] == true,
         'camera': raw['camera'] == true,
-        'photos': raw['photos'] == true,
         'microphone': raw['microphone'] == true,
       };
     } catch (_) {
@@ -110,7 +108,7 @@ class NativeBridgeService {
   }
 
   /// Requests Android runtime permission(s) cleanly (`notifications`, `camera`,
-  /// `photos`, `microphone`, or `all`). Returns true if granted.
+  /// `microphone`, or `all`). Returns true if granted.
   Future<bool> requestPermission(String key) async {
     if (!_isAndroidNative) return true;
     try {

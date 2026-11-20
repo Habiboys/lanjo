@@ -66,7 +66,7 @@ class SplitBillPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   isExpanded: true,
-                  initialValue: walletId,
+                  value: walletId,
                   decoration: const InputDecoration(labelText: 'Dompet Pembayar'),
                   items: [
                     for (final w in wallets)
@@ -82,7 +82,7 @@ class SplitBillPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   isExpanded: true,
-                  initialValue: catId,
+                  value: catId,
                   decoration: const InputDecoration(labelText: 'Kategori'),
                   items: [
                     for (final c in cats)

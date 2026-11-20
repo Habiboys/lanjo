@@ -9,8 +9,8 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="lanjo://route/transactions/new?type=expense"
-            android:targetClass="com.example.lanjo.MainActivity"
-            android:targetPackage="com.example.lanjo" />
+            android:targetClass="com.habiboys.lanjo.MainActivity"
+            android:targetPackage="com.habiboys.lanjo" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -21,8 +21,8 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="lanjo://route/ai/quick-expense"
-            android:targetClass="com.example.lanjo.MainActivity"
-            android:targetPackage="com.example.lanjo" />
+            android:targetClass="com.habiboys.lanjo.MainActivity"
+            android:targetPackage="com.habiboys.lanjo" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -33,8 +33,8 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="lanjo://route/ai/receipt-scanner"
-            android:targetClass="com.example.lanjo.MainActivity"
-            android:targetPackage="com.example.lanjo" />
+            android:targetClass="com.habiboys.lanjo.MainActivity"
+            android:targetPackage="com.habiboys.lanjo" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -45,7 +45,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="lanjo://route/ai/quick-expense?voice=1"
-            android:targetClass="com.example.lanjo.MainActivity"
-            android:targetPackage="com.example.lanjo" />
+            android:targetClass="com.habiboys.lanjo.MainActivity"
+            android:targetPackage="com.habiboys.lanjo" />
     </shortcut>
 </shortcuts>

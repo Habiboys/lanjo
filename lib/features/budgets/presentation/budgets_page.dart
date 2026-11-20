@@ -57,7 +57,7 @@ class BudgetsPage extends ConsumerWidget {
               children: [
                 DropdownButtonFormField<String?>(
                   isExpanded: true,
-                  initialValue: categoryId,
+                  value: categoryId,
                   decoration: const InputDecoration(labelText: 'Kategori'),
                   items: [
                     const DropdownMenuItem<String?>(
@@ -102,7 +102,7 @@ class BudgetsPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   isExpanded: true,
-                  initialValue: periodType,
+                  value: periodType,
                   decoration: const InputDecoration(labelText: 'Periode'),
                   items: const [
                     DropdownMenuItem(value: 'daily', child: Text('Harian')),

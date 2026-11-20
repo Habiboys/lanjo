@@ -155,7 +155,7 @@ class _ImportExportPageState extends ConsumerState<ImportExportPage> {
                     const SizedBox(height: 12),
                     DropdownButtonFormField<String>(
                       isExpanded: true,
-                      initialValue: _walletId,
+                      value: _walletId,
                       decoration: const InputDecoration(labelText: 'Dompet Tujuan'),
                       items: [
                         for (final w in wallets)
@@ -175,7 +175,7 @@ class _ImportExportPageState extends ConsumerState<ImportExportPage> {
                         Expanded(
                           child: DropdownButtonFormField<int>(
                             isExpanded: true,
-                            initialValue: _dateCol.clamp(0, colCount - 1),
+                            value: _dateCol.clamp(0, colCount - 1),
                             decoration: const InputDecoration(labelText: 'Kolom Tanggal'),
                             items: [
                               for (var i = 0; i < colCount; i++)
@@ -199,7 +199,7 @@ class _ImportExportPageState extends ConsumerState<ImportExportPage> {
                         Expanded(
                           child: DropdownButtonFormField<int>(
                             isExpanded: true,
-                            initialValue: _amountCol.clamp(0, colCount - 1),
+                            value: _amountCol.clamp(0, colCount - 1),
                             decoration: const InputDecoration(labelText: 'Kolom Nominal'),
                             items: [
                               for (var i = 0; i < colCount; i++)
@@ -227,7 +227,7 @@ class _ImportExportPageState extends ConsumerState<ImportExportPage> {
                         Expanded(
                           child: DropdownButtonFormField<int>(
                             isExpanded: true,
-                            initialValue: _descCol.clamp(0, colCount - 1),
+                            value: _descCol.clamp(0, colCount - 1),
                             decoration: const InputDecoration(labelText: 'Kolom Deskripsi'),
                             items: [
                               for (var i = 0; i < colCount; i++)
@@ -251,7 +251,7 @@ class _ImportExportPageState extends ConsumerState<ImportExportPage> {
                         Expanded(
                           child: DropdownButtonFormField<int?>(
                             isExpanded: true,
-                            initialValue: _typeCol,
+                            value: _typeCol,
                             decoration: const InputDecoration(labelText: 'Kolom Jenis'),
                             items: [
                               const DropdownMenuItem<int?>(

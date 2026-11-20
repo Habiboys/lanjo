@@ -499,7 +499,7 @@ class _DebtFormDialogState extends ConsumerState<_DebtFormDialog> {
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 isExpanded: true,
-                initialValue: wallets.any((w) => w.id == _walletId)
+                value: wallets.any((w) => w.id == _walletId)
                     ? _walletId
                     : wallets.first.id,
                 decoration: InputDecoration(
@@ -1009,7 +1009,7 @@ class _RepayAndSimulateSheetState
                             const SizedBox(height: 10),
                             DropdownButtonFormField<String>(
                               isExpanded: true,
-                              initialValue:
+                              value:
                                   wallets.any((w) => w.id == _walletId)
                                       ? _walletId
                                       : wallets.first.id,

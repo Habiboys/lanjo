@@ -1,4 +1,4 @@
-package com.example.lanjo
+package com.habiboys.lanjo
 
 import android.content.Context
 import android.content.Intent
@@ -234,7 +234,7 @@ class MainActivity : FlutterFragmentActivity() {
     }
 
     companion object {
-        private const val CHANNEL_NAME = "com.example.lanjo/native"
+        private const val CHANNEL_NAME = "com.habiboys.lanjo/native"
         private var instance: MainActivity? = null
 
         fun notifySmartInboxUpdated() {

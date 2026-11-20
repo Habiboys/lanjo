@@ -1,4 +1,4 @@
-package com.example.lanjo
+package com.habiboys.lanjo
 
 import android.app.PendingIntent
 import android.content.Intent

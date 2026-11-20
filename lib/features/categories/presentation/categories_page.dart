@@ -54,7 +54,7 @@ class CategoriesPage extends ConsumerWidget {
               const SizedBox(height: 12),
               DropdownButtonFormField<String?>(
                 isExpanded: true,
-                initialValue: allCats.any(
+                value: allCats.any(
                   (c) =>
                       c.id == parentId &&
                       c.kind == kind &&

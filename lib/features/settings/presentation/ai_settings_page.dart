@@ -341,7 +341,7 @@ class _AiSettingsPageState extends ConsumerState<AiSettingsPage> {
                           '${_provider.name}_${settings.aiModel}_${_models.length}',
                         ),
                         isExpanded: true,
-                        initialValue: _models.any(
+                        value: _models.any(
                                 (m) => m.shortName == settings.aiModel)
                             ? settings.aiModel
                             : (_models.isNotEmpty

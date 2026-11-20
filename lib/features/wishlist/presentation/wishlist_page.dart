@@ -73,7 +73,7 @@ class WishlistPage extends ConsumerWidget {
                   const SizedBox(height: 12),
                   DropdownButtonFormField<String?>(
                     isExpanded: true,
-                    initialValue: catId,
+                    value: catId,
                     decoration: const InputDecoration(labelText: 'Kategori'),
                     items: [
                       for (final c in cats)

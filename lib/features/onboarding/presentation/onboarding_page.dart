@@ -282,7 +282,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
                               const SizedBox(height: 14),
                               DropdownButtonFormField<String>(
                                 isExpanded: true,
-                                initialValue: _currency,
+                                value: _currency,
                                 decoration: const InputDecoration(
                                   labelText: 'Mata uang utama',
                                 ),
@@ -299,7 +299,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
                               const SizedBox(height: 14),
                               DropdownButtonFormField<int?>(
                                 isExpanded: true,
-                                initialValue: _paydayDay,
+                                value: _paydayDay,
                                 decoration: const InputDecoration(
                                   labelText: 'Tanggal gajian (opsional)',
                                   helperText:
@@ -392,7 +392,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage> {
                               const SizedBox(height: 14),
                               DropdownButtonFormField<String>(
                                 isExpanded: true,
-                                initialValue: _walletType,
+                                value: _walletType,
                                 decoration: const InputDecoration(
                                   labelText: 'Jenis dompet',
                                 ),

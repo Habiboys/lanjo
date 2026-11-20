@@ -99,7 +99,7 @@ class _AiQuickExpensePageState extends ConsumerState<AiQuickExpensePage> {
         _error = null;
       });
       await _stt.listen(
-        localeId: 'id_ID',
+        listenOptions: SpeechListenOptions(localeId: 'id_ID'),
         onResult: (res) {
           if (!mounted) return;
           setState(() {
@@ -551,7 +551,7 @@ class _AiQuickExpensePageState extends ConsumerState<AiQuickExpensePage> {
                             Expanded(
                               child: DropdownButtonFormField<String>(
                                 isExpanded: true,
-                                initialValue: d.walletId,
+                                value: d.walletId,
                                 decoration: const InputDecoration(
                                   labelText: 'Dompet',
                                   isDense: true,
@@ -581,7 +581,7 @@ class _AiQuickExpensePageState extends ConsumerState<AiQuickExpensePage> {
                               Expanded(
                                 child: DropdownButtonFormField<String>(
                                   isExpanded: true,
-                                  initialValue: d.categoryId,
+                                  value: d.categoryId,
                                   decoration: const InputDecoration(
                                     labelText: 'Kategori',
                                     isDense: true,

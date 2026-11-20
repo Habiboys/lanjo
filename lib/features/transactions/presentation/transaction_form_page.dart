@@ -484,7 +484,7 @@ class _TransactionFormPageState extends ConsumerState<TransactionFormPage> {
                   const SizedBox(height: 12),
                   DropdownButtonFormField<String?>(
                     isExpanded: true,
-                    initialValue: _destinationWalletId,
+                    value: _destinationWalletId,
                     decoration: const InputDecoration(
                       labelText: 'Dompet Tujuan',
                     ),
@@ -632,7 +632,7 @@ class _TransactionFormPageState extends ConsumerState<TransactionFormPage> {
                                       flex: 3,
                                       child: DropdownButtonFormField<String>(
                                         isExpanded: true,
-                                        initialValue: _splits[i].categoryId,
+                                        value: _splits[i].categoryId,
                                         decoration: const InputDecoration(
                                           labelText: 'Kategori',
                                         ),

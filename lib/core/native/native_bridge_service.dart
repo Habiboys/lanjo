@@ -73,7 +73,7 @@ class NativeBridgeService {
   final bool useNativeChannel;
 
   static const MethodChannel _channel =
-      MethodChannel('com.example.lanjo/native');
+      MethodChannel('com.habiboys.lanjo/native');
 
   final List<SmartInboxItem> _fallbackQueue = [];
   bool _fallbackAutoDetectEnabled = true;

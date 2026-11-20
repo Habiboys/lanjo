@@ -1,4 +1,4 @@
-package com.example.lanjo
+package com.habiboys.lanjo
 
 import android.Manifest
 import android.content.Context
@@ -365,7 +365,7 @@ class MainActivity : FlutterFragmentActivity() {
     }
 
     companion object {
-        private const val CHANNEL_NAME = "com.example.lanjo/native"
+        private const val CHANNEL_NAME = "com.habiboys.lanjo/native"
         private const val REQ_CODE_PERMISSION = 4102
         private var instance: MainActivity? = null
 

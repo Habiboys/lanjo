@@ -305,7 +305,7 @@ class _ReceiptScannerPageState extends ConsumerState<ReceiptScannerPage> {
                     const SizedBox(height: 12),
                     DropdownButtonFormField<String>(
                       isExpanded: true,
-                      initialValue: _selectedWalletId,
+                      value: _selectedWalletId,
                       decoration: const InputDecoration(labelText: 'Dompet'),
                       items: [
                         for (final w in wallets)
@@ -319,7 +319,7 @@ class _ReceiptScannerPageState extends ConsumerState<ReceiptScannerPage> {
                     const SizedBox(height: 12),
                     DropdownButtonFormField<String>(
                       isExpanded: true,
-                      initialValue: _selectedCatId,
+                      value: _selectedCatId,
                       decoration: const InputDecoration(labelText: 'Kategori'),
                       items: [
                         for (final c in categories)

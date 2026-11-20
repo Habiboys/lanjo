@@ -42,7 +42,7 @@ class SettingsPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<int?>(
                   isExpanded: true,
-                  initialValue: payday,
+                  value: payday,
                   decoration: const InputDecoration(labelText: 'Tanggal gajian'),
                   items: [
                     const DropdownMenuItem<int?>(

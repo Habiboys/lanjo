@@ -151,7 +151,7 @@ class GoalsPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   isExpanded: true,
-                  initialValue: walletId,
+                  value: walletId,
                   decoration: const InputDecoration(labelText: 'Dari Dompet'),
                   items: [
                     for (final w in wallets)
@@ -174,7 +174,7 @@ class GoalsPage extends ConsumerWidget {
                 if (!isVirtual)
                   DropdownButtonFormField<String?>(
                     isExpanded: true,
-                    initialValue: savingsWalletId,
+                    value: savingsWalletId,
                     decoration: const InputDecoration(
                       labelText: 'Ke Dompet Tabungan',
                     ),

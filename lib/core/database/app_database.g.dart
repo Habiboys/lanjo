@@ -662,18 +662,20 @@ class $AppSettingsTable extends AppSettings
   AppSettingRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AppSettingRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
       nickname: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}nickname'],
       ),
-      baseCurrency: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}base_currency'],
-      )!,
+      baseCurrency:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}base_currency'],
+          )!,
       paydayDay: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}payday_day'],
@@ -686,50 +688,60 @@ class $AppSettingsTable extends AppSettings
         DriftSqlType.string,
         data['${effectivePrefix}default_wallet_id'],
       ),
-      onboardingCompleted: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}onboarding_completed'],
-      )!,
-      privacyMode: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}privacy_mode'],
-      )!,
-      themeMode: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}theme_mode'],
-      )!,
-      aiEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}ai_enabled'],
-      )!,
+      onboardingCompleted:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}onboarding_completed'],
+          )!,
+      privacyMode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}privacy_mode'],
+          )!,
+      themeMode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}theme_mode'],
+          )!,
+      aiEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}ai_enabled'],
+          )!,
       aiModel: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}ai_model'],
       ),
-      aiSaveHistory: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}ai_save_history'],
-      )!,
-      aiIncludeContext: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}ai_include_context'],
-      )!,
-      aiAllowImages: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}ai_allow_images'],
-      )!,
-      fcmEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}fcm_enabled'],
-      )!,
-      localNotificationsEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}local_notifications_enabled'],
-      )!,
-      hideAmountInNotifications: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}hide_amount_in_notifications'],
-      )!,
+      aiSaveHistory:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}ai_save_history'],
+          )!,
+      aiIncludeContext:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}ai_include_context'],
+          )!,
+      aiAllowImages:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}ai_allow_images'],
+          )!,
+      fcmEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}fcm_enabled'],
+          )!,
+      localNotificationsEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}local_notifications_enabled'],
+          )!,
+      hideAmountInNotifications:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}hide_amount_in_notifications'],
+          )!,
       quietHoursStartMinute: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}quiet_hours_start_minute'],
@@ -738,46 +750,55 @@ class $AppSettingsTable extends AppSettings
         DriftSqlType.int,
         data['${effectivePrefix}quiet_hours_end_minute'],
       ),
-      dailyReminderHour: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}daily_reminder_hour'],
-      )!,
-      dailyReminderMinute: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}daily_reminder_minute'],
-      )!,
-      appLockEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}app_lock_enabled'],
-      )!,
-      biometricEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}biometric_enabled'],
-      )!,
-      autoLockTimeoutSeconds: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}auto_lock_timeout_seconds'],
-      )!,
-      safeToSpendReserve: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}safe_to_spend_reserve'],
-      )!,
-      safeToSpendEssentials: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}safe_to_spend_essentials'],
-      )!,
-      dashboardHiddenWidgets: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}dashboard_hidden_widgets'],
-      )!,
+      dailyReminderHour:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}daily_reminder_hour'],
+          )!,
+      dailyReminderMinute:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}daily_reminder_minute'],
+          )!,
+      appLockEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}app_lock_enabled'],
+          )!,
+      biometricEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}biometric_enabled'],
+          )!,
+      autoLockTimeoutSeconds:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}auto_lock_timeout_seconds'],
+          )!,
+      safeToSpendReserve:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}safe_to_spend_reserve'],
+          )!,
+      safeToSpendEssentials:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}safe_to_spend_essentials'],
+          )!,
+      dashboardHiddenWidgets:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}dashboard_hidden_widgets'],
+          )!,
       lastBackupAt: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}last_backup_at'],
       ),
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -907,38 +928,45 @@ class AppSettingRecord extends DataClass
   AppSettingsCompanion toCompanion(bool nullToAbsent) {
     return AppSettingsCompanion(
       id: Value(id),
-      nickname: nickname == null && nullToAbsent
-          ? const Value.absent()
-          : Value(nickname),
+      nickname:
+          nickname == null && nullToAbsent
+              ? const Value.absent()
+              : Value(nickname),
       baseCurrency: Value(baseCurrency),
-      paydayDay: paydayDay == null && nullToAbsent
-          ? const Value.absent()
-          : Value(paydayDay),
-      monthlySalary: monthlySalary == null && nullToAbsent
-          ? const Value.absent()
-          : Value(monthlySalary),
-      defaultWalletId: defaultWalletId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(defaultWalletId),
+      paydayDay:
+          paydayDay == null && nullToAbsent
+              ? const Value.absent()
+              : Value(paydayDay),
+      monthlySalary:
+          monthlySalary == null && nullToAbsent
+              ? const Value.absent()
+              : Value(monthlySalary),
+      defaultWalletId:
+          defaultWalletId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(defaultWalletId),
       onboardingCompleted: Value(onboardingCompleted),
       privacyMode: Value(privacyMode),
       themeMode: Value(themeMode),
       aiEnabled: Value(aiEnabled),
-      aiModel: aiModel == null && nullToAbsent
-          ? const Value.absent()
-          : Value(aiModel),
+      aiModel:
+          aiModel == null && nullToAbsent
+              ? const Value.absent()
+              : Value(aiModel),
       aiSaveHistory: Value(aiSaveHistory),
       aiIncludeContext: Value(aiIncludeContext),
       aiAllowImages: Value(aiAllowImages),
       fcmEnabled: Value(fcmEnabled),
       localNotificationsEnabled: Value(localNotificationsEnabled),
       hideAmountInNotifications: Value(hideAmountInNotifications),
-      quietHoursStartMinute: quietHoursStartMinute == null && nullToAbsent
-          ? const Value.absent()
-          : Value(quietHoursStartMinute),
-      quietHoursEndMinute: quietHoursEndMinute == null && nullToAbsent
-          ? const Value.absent()
-          : Value(quietHoursEndMinute),
+      quietHoursStartMinute:
+          quietHoursStartMinute == null && nullToAbsent
+              ? const Value.absent()
+              : Value(quietHoursStartMinute),
+      quietHoursEndMinute:
+          quietHoursEndMinute == null && nullToAbsent
+              ? const Value.absent()
+              : Value(quietHoursEndMinute),
       dailyReminderHour: Value(dailyReminderHour),
       dailyReminderMinute: Value(dailyReminderMinute),
       appLockEnabled: Value(appLockEnabled),
@@ -947,9 +975,10 @@ class AppSettingRecord extends DataClass
       safeToSpendReserve: Value(safeToSpendReserve),
       safeToSpendEssentials: Value(safeToSpendEssentials),
       dashboardHiddenWidgets: Value(dashboardHiddenWidgets),
-      lastBackupAt: lastBackupAt == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastBackupAt),
+      lastBackupAt:
+          lastBackupAt == null && nullToAbsent
+              ? const Value.absent()
+              : Value(lastBackupAt),
       updatedAt: Value(updatedAt),
     );
   }
@@ -1086,12 +1115,10 @@ class AppSettingRecord extends DataClass
     nickname: nickname.present ? nickname.value : this.nickname,
     baseCurrency: baseCurrency ?? this.baseCurrency,
     paydayDay: paydayDay.present ? paydayDay.value : this.paydayDay,
-    monthlySalary: monthlySalary.present
-        ? monthlySalary.value
-        : this.monthlySalary,
-    defaultWalletId: defaultWalletId.present
-        ? defaultWalletId.value
-        : this.defaultWalletId,
+    monthlySalary:
+        monthlySalary.present ? monthlySalary.value : this.monthlySalary,
+    defaultWalletId:
+        defaultWalletId.present ? defaultWalletId.value : this.defaultWalletId,
     onboardingCompleted: onboardingCompleted ?? this.onboardingCompleted,
     privacyMode: privacyMode ?? this.privacyMode,
     themeMode: themeMode ?? this.themeMode,
@@ -1105,12 +1132,14 @@ class AppSettingRecord extends DataClass
         localNotificationsEnabled ?? this.localNotificationsEnabled,
     hideAmountInNotifications:
         hideAmountInNotifications ?? this.hideAmountInNotifications,
-    quietHoursStartMinute: quietHoursStartMinute.present
-        ? quietHoursStartMinute.value
-        : this.quietHoursStartMinute,
-    quietHoursEndMinute: quietHoursEndMinute.present
-        ? quietHoursEndMinute.value
-        : this.quietHoursEndMinute,
+    quietHoursStartMinute:
+        quietHoursStartMinute.present
+            ? quietHoursStartMinute.value
+            : this.quietHoursStartMinute,
+    quietHoursEndMinute:
+        quietHoursEndMinute.present
+            ? quietHoursEndMinute.value
+            : this.quietHoursEndMinute,
     dailyReminderHour: dailyReminderHour ?? this.dailyReminderHour,
     dailyReminderMinute: dailyReminderMinute ?? this.dailyReminderMinute,
     appLockEnabled: appLockEnabled ?? this.appLockEnabled,
@@ -1128,76 +1157,94 @@ class AppSettingRecord extends DataClass
     return AppSettingRecord(
       id: data.id.present ? data.id.value : this.id,
       nickname: data.nickname.present ? data.nickname.value : this.nickname,
-      baseCurrency: data.baseCurrency.present
-          ? data.baseCurrency.value
-          : this.baseCurrency,
+      baseCurrency:
+          data.baseCurrency.present
+              ? data.baseCurrency.value
+              : this.baseCurrency,
       paydayDay: data.paydayDay.present ? data.paydayDay.value : this.paydayDay,
-      monthlySalary: data.monthlySalary.present
-          ? data.monthlySalary.value
-          : this.monthlySalary,
-      defaultWalletId: data.defaultWalletId.present
-          ? data.defaultWalletId.value
-          : this.defaultWalletId,
-      onboardingCompleted: data.onboardingCompleted.present
-          ? data.onboardingCompleted.value
-          : this.onboardingCompleted,
-      privacyMode: data.privacyMode.present
-          ? data.privacyMode.value
-          : this.privacyMode,
+      monthlySalary:
+          data.monthlySalary.present
+              ? data.monthlySalary.value
+              : this.monthlySalary,
+      defaultWalletId:
+          data.defaultWalletId.present
+              ? data.defaultWalletId.value
+              : this.defaultWalletId,
+      onboardingCompleted:
+          data.onboardingCompleted.present
+              ? data.onboardingCompleted.value
+              : this.onboardingCompleted,
+      privacyMode:
+          data.privacyMode.present ? data.privacyMode.value : this.privacyMode,
       themeMode: data.themeMode.present ? data.themeMode.value : this.themeMode,
       aiEnabled: data.aiEnabled.present ? data.aiEnabled.value : this.aiEnabled,
       aiModel: data.aiModel.present ? data.aiModel.value : this.aiModel,
-      aiSaveHistory: data.aiSaveHistory.present
-          ? data.aiSaveHistory.value
-          : this.aiSaveHistory,
-      aiIncludeContext: data.aiIncludeContext.present
-          ? data.aiIncludeContext.value
-          : this.aiIncludeContext,
-      aiAllowImages: data.aiAllowImages.present
-          ? data.aiAllowImages.value
-          : this.aiAllowImages,
-      fcmEnabled: data.fcmEnabled.present
-          ? data.fcmEnabled.value
-          : this.fcmEnabled,
-      localNotificationsEnabled: data.localNotificationsEnabled.present
-          ? data.localNotificationsEnabled.value
-          : this.localNotificationsEnabled,
-      hideAmountInNotifications: data.hideAmountInNotifications.present
-          ? data.hideAmountInNotifications.value
-          : this.hideAmountInNotifications,
-      quietHoursStartMinute: data.quietHoursStartMinute.present
-          ? data.quietHoursStartMinute.value
-          : this.quietHoursStartMinute,
-      quietHoursEndMinute: data.quietHoursEndMinute.present
-          ? data.quietHoursEndMinute.value
-          : this.quietHoursEndMinute,
-      dailyReminderHour: data.dailyReminderHour.present
-          ? data.dailyReminderHour.value
-          : this.dailyReminderHour,
-      dailyReminderMinute: data.dailyReminderMinute.present
-          ? data.dailyReminderMinute.value
-          : this.dailyReminderMinute,
-      appLockEnabled: data.appLockEnabled.present
-          ? data.appLockEnabled.value
-          : this.appLockEnabled,
-      biometricEnabled: data.biometricEnabled.present
-          ? data.biometricEnabled.value
-          : this.biometricEnabled,
-      autoLockTimeoutSeconds: data.autoLockTimeoutSeconds.present
-          ? data.autoLockTimeoutSeconds.value
-          : this.autoLockTimeoutSeconds,
-      safeToSpendReserve: data.safeToSpendReserve.present
-          ? data.safeToSpendReserve.value
-          : this.safeToSpendReserve,
-      safeToSpendEssentials: data.safeToSpendEssentials.present
-          ? data.safeToSpendEssentials.value
-          : this.safeToSpendEssentials,
-      dashboardHiddenWidgets: data.dashboardHiddenWidgets.present
-          ? data.dashboardHiddenWidgets.value
-          : this.dashboardHiddenWidgets,
-      lastBackupAt: data.lastBackupAt.present
-          ? data.lastBackupAt.value
-          : this.lastBackupAt,
+      aiSaveHistory:
+          data.aiSaveHistory.present
+              ? data.aiSaveHistory.value
+              : this.aiSaveHistory,
+      aiIncludeContext:
+          data.aiIncludeContext.present
+              ? data.aiIncludeContext.value
+              : this.aiIncludeContext,
+      aiAllowImages:
+          data.aiAllowImages.present
+              ? data.aiAllowImages.value
+              : this.aiAllowImages,
+      fcmEnabled:
+          data.fcmEnabled.present ? data.fcmEnabled.value : this.fcmEnabled,
+      localNotificationsEnabled:
+          data.localNotificationsEnabled.present
+              ? data.localNotificationsEnabled.value
+              : this.localNotificationsEnabled,
+      hideAmountInNotifications:
+          data.hideAmountInNotifications.present
+              ? data.hideAmountInNotifications.value
+              : this.hideAmountInNotifications,
+      quietHoursStartMinute:
+          data.quietHoursStartMinute.present
+              ? data.quietHoursStartMinute.value
+              : this.quietHoursStartMinute,
+      quietHoursEndMinute:
+          data.quietHoursEndMinute.present
+              ? data.quietHoursEndMinute.value
+              : this.quietHoursEndMinute,
+      dailyReminderHour:
+          data.dailyReminderHour.present
+              ? data.dailyReminderHour.value
+              : this.dailyReminderHour,
+      dailyReminderMinute:
+          data.dailyReminderMinute.present
+              ? data.dailyReminderMinute.value
+              : this.dailyReminderMinute,
+      appLockEnabled:
+          data.appLockEnabled.present
+              ? data.appLockEnabled.value
+              : this.appLockEnabled,
+      biometricEnabled:
+          data.biometricEnabled.present
+              ? data.biometricEnabled.value
+              : this.biometricEnabled,
+      autoLockTimeoutSeconds:
+          data.autoLockTimeoutSeconds.present
+              ? data.autoLockTimeoutSeconds.value
+              : this.autoLockTimeoutSeconds,
+      safeToSpendReserve:
+          data.safeToSpendReserve.present
+              ? data.safeToSpendReserve.value
+              : this.safeToSpendReserve,
+      safeToSpendEssentials:
+          data.safeToSpendEssentials.present
+              ? data.safeToSpendEssentials.value
+              : this.safeToSpendEssentials,
+      dashboardHiddenWidgets:
+          data.dashboardHiddenWidgets.present
+              ? data.dashboardHiddenWidgets.value
+              : this.dashboardHiddenWidgets,
+      lastBackupAt:
+          data.lastBackupAt.present
+              ? data.lastBackupAt.value
+              : this.lastBackupAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
   }
@@ -2077,74 +2124,91 @@ class $AccountsTable extends Accounts
   AccountRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AccountRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      accountType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}account_type'],
-      )!,
-      accountClass: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}account_class'],
-      )!,
-      currency: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}currency'],
-      )!,
-      icon: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}icon'],
-      )!,
-      colorValue: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}color_value'],
-      )!,
-      openingBalance: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}opening_balance'],
-      )!,
-      cachedBalance: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}cached_balance'],
-      )!,
-      isVisible: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_visible'],
-      )!,
-      includeInTotal: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}include_in_total'],
-      )!,
-      includeInSpendable: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}include_in_spendable'],
-      )!,
-      isArchived: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_archived'],
-      )!,
-      isSystem: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_system'],
-      )!,
-      sortOrder: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}sort_order'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      accountType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}account_type'],
+          )!,
+      accountClass:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}account_class'],
+          )!,
+      currency:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}currency'],
+          )!,
+      icon:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}icon'],
+          )!,
+      colorValue:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}color_value'],
+          )!,
+      openingBalance:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}opening_balance'],
+          )!,
+      cachedBalance:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}cached_balance'],
+          )!,
+      isVisible:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_visible'],
+          )!,
+      includeInTotal:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}include_in_total'],
+          )!,
+      includeInSpendable:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}include_in_spendable'],
+          )!,
+      isArchived:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_archived'],
+          )!,
+      isSystem:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_system'],
+          )!,
+      sortOrder:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}sort_order'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -2326,33 +2390,35 @@ class AccountRecord extends DataClass implements Insertable<AccountRecord> {
     return AccountRecord(
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
-      accountType: data.accountType.present
-          ? data.accountType.value
-          : this.accountType,
-      accountClass: data.accountClass.present
-          ? data.accountClass.value
-          : this.accountClass,
+      accountType:
+          data.accountType.present ? data.accountType.value : this.accountType,
+      accountClass:
+          data.accountClass.present
+              ? data.accountClass.value
+              : this.accountClass,
       currency: data.currency.present ? data.currency.value : this.currency,
       icon: data.icon.present ? data.icon.value : this.icon,
-      colorValue: data.colorValue.present
-          ? data.colorValue.value
-          : this.colorValue,
-      openingBalance: data.openingBalance.present
-          ? data.openingBalance.value
-          : this.openingBalance,
-      cachedBalance: data.cachedBalance.present
-          ? data.cachedBalance.value
-          : this.cachedBalance,
+      colorValue:
+          data.colorValue.present ? data.colorValue.value : this.colorValue,
+      openingBalance:
+          data.openingBalance.present
+              ? data.openingBalance.value
+              : this.openingBalance,
+      cachedBalance:
+          data.cachedBalance.present
+              ? data.cachedBalance.value
+              : this.cachedBalance,
       isVisible: data.isVisible.present ? data.isVisible.value : this.isVisible,
-      includeInTotal: data.includeInTotal.present
-          ? data.includeInTotal.value
-          : this.includeInTotal,
-      includeInSpendable: data.includeInSpendable.present
-          ? data.includeInSpendable.value
-          : this.includeInSpendable,
-      isArchived: data.isArchived.present
-          ? data.isArchived.value
-          : this.isArchived,
+      includeInTotal:
+          data.includeInTotal.present
+              ? data.includeInTotal.value
+              : this.includeInTotal,
+      includeInSpendable:
+          data.includeInSpendable.present
+              ? data.includeInSpendable.value
+              : this.includeInSpendable,
+      isArchived:
+          data.isArchived.present ? data.isArchived.value : this.isArchived,
       isSystem: data.isSystem.present ? data.isSystem.value : this.isSystem,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
@@ -2929,18 +2995,21 @@ class $CategoriesTable extends Categories
   CategoryRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CategoryRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      kind: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}kind'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      kind:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}kind'],
+          )!,
       parentId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}parent_id'],
@@ -2949,34 +3018,41 @@ class $CategoriesTable extends Categories
         DriftSqlType.string,
         data['${effectivePrefix}ledger_account_id'],
       ),
-      icon: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}icon'],
-      )!,
-      colorValue: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}color_value'],
-      )!,
-      isFavorite: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_favorite'],
-      )!,
-      isArchived: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_archived'],
-      )!,
-      isSystem: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_system'],
-      )!,
-      sortOrder: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}sort_order'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      icon:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}icon'],
+          )!,
+      colorValue:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}color_value'],
+          )!,
+      isFavorite:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_favorite'],
+          )!,
+      isArchived:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_archived'],
+          )!,
+      isSystem:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_system'],
+          )!,
+      sortOrder:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}sort_order'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -3040,12 +3116,14 @@ class CategoryRecord extends DataClass implements Insertable<CategoryRecord> {
       id: Value(id),
       name: Value(name),
       kind: Value(kind),
-      parentId: parentId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(parentId),
-      ledgerAccountId: ledgerAccountId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(ledgerAccountId),
+      parentId:
+          parentId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(parentId),
+      ledgerAccountId:
+          ledgerAccountId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ledgerAccountId),
       icon: Value(icon),
       colorValue: Value(colorValue),
       isFavorite: Value(isFavorite),
@@ -3113,9 +3191,8 @@ class CategoryRecord extends DataClass implements Insertable<CategoryRecord> {
     name: name ?? this.name,
     kind: kind ?? this.kind,
     parentId: parentId.present ? parentId.value : this.parentId,
-    ledgerAccountId: ledgerAccountId.present
-        ? ledgerAccountId.value
-        : this.ledgerAccountId,
+    ledgerAccountId:
+        ledgerAccountId.present ? ledgerAccountId.value : this.ledgerAccountId,
     icon: icon ?? this.icon,
     colorValue: colorValue ?? this.colorValue,
     isFavorite: isFavorite ?? this.isFavorite,
@@ -3130,19 +3207,17 @@ class CategoryRecord extends DataClass implements Insertable<CategoryRecord> {
       name: data.name.present ? data.name.value : this.name,
       kind: data.kind.present ? data.kind.value : this.kind,
       parentId: data.parentId.present ? data.parentId.value : this.parentId,
-      ledgerAccountId: data.ledgerAccountId.present
-          ? data.ledgerAccountId.value
-          : this.ledgerAccountId,
+      ledgerAccountId:
+          data.ledgerAccountId.present
+              ? data.ledgerAccountId.value
+              : this.ledgerAccountId,
       icon: data.icon.present ? data.icon.value : this.icon,
-      colorValue: data.colorValue.present
-          ? data.colorValue.value
-          : this.colorValue,
-      isFavorite: data.isFavorite.present
-          ? data.isFavorite.value
-          : this.isFavorite,
-      isArchived: data.isArchived.present
-          ? data.isArchived.value
-          : this.isArchived,
+      colorValue:
+          data.colorValue.present ? data.colorValue.value : this.colorValue,
+      isFavorite:
+          data.isFavorite.present ? data.isFavorite.value : this.isFavorite,
+      isArchived:
+          data.isArchived.present ? data.isArchived.value : this.isArchived,
       isSystem: data.isSystem.present ? data.isSystem.value : this.isSystem,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
@@ -3766,42 +3841,50 @@ class $TransactionsTable extends Transactions
   TransactionRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TransactionRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      type: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}type'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      currency: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}currency'],
-      )!,
-      description: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}description'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      type:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}type'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      currency:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}currency'],
+          )!,
+      description:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}description'],
+          )!,
       merchant: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}merchant'],
       ),
-      occurredAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}occurred_at'],
-      )!,
-      source: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}source'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
+      occurredAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}occurred_at'],
+          )!,
+      source:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}source'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
       primaryWalletId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}primary_wallet_id'],
@@ -3830,14 +3913,16 @@ class $TransactionsTable extends Transactions
         DriftSqlType.string,
         data['${effectivePrefix}location'],
       ),
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -3934,33 +4019,41 @@ class TransactionRecord extends DataClass
       amount: Value(amount),
       currency: Value(currency),
       description: Value(description),
-      merchant: merchant == null && nullToAbsent
-          ? const Value.absent()
-          : Value(merchant),
+      merchant:
+          merchant == null && nullToAbsent
+              ? const Value.absent()
+              : Value(merchant),
       occurredAt: Value(occurredAt),
       source: Value(source),
       status: Value(status),
-      primaryWalletId: primaryWalletId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(primaryWalletId),
-      destinationWalletId: destinationWalletId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(destinationWalletId),
-      primaryCategoryId: primaryCategoryId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(primaryCategoryId),
-      relatedTransactionId: relatedTransactionId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(relatedTransactionId),
-      importBatchId: importBatchId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(importBatchId),
-      idempotencyKey: idempotencyKey == null && nullToAbsent
-          ? const Value.absent()
-          : Value(idempotencyKey),
-      location: location == null && nullToAbsent
-          ? const Value.absent()
-          : Value(location),
+      primaryWalletId:
+          primaryWalletId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(primaryWalletId),
+      destinationWalletId:
+          destinationWalletId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(destinationWalletId),
+      primaryCategoryId:
+          primaryCategoryId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(primaryCategoryId),
+      relatedTransactionId:
+          relatedTransactionId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(relatedTransactionId),
+      importBatchId:
+          importBatchId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(importBatchId),
+      idempotencyKey:
+          idempotencyKey == null && nullToAbsent
+              ? const Value.absent()
+              : Value(idempotencyKey),
+      location:
+          location == null && nullToAbsent
+              ? const Value.absent()
+              : Value(location),
       createdAt: Value(createdAt),
       updatedAt: Value(updatedAt),
     );
@@ -4052,24 +4145,24 @@ class TransactionRecord extends DataClass
     occurredAt: occurredAt ?? this.occurredAt,
     source: source ?? this.source,
     status: status ?? this.status,
-    primaryWalletId: primaryWalletId.present
-        ? primaryWalletId.value
-        : this.primaryWalletId,
-    destinationWalletId: destinationWalletId.present
-        ? destinationWalletId.value
-        : this.destinationWalletId,
-    primaryCategoryId: primaryCategoryId.present
-        ? primaryCategoryId.value
-        : this.primaryCategoryId,
-    relatedTransactionId: relatedTransactionId.present
-        ? relatedTransactionId.value
-        : this.relatedTransactionId,
-    importBatchId: importBatchId.present
-        ? importBatchId.value
-        : this.importBatchId,
-    idempotencyKey: idempotencyKey.present
-        ? idempotencyKey.value
-        : this.idempotencyKey,
+    primaryWalletId:
+        primaryWalletId.present ? primaryWalletId.value : this.primaryWalletId,
+    destinationWalletId:
+        destinationWalletId.present
+            ? destinationWalletId.value
+            : this.destinationWalletId,
+    primaryCategoryId:
+        primaryCategoryId.present
+            ? primaryCategoryId.value
+            : this.primaryCategoryId,
+    relatedTransactionId:
+        relatedTransactionId.present
+            ? relatedTransactionId.value
+            : this.relatedTransactionId,
+    importBatchId:
+        importBatchId.present ? importBatchId.value : this.importBatchId,
+    idempotencyKey:
+        idempotencyKey.present ? idempotencyKey.value : this.idempotencyKey,
     location: location.present ? location.value : this.location,
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
@@ -4080,33 +4173,37 @@ class TransactionRecord extends DataClass
       type: data.type.present ? data.type.value : this.type,
       amount: data.amount.present ? data.amount.value : this.amount,
       currency: data.currency.present ? data.currency.value : this.currency,
-      description: data.description.present
-          ? data.description.value
-          : this.description,
+      description:
+          data.description.present ? data.description.value : this.description,
       merchant: data.merchant.present ? data.merchant.value : this.merchant,
-      occurredAt: data.occurredAt.present
-          ? data.occurredAt.value
-          : this.occurredAt,
+      occurredAt:
+          data.occurredAt.present ? data.occurredAt.value : this.occurredAt,
       source: data.source.present ? data.source.value : this.source,
       status: data.status.present ? data.status.value : this.status,
-      primaryWalletId: data.primaryWalletId.present
-          ? data.primaryWalletId.value
-          : this.primaryWalletId,
-      destinationWalletId: data.destinationWalletId.present
-          ? data.destinationWalletId.value
-          : this.destinationWalletId,
-      primaryCategoryId: data.primaryCategoryId.present
-          ? data.primaryCategoryId.value
-          : this.primaryCategoryId,
-      relatedTransactionId: data.relatedTransactionId.present
-          ? data.relatedTransactionId.value
-          : this.relatedTransactionId,
-      importBatchId: data.importBatchId.present
-          ? data.importBatchId.value
-          : this.importBatchId,
-      idempotencyKey: data.idempotencyKey.present
-          ? data.idempotencyKey.value
-          : this.idempotencyKey,
+      primaryWalletId:
+          data.primaryWalletId.present
+              ? data.primaryWalletId.value
+              : this.primaryWalletId,
+      destinationWalletId:
+          data.destinationWalletId.present
+              ? data.destinationWalletId.value
+              : this.destinationWalletId,
+      primaryCategoryId:
+          data.primaryCategoryId.present
+              ? data.primaryCategoryId.value
+              : this.primaryCategoryId,
+      relatedTransactionId:
+          data.relatedTransactionId.present
+              ? data.relatedTransactionId.value
+              : this.relatedTransactionId,
+      importBatchId:
+          data.importBatchId.present
+              ? data.importBatchId.value
+              : this.importBatchId,
+      idempotencyKey:
+          data.idempotencyKey.present
+              ? data.idempotencyKey.value
+              : this.idempotencyKey,
       location: data.location.present ? data.location.value : this.location,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
@@ -4584,30 +4681,36 @@ class $LedgerEntriesTable extends LedgerEntries
   LedgerEntryRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return LedgerEntryRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      transactionId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}transaction_id'],
-      )!,
-      accountId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}account_id'],
-      )!,
-      side: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}side'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      transactionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}transaction_id'],
+          )!,
+      accountId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}account_id'],
+          )!,
+      side:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}side'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -4701,9 +4804,10 @@ class LedgerEntryRecord extends DataClass
   LedgerEntryRecord copyWithCompanion(LedgerEntriesCompanion data) {
     return LedgerEntryRecord(
       id: data.id.present ? data.id.value : this.id,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
       accountId: data.accountId.present ? data.accountId.value : this.accountId,
       side: data.side.present ? data.side.value : this.side,
       amount: data.amount.present ? data.amount.value : this.amount,
@@ -4986,26 +5090,31 @@ class $TransactionSplitsTable extends TransactionSplits
   TransactionSplitRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TransactionSplitRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      transactionId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}transaction_id'],
-      )!,
-      categoryId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}category_id'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      description: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}description'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      transactionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}transaction_id'],
+          )!,
+      categoryId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}category_id'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      description:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}description'],
+          )!,
     );
   }
 
@@ -5091,16 +5200,15 @@ class TransactionSplitRecord extends DataClass
   TransactionSplitRecord copyWithCompanion(TransactionSplitsCompanion data) {
     return TransactionSplitRecord(
       id: data.id.present ? data.id.value : this.id,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
       amount: data.amount.present ? data.amount.value : this.amount,
-      description: data.description.present
-          ? data.description.value
-          : this.description,
+      description:
+          data.description.present ? data.description.value : this.description,
     );
   }
 
@@ -5309,18 +5417,21 @@ class $TagsTable extends Tags with TableInfo<$TagsTable, TagRecord> {
   TagRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TagRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      colorValue: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}color_value'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      colorValue:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}color_value'],
+          )!,
     );
   }
 
@@ -5386,9 +5497,8 @@ class TagRecord extends DataClass implements Insertable<TagRecord> {
     return TagRecord(
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
-      colorValue: data.colorValue.present
-          ? data.colorValue.value
-          : this.colorValue,
+      colorValue:
+          data.colorValue.present ? data.colorValue.value : this.colorValue,
     );
   }
 
@@ -5563,14 +5673,16 @@ class $TransactionTagsTable extends TransactionTags
   TransactionTagRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TransactionTagRecord(
-      transactionId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}transaction_id'],
-      )!,
-      tagId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}tag_id'],
-      )!,
+      transactionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}transaction_id'],
+          )!,
+      tagId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}tag_id'],
+          )!,
     );
   }
 
@@ -5629,9 +5741,10 @@ class TransactionTagRecord extends DataClass
       );
   TransactionTagRecord copyWithCompanion(TransactionTagsCompanion data) {
     return TransactionTagRecord(
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
       tagId: data.tagId.present ? data.tagId.value : this.tagId,
     );
   }
@@ -5872,30 +5985,34 @@ class $AttachmentsTable extends Attachments
   AttachmentRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AttachmentRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
       transactionId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}transaction_id'],
       ),
-      relativePath: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}relative_path'],
-      )!,
-      mimeType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}mime_type'],
-      )!,
+      relativePath:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}relative_path'],
+          )!,
+      mimeType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}mime_type'],
+          )!,
       contentHash: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}content_hash'],
       ),
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -5940,14 +6057,16 @@ class AttachmentRecord extends DataClass
   AttachmentsCompanion toCompanion(bool nullToAbsent) {
     return AttachmentsCompanion(
       id: Value(id),
-      transactionId: transactionId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(transactionId),
+      transactionId:
+          transactionId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(transactionId),
       relativePath: Value(relativePath),
       mimeType: Value(mimeType),
-      contentHash: contentHash == null && nullToAbsent
-          ? const Value.absent()
-          : Value(contentHash),
+      contentHash:
+          contentHash == null && nullToAbsent
+              ? const Value.absent()
+              : Value(contentHash),
       createdAt: Value(createdAt),
     );
   }
@@ -5988,9 +6107,8 @@ class AttachmentRecord extends DataClass
     DateTime? createdAt,
   }) => AttachmentRecord(
     id: id ?? this.id,
-    transactionId: transactionId.present
-        ? transactionId.value
-        : this.transactionId,
+    transactionId:
+        transactionId.present ? transactionId.value : this.transactionId,
     relativePath: relativePath ?? this.relativePath,
     mimeType: mimeType ?? this.mimeType,
     contentHash: contentHash.present ? contentHash.value : this.contentHash,
@@ -5999,16 +6117,17 @@ class AttachmentRecord extends DataClass
   AttachmentRecord copyWithCompanion(AttachmentsCompanion data) {
     return AttachmentRecord(
       id: data.id.present ? data.id.value : this.id,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
-      relativePath: data.relativePath.present
-          ? data.relativePath.value
-          : this.relativePath,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
+      relativePath:
+          data.relativePath.present
+              ? data.relativePath.value
+              : this.relativePath,
       mimeType: data.mimeType.present ? data.mimeType.value : this.mimeType,
-      contentHash: data.contentHash.present
-          ? data.contentHash.value
-          : this.contentHash,
+      contentHash:
+          data.contentHash.present ? data.contentHash.value : this.contentHash,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -6406,50 +6525,60 @@ class $TransactionTemplatesTable extends TransactionTemplates
   }) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TransactionTemplateRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      type: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}type'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      walletId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}wallet_id'],
-      )!,
-      categoryId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}category_id'],
-      )!,
-      description: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}description'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      title:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}title'],
+          )!,
+      type:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}type'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      walletId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}wallet_id'],
+          )!,
+      categoryId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}category_id'],
+          )!,
+      description:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}description'],
+          )!,
       merchant: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}merchant'],
       ),
-      isPinned: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_pinned'],
-      )!,
-      useCount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}use_count'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      isPinned:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_pinned'],
+          )!,
+      useCount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}use_count'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -6513,9 +6642,10 @@ class TransactionTemplateRecord extends DataClass
       walletId: Value(walletId),
       categoryId: Value(categoryId),
       description: Value(description),
-      merchant: merchant == null && nullToAbsent
-          ? const Value.absent()
-          : Value(merchant),
+      merchant:
+          merchant == null && nullToAbsent
+              ? const Value.absent()
+              : Value(merchant),
       isPinned: Value(isPinned),
       useCount: Value(useCount),
       createdAt: Value(createdAt),
@@ -6593,12 +6723,10 @@ class TransactionTemplateRecord extends DataClass
       type: data.type.present ? data.type.value : this.type,
       amount: data.amount.present ? data.amount.value : this.amount,
       walletId: data.walletId.present ? data.walletId.value : this.walletId,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
-      description: data.description.present
-          ? data.description.value
-          : this.description,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
+      description:
+          data.description.present ? data.description.value : this.description,
       merchant: data.merchant.present ? data.merchant.value : this.merchant,
       isPinned: data.isPinned.present ? data.isPinned.value : this.isPinned,
       useCount: data.useCount.present ? data.useCount.value : this.useCount,
@@ -7131,58 +7259,70 @@ class $BudgetsTable extends Budgets
   BudgetRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return BudgetRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
       categoryId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}category_id'],
       ),
-      limitAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}limit_amount'],
-      )!,
-      periodType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}period_type'],
-      )!,
-      startDate: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}start_date'],
-      )!,
-      endDate: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}end_date'],
-      )!,
-      rolloverEnabled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}rollover_enabled'],
-      )!,
-      rolloverAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}rollover_amount'],
-      )!,
-      alert80Sent: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}alert80_sent'],
-      )!,
-      alert100Sent: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}alert100_sent'],
-      )!,
-      isActive: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_active'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      limitAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}limit_amount'],
+          )!,
+      periodType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}period_type'],
+          )!,
+      startDate:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}start_date'],
+          )!,
+      endDate:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}end_date'],
+          )!,
+      rolloverEnabled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}rollover_enabled'],
+          )!,
+      rolloverAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}rollover_amount'],
+          )!,
+      alert80Sent:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}alert80_sent'],
+          )!,
+      alert100Sent:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}alert100_sent'],
+          )!,
+      isActive:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_active'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -7246,9 +7386,10 @@ class BudgetRecord extends DataClass implements Insertable<BudgetRecord> {
     return BudgetsCompanion(
       id: Value(id),
       name: Value(name),
-      categoryId: categoryId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(categoryId),
+      categoryId:
+          categoryId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(categoryId),
       limitAmount: Value(limitAmount),
       periodType: Value(periodType),
       startDate: Value(startDate),
@@ -7336,29 +7477,28 @@ class BudgetRecord extends DataClass implements Insertable<BudgetRecord> {
     return BudgetRecord(
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
-      limitAmount: data.limitAmount.present
-          ? data.limitAmount.value
-          : this.limitAmount,
-      periodType: data.periodType.present
-          ? data.periodType.value
-          : this.periodType,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
+      limitAmount:
+          data.limitAmount.present ? data.limitAmount.value : this.limitAmount,
+      periodType:
+          data.periodType.present ? data.periodType.value : this.periodType,
       startDate: data.startDate.present ? data.startDate.value : this.startDate,
       endDate: data.endDate.present ? data.endDate.value : this.endDate,
-      rolloverEnabled: data.rolloverEnabled.present
-          ? data.rolloverEnabled.value
-          : this.rolloverEnabled,
-      rolloverAmount: data.rolloverAmount.present
-          ? data.rolloverAmount.value
-          : this.rolloverAmount,
-      alert80Sent: data.alert80Sent.present
-          ? data.alert80Sent.value
-          : this.alert80Sent,
-      alert100Sent: data.alert100Sent.present
-          ? data.alert100Sent.value
-          : this.alert100Sent,
+      rolloverEnabled:
+          data.rolloverEnabled.present
+              ? data.rolloverEnabled.value
+              : this.rolloverEnabled,
+      rolloverAmount:
+          data.rolloverAmount.present
+              ? data.rolloverAmount.value
+              : this.rolloverAmount,
+      alert80Sent:
+          data.alert80Sent.present ? data.alert80Sent.value : this.alert80Sent,
+      alert100Sent:
+          data.alert100Sent.present
+              ? data.alert100Sent.value
+              : this.alert100Sent,
       isActive: data.isActive.present ? data.isActive.value : this.isActive,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
@@ -7926,62 +8066,74 @@ class $BillsTable extends Bills with TableInfo<$BillsTable, BillRecord> {
   BillRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return BillRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      kind: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}kind'],
-      )!,
-      estimatedAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}estimated_amount'],
-      )!,
-      categoryId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}category_id'],
-      )!,
-      walletId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}wallet_id'],
-      )!,
-      frequency: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}frequency'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      kind:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}kind'],
+          )!,
+      estimatedAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}estimated_amount'],
+          )!,
+      categoryId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}category_id'],
+          )!,
+      walletId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}wallet_id'],
+          )!,
+      frequency:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}frequency'],
+          )!,
       dueDayOfMonth: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}due_day_of_month'],
       ),
-      startDate: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}start_date'],
-      )!,
+      startDate:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}start_date'],
+          )!,
       endDate: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}end_date'],
       ),
-      isSubscription: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_subscription'],
-      )!,
-      reminderOffsets: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}reminder_offsets'],
-      )!,
-      isActive: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_active'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      isSubscription:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_subscription'],
+          )!,
+      reminderOffsets:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}reminder_offsets'],
+          )!,
+      isActive:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_active'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -8055,13 +8207,15 @@ class BillRecord extends DataClass implements Insertable<BillRecord> {
       categoryId: Value(categoryId),
       walletId: Value(walletId),
       frequency: Value(frequency),
-      dueDayOfMonth: dueDayOfMonth == null && nullToAbsent
-          ? const Value.absent()
-          : Value(dueDayOfMonth),
+      dueDayOfMonth:
+          dueDayOfMonth == null && nullToAbsent
+              ? const Value.absent()
+              : Value(dueDayOfMonth),
       startDate: Value(startDate),
-      endDate: endDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(endDate),
+      endDate:
+          endDate == null && nullToAbsent
+              ? const Value.absent()
+              : Value(endDate),
       isSubscription: Value(isSubscription),
       reminderOffsets: Value(reminderOffsets),
       isActive: Value(isActive),
@@ -8135,9 +8289,8 @@ class BillRecord extends DataClass implements Insertable<BillRecord> {
     categoryId: categoryId ?? this.categoryId,
     walletId: walletId ?? this.walletId,
     frequency: frequency ?? this.frequency,
-    dueDayOfMonth: dueDayOfMonth.present
-        ? dueDayOfMonth.value
-        : this.dueDayOfMonth,
+    dueDayOfMonth:
+        dueDayOfMonth.present ? dueDayOfMonth.value : this.dueDayOfMonth,
     startDate: startDate ?? this.startDate,
     endDate: endDate.present ? endDate.value : this.endDate,
     isSubscription: isSubscription ?? this.isSubscription,
@@ -8150,25 +8303,28 @@ class BillRecord extends DataClass implements Insertable<BillRecord> {
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
       kind: data.kind.present ? data.kind.value : this.kind,
-      estimatedAmount: data.estimatedAmount.present
-          ? data.estimatedAmount.value
-          : this.estimatedAmount,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
+      estimatedAmount:
+          data.estimatedAmount.present
+              ? data.estimatedAmount.value
+              : this.estimatedAmount,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
       walletId: data.walletId.present ? data.walletId.value : this.walletId,
       frequency: data.frequency.present ? data.frequency.value : this.frequency,
-      dueDayOfMonth: data.dueDayOfMonth.present
-          ? data.dueDayOfMonth.value
-          : this.dueDayOfMonth,
+      dueDayOfMonth:
+          data.dueDayOfMonth.present
+              ? data.dueDayOfMonth.value
+              : this.dueDayOfMonth,
       startDate: data.startDate.present ? data.startDate.value : this.startDate,
       endDate: data.endDate.present ? data.endDate.value : this.endDate,
-      isSubscription: data.isSubscription.present
-          ? data.isSubscription.value
-          : this.isSubscription,
-      reminderOffsets: data.reminderOffsets.present
-          ? data.reminderOffsets.value
-          : this.reminderOffsets,
+      isSubscription:
+          data.isSubscription.present
+              ? data.isSubscription.value
+              : this.isSubscription,
+      reminderOffsets:
+          data.reminderOffsets.present
+              ? data.reminderOffsets.value
+              : this.reminderOffsets,
       isActive: data.isActive.present ? data.isActive.value : this.isActive,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
@@ -8600,34 +8756,41 @@ class $BillOccurrencesTable extends BillOccurrences
   BillOccurrenceRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return BillOccurrenceRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      billId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}bill_id'],
-      )!,
-      dueDate: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}due_date'],
-      )!,
-      expectedAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}expected_amount'],
-      )!,
-      paidAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}paid_amount'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      billId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}bill_id'],
+          )!,
+      dueDate:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}due_date'],
+          )!,
+      expectedAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}expected_amount'],
+          )!,
+      paidAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}paid_amount'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -8731,12 +8894,12 @@ class BillOccurrenceRecord extends DataClass
       id: data.id.present ? data.id.value : this.id,
       billId: data.billId.present ? data.billId.value : this.billId,
       dueDate: data.dueDate.present ? data.dueDate.value : this.dueDate,
-      expectedAmount: data.expectedAmount.present
-          ? data.expectedAmount.value
-          : this.expectedAmount,
-      paidAmount: data.paidAmount.present
-          ? data.paidAmount.value
-          : this.paidAmount,
+      expectedAmount:
+          data.expectedAmount.present
+              ? data.expectedAmount.value
+              : this.expectedAmount,
+      paidAmount:
+          data.paidAmount.present ? data.paidAmount.value : this.paidAmount,
       status: data.status.present ? data.status.value : this.status,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
@@ -9035,26 +9198,31 @@ class $BillPaymentsTable extends BillPayments
   BillPaymentRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return BillPaymentRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      occurrenceId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}occurrence_id'],
-      )!,
-      transactionId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}transaction_id'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      paidAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}paid_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      occurrenceId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}occurrence_id'],
+          )!,
+      transactionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}transaction_id'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      paidAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}paid_at'],
+          )!,
     );
   }
 
@@ -9140,12 +9308,14 @@ class BillPaymentRecord extends DataClass
   BillPaymentRecord copyWithCompanion(BillPaymentsCompanion data) {
     return BillPaymentRecord(
       id: data.id.present ? data.id.value : this.id,
-      occurrenceId: data.occurrenceId.present
-          ? data.occurrenceId.value
-          : this.occurrenceId,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
+      occurrenceId:
+          data.occurrenceId.present
+              ? data.occurrenceId.value
+              : this.occurrenceId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
       amount: data.amount.present ? data.amount.value : this.amount,
       paidAt: data.paidAt.present ? data.paidAt.value : this.paidAt,
     );
@@ -9500,22 +9670,26 @@ class $GoalsTable extends Goals with TableInfo<$GoalsTable, GoalRecord> {
   GoalRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return GoalRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      targetAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}target_amount'],
-      )!,
-      currentAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}current_amount'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      targetAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}target_amount'],
+          )!,
+      currentAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}current_amount'],
+          )!,
       targetDate: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}target_date'],
@@ -9524,22 +9698,26 @@ class $GoalsTable extends Goals with TableInfo<$GoalsTable, GoalRecord> {
         DriftSqlType.string,
         data['${effectivePrefix}source_wallet_id'],
       ),
-      icon: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}icon'],
-      )!,
-      priority: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}priority'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      icon:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}icon'],
+          )!,
+      priority:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}priority'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -9598,12 +9776,14 @@ class GoalRecord extends DataClass implements Insertable<GoalRecord> {
       name: Value(name),
       targetAmount: Value(targetAmount),
       currentAmount: Value(currentAmount),
-      targetDate: targetDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(targetDate),
-      sourceWalletId: sourceWalletId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(sourceWalletId),
+      targetDate:
+          targetDate == null && nullToAbsent
+              ? const Value.absent()
+              : Value(targetDate),
+      sourceWalletId:
+          sourceWalletId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(sourceWalletId),
       icon: Value(icon),
       priority: Value(priority),
       status: Value(status),
@@ -9663,9 +9843,8 @@ class GoalRecord extends DataClass implements Insertable<GoalRecord> {
     targetAmount: targetAmount ?? this.targetAmount,
     currentAmount: currentAmount ?? this.currentAmount,
     targetDate: targetDate.present ? targetDate.value : this.targetDate,
-    sourceWalletId: sourceWalletId.present
-        ? sourceWalletId.value
-        : this.sourceWalletId,
+    sourceWalletId:
+        sourceWalletId.present ? sourceWalletId.value : this.sourceWalletId,
     icon: icon ?? this.icon,
     priority: priority ?? this.priority,
     status: status ?? this.status,
@@ -9675,18 +9854,20 @@ class GoalRecord extends DataClass implements Insertable<GoalRecord> {
     return GoalRecord(
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
-      targetAmount: data.targetAmount.present
-          ? data.targetAmount.value
-          : this.targetAmount,
-      currentAmount: data.currentAmount.present
-          ? data.currentAmount.value
-          : this.currentAmount,
-      targetDate: data.targetDate.present
-          ? data.targetDate.value
-          : this.targetDate,
-      sourceWalletId: data.sourceWalletId.present
-          ? data.sourceWalletId.value
-          : this.sourceWalletId,
+      targetAmount:
+          data.targetAmount.present
+              ? data.targetAmount.value
+              : this.targetAmount,
+      currentAmount:
+          data.currentAmount.present
+              ? data.currentAmount.value
+              : this.currentAmount,
+      targetDate:
+          data.targetDate.present ? data.targetDate.value : this.targetDate,
+      sourceWalletId:
+          data.sourceWalletId.present
+              ? data.sourceWalletId.value
+              : this.sourceWalletId,
       icon: data.icon.present ? data.icon.value : this.icon,
       priority: data.priority.present ? data.priority.value : this.priority,
       status: data.status.present ? data.status.value : this.status,
@@ -10041,30 +10222,36 @@ class $FundAllocationsTable extends FundAllocations
   FundAllocationRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return FundAllocationRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      walletId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}wallet_id'],
-      )!,
-      targetType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}target_type'],
-      )!,
-      targetId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}target_id'],
-      )!,
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      walletId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}wallet_id'],
+          )!,
+      targetType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}target_type'],
+          )!,
+      targetId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}target_id'],
+          )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -10159,9 +10346,8 @@ class FundAllocationRecord extends DataClass
     return FundAllocationRecord(
       id: data.id.present ? data.id.value : this.id,
       walletId: data.walletId.present ? data.walletId.value : this.walletId,
-      targetType: data.targetType.present
-          ? data.targetType.value
-          : this.targetType,
+      targetType:
+          data.targetType.present ? data.targetType.value : this.targetType,
       targetId: data.targetId.present ? data.targetId.value : this.targetId,
       amount: data.amount.present ? data.amount.value : this.amount,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
@@ -10476,34 +10662,40 @@ class $GoalContributionsTable extends GoalContributions
   GoalContributionRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return GoalContributionRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      goalId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}goal_id'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      goalId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}goal_id'],
+          )!,
       transactionId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}transaction_id'],
       ),
-      amount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}amount'],
-      )!,
-      isVirtual: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_virtual'],
-      )!,
-      note: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}note'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      amount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}amount'],
+          )!,
+      isVirtual:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_virtual'],
+          )!,
+      note:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}note'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -10550,9 +10742,10 @@ class GoalContributionRecord extends DataClass
     return GoalContributionsCompanion(
       id: Value(id),
       goalId: Value(goalId),
-      transactionId: transactionId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(transactionId),
+      transactionId:
+          transactionId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(transactionId),
       amount: Value(amount),
       isVirtual: Value(isVirtual),
       note: Value(note),
@@ -10600,9 +10793,8 @@ class GoalContributionRecord extends DataClass
   }) => GoalContributionRecord(
     id: id ?? this.id,
     goalId: goalId ?? this.goalId,
-    transactionId: transactionId.present
-        ? transactionId.value
-        : this.transactionId,
+    transactionId:
+        transactionId.present ? transactionId.value : this.transactionId,
     amount: amount ?? this.amount,
     isVirtual: isVirtual ?? this.isVirtual,
     note: note ?? this.note,
@@ -10612,9 +10804,10 @@ class GoalContributionRecord extends DataClass
     return GoalContributionRecord(
       id: data.id.present ? data.id.value : this.id,
       goalId: data.goalId.present ? data.goalId.value : this.goalId,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
       amount: data.amount.present ? data.amount.value : this.amount,
       isVirtual: data.isVirtual.present ? data.isVirtual.value : this.isVirtual,
       note: data.note.present ? data.note.value : this.note,
@@ -11050,26 +11243,31 @@ class $DebtsTable extends Debts with TableInfo<$DebtsTable, DebtRecord> {
   DebtRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DebtRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      counterparty: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}counterparty'],
-      )!,
-      kind: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}kind'],
-      )!,
-      principalAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}principal_amount'],
-      )!,
-      remainingAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}remaining_amount'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      counterparty:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}counterparty'],
+          )!,
+      kind:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}kind'],
+          )!,
+      principalAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}principal_amount'],
+          )!,
+      remainingAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}remaining_amount'],
+          )!,
       walletId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}wallet_id'],
@@ -11078,26 +11276,30 @@ class $DebtsTable extends Debts with TableInfo<$DebtsTable, DebtRecord> {
         DriftSqlType.string,
         data['${effectivePrefix}disbursement_tx_id'],
       ),
-      occurredAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}occurred_at'],
-      )!,
+      occurredAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}occurred_at'],
+          )!,
       dueDate: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}due_date'],
       ),
-      note: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}note'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      note:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}note'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -11165,16 +11367,19 @@ class DebtRecord extends DataClass implements Insertable<DebtRecord> {
       kind: Value(kind),
       principalAmount: Value(principalAmount),
       remainingAmount: Value(remainingAmount),
-      walletId: walletId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(walletId),
-      disbursementTxId: disbursementTxId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(disbursementTxId),
+      walletId:
+          walletId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(walletId),
+      disbursementTxId:
+          disbursementTxId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(disbursementTxId),
       occurredAt: Value(occurredAt),
-      dueDate: dueDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(dueDate),
+      dueDate:
+          dueDate == null && nullToAbsent
+              ? const Value.absent()
+              : Value(dueDate),
       note: Value(note),
       status: Value(status),
       createdAt: Value(createdAt),
@@ -11240,9 +11445,10 @@ class DebtRecord extends DataClass implements Insertable<DebtRecord> {
     principalAmount: principalAmount ?? this.principalAmount,
     remainingAmount: remainingAmount ?? this.remainingAmount,
     walletId: walletId.present ? walletId.value : this.walletId,
-    disbursementTxId: disbursementTxId.present
-        ? disbursementTxId.value
-        : this.disbursementTxId,
+    disbursementTxId:
+        disbursementTxId.present
+            ? disbursementTxId.value
+            : this.disbursementTxId,
     occurredAt: occurredAt ?? this.occurredAt,
     dueDate: dueDate.present ? dueDate.value : this.dueDate,
     note: note ?? this.note,
@@ -11252,23 +11458,26 @@ class DebtRecord extends DataClass implements Insertable<DebtRecord> {
   DebtRecord copyWithCompanion(DebtsCompanion data) {
     return DebtRecord(
       id: data.id.present ? data.id.value : this.id,
-      counterparty: data.counterparty.present
-          ? data.counterparty.value
-          : this.counterparty,
+      counterparty:
+          data.counterparty.present
+              ? data.counterparty.value
+              : this.counterparty,
       kind: data.kind.present ? data.kind.value : this.kind,
-      principalAmount: data.principalAmount.present
-          ? data.principalAmount.value
-          : this.principalAmount,
-      remainingAmount: data.remainingAmount.present
-          ? data.remainingAmount.value
-          : this.remainingAmount,
+      principalAmount:
+          data.principalAmount.present
+              ? data.principalAmount.value
+              : this.principalAmount,
+      remainingAmount:
+          data.remainingAmount.present
+              ? data.remainingAmount.value
+              : this.remainingAmount,
       walletId: data.walletId.present ? data.walletId.value : this.walletId,
-      disbursementTxId: data.disbursementTxId.present
-          ? data.disbursementTxId.value
-          : this.disbursementTxId,
-      occurredAt: data.occurredAt.present
-          ? data.occurredAt.value
-          : this.occurredAt,
+      disbursementTxId:
+          data.disbursementTxId.present
+              ? data.disbursementTxId.value
+              : this.disbursementTxId,
+      occurredAt:
+          data.occurredAt.present ? data.occurredAt.value : this.occurredAt,
       dueDate: data.dueDate.present ? data.dueDate.value : this.dueDate,
       note: data.note.present ? data.note.value : this.note,
       status: data.status.present ? data.status.value : this.status,
@@ -11663,30 +11872,36 @@ class $DebtPaymentsTable extends DebtPayments
   DebtPaymentRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DebtPaymentRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      debtId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}debt_id'],
-      )!,
-      transactionId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}transaction_id'],
-      )!,
-      principalPaid: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}principal_paid'],
-      )!,
-      interestOrFeePaid: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}interest_or_fee_paid'],
-      )!,
-      paidAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}paid_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      debtId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}debt_id'],
+          )!,
+      transactionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}transaction_id'],
+          )!,
+      principalPaid:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}principal_paid'],
+          )!,
+      interestOrFeePaid:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}interest_or_fee_paid'],
+          )!,
+      paidAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}paid_at'],
+          )!,
     );
   }
 
@@ -11781,15 +11996,18 @@ class DebtPaymentRecord extends DataClass
     return DebtPaymentRecord(
       id: data.id.present ? data.id.value : this.id,
       debtId: data.debtId.present ? data.debtId.value : this.debtId,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
-      principalPaid: data.principalPaid.present
-          ? data.principalPaid.value
-          : this.principalPaid,
-      interestOrFeePaid: data.interestOrFeePaid.present
-          ? data.interestOrFeePaid.value
-          : this.interestOrFeePaid,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
+      principalPaid:
+          data.principalPaid.present
+              ? data.principalPaid.value
+              : this.principalPaid,
+      interestOrFeePaid:
+          data.interestOrFeePaid.present
+              ? data.interestOrFeePaid.value
+              : this.interestOrFeePaid,
       paidAt: data.paidAt.present ? data.paidAt.value : this.paidAt,
     );
   }
@@ -12216,54 +12434,65 @@ class $SplitBillsTable extends SplitBills
   SplitBillRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SplitBillRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      totalAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}total_amount'],
-      )!,
-      taxAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}tax_amount'],
-      )!,
-      serviceAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}service_amount'],
-      )!,
-      payerWalletId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}payer_wallet_id'],
-      )!,
-      categoryId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}category_id'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      title:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}title'],
+          )!,
+      totalAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}total_amount'],
+          )!,
+      taxAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}tax_amount'],
+          )!,
+      serviceAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}service_amount'],
+          )!,
+      payerWalletId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}payer_wallet_id'],
+          )!,
+      categoryId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}category_id'],
+          )!,
       transactionId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}transaction_id'],
       ),
-      splitMode: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}split_mode'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
-      occurredAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}occurred_at'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      splitMode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}split_mode'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      occurredAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}occurred_at'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -12329,9 +12558,10 @@ class SplitBillRecord extends DataClass implements Insertable<SplitBillRecord> {
       serviceAmount: Value(serviceAmount),
       payerWalletId: Value(payerWalletId),
       categoryId: Value(categoryId),
-      transactionId: transactionId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(transactionId),
+      transactionId:
+          transactionId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(transactionId),
       splitMode: Value(splitMode),
       status: Value(status),
       occurredAt: Value(occurredAt),
@@ -12399,9 +12629,8 @@ class SplitBillRecord extends DataClass implements Insertable<SplitBillRecord> {
     serviceAmount: serviceAmount ?? this.serviceAmount,
     payerWalletId: payerWalletId ?? this.payerWalletId,
     categoryId: categoryId ?? this.categoryId,
-    transactionId: transactionId.present
-        ? transactionId.value
-        : this.transactionId,
+    transactionId:
+        transactionId.present ? transactionId.value : this.transactionId,
     splitMode: splitMode ?? this.splitMode,
     status: status ?? this.status,
     occurredAt: occurredAt ?? this.occurredAt,
@@ -12411,27 +12640,27 @@ class SplitBillRecord extends DataClass implements Insertable<SplitBillRecord> {
     return SplitBillRecord(
       id: data.id.present ? data.id.value : this.id,
       title: data.title.present ? data.title.value : this.title,
-      totalAmount: data.totalAmount.present
-          ? data.totalAmount.value
-          : this.totalAmount,
+      totalAmount:
+          data.totalAmount.present ? data.totalAmount.value : this.totalAmount,
       taxAmount: data.taxAmount.present ? data.taxAmount.value : this.taxAmount,
-      serviceAmount: data.serviceAmount.present
-          ? data.serviceAmount.value
-          : this.serviceAmount,
-      payerWalletId: data.payerWalletId.present
-          ? data.payerWalletId.value
-          : this.payerWalletId,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
-      transactionId: data.transactionId.present
-          ? data.transactionId.value
-          : this.transactionId,
+      serviceAmount:
+          data.serviceAmount.present
+              ? data.serviceAmount.value
+              : this.serviceAmount,
+      payerWalletId:
+          data.payerWalletId.present
+              ? data.payerWalletId.value
+              : this.payerWalletId,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
+      transactionId:
+          data.transactionId.present
+              ? data.transactionId.value
+              : this.transactionId,
       splitMode: data.splitMode.present ? data.splitMode.value : this.splitMode,
       status: data.status.present ? data.status.value : this.status,
-      occurredAt: data.occurredAt.present
-          ? data.occurredAt.value
-          : this.occurredAt,
+      occurredAt:
+          data.occurredAt.present ? data.occurredAt.value : this.occurredAt,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -12860,38 +13089,45 @@ class $SplitBillMembersTable extends SplitBillMembers
   SplitBillMemberRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SplitBillMemberRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      splitBillId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}split_bill_id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      isSelf: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_self'],
-      )!,
-      shareAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}share_amount'],
-      )!,
-      paidAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}paid_amount'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      splitBillId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}split_bill_id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      isSelf:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_self'],
+          )!,
+      shareAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}share_amount'],
+          )!,
+      paidAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}paid_amount'],
+          )!,
       debtId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}debt_id'],
       ),
-      isSettled: attachedDatabase.typeMapping.read(
-        DriftSqlType.bool,
-        data['${effectivePrefix}is_settled'],
-      )!,
+      isSettled:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}is_settled'],
+          )!,
     );
   }
 
@@ -12945,9 +13181,8 @@ class SplitBillMemberRecord extends DataClass
       isSelf: Value(isSelf),
       shareAmount: Value(shareAmount),
       paidAmount: Value(paidAmount),
-      debtId: debtId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(debtId),
+      debtId:
+          debtId == null && nullToAbsent ? const Value.absent() : Value(debtId),
       isSettled: Value(isSettled),
     );
   }
@@ -13005,17 +13240,14 @@ class SplitBillMemberRecord extends DataClass
   SplitBillMemberRecord copyWithCompanion(SplitBillMembersCompanion data) {
     return SplitBillMemberRecord(
       id: data.id.present ? data.id.value : this.id,
-      splitBillId: data.splitBillId.present
-          ? data.splitBillId.value
-          : this.splitBillId,
+      splitBillId:
+          data.splitBillId.present ? data.splitBillId.value : this.splitBillId,
       name: data.name.present ? data.name.value : this.name,
       isSelf: data.isSelf.present ? data.isSelf.value : this.isSelf,
-      shareAmount: data.shareAmount.present
-          ? data.shareAmount.value
-          : this.shareAmount,
-      paidAmount: data.paidAmount.present
-          ? data.paidAmount.value
-          : this.paidAmount,
+      shareAmount:
+          data.shareAmount.present ? data.shareAmount.value : this.shareAmount,
+      paidAmount:
+          data.paidAmount.present ? data.paidAmount.value : this.paidAmount,
       debtId: data.debtId.present ? data.debtId.value : this.debtId,
       isSettled: data.isSettled.present ? data.isSettled.value : this.isSettled,
     );
@@ -13474,22 +13706,26 @@ class $WishlistsTable extends Wishlists
   WishlistRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return WishlistRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      name: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}name'],
-      )!,
-      price: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}price'],
-      )!,
-      priority: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}priority'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
+      price:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}price'],
+          )!,
+      priority:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}priority'],
+          )!,
       categoryId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}category_id'],
@@ -13498,10 +13734,11 @@ class $WishlistsTable extends Wishlists
         DriftSqlType.dateTime,
         data['${effectivePrefix}target_date'],
       ),
-      coolingOffDays: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}cooling_off_days'],
-      )!,
+      coolingOffDays:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}cooling_off_days'],
+          )!,
       coolingOffUntil: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}cooling_off_until'],
@@ -13514,18 +13751,20 @@ class $WishlistsTable extends Wishlists
         DriftSqlType.string,
         data['${effectivePrefix}photo_path'],
       ),
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
       purchasedTxId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}purchased_tx_id'],
       ),
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -13601,26 +13840,32 @@ class WishlistRecord extends DataClass implements Insertable<WishlistRecord> {
       name: Value(name),
       price: Value(price),
       priority: Value(priority),
-      categoryId: categoryId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(categoryId),
-      targetDate: targetDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(targetDate),
+      categoryId:
+          categoryId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(categoryId),
+      targetDate:
+          targetDate == null && nullToAbsent
+              ? const Value.absent()
+              : Value(targetDate),
       coolingOffDays: Value(coolingOffDays),
-      coolingOffUntil: coolingOffUntil == null && nullToAbsent
-          ? const Value.absent()
-          : Value(coolingOffUntil),
-      productUrl: productUrl == null && nullToAbsent
-          ? const Value.absent()
-          : Value(productUrl),
-      photoPath: photoPath == null && nullToAbsent
-          ? const Value.absent()
-          : Value(photoPath),
+      coolingOffUntil:
+          coolingOffUntil == null && nullToAbsent
+              ? const Value.absent()
+              : Value(coolingOffUntil),
+      productUrl:
+          productUrl == null && nullToAbsent
+              ? const Value.absent()
+              : Value(productUrl),
+      photoPath:
+          photoPath == null && nullToAbsent
+              ? const Value.absent()
+              : Value(photoPath),
       status: Value(status),
-      purchasedTxId: purchasedTxId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(purchasedTxId),
+      purchasedTxId:
+          purchasedTxId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(purchasedTxId),
       createdAt: Value(createdAt),
     );
   }
@@ -13688,15 +13933,13 @@ class WishlistRecord extends DataClass implements Insertable<WishlistRecord> {
     categoryId: categoryId.present ? categoryId.value : this.categoryId,
     targetDate: targetDate.present ? targetDate.value : this.targetDate,
     coolingOffDays: coolingOffDays ?? this.coolingOffDays,
-    coolingOffUntil: coolingOffUntil.present
-        ? coolingOffUntil.value
-        : this.coolingOffUntil,
+    coolingOffUntil:
+        coolingOffUntil.present ? coolingOffUntil.value : this.coolingOffUntil,
     productUrl: productUrl.present ? productUrl.value : this.productUrl,
     photoPath: photoPath.present ? photoPath.value : this.photoPath,
     status: status ?? this.status,
-    purchasedTxId: purchasedTxId.present
-        ? purchasedTxId.value
-        : this.purchasedTxId,
+    purchasedTxId:
+        purchasedTxId.present ? purchasedTxId.value : this.purchasedTxId,
     createdAt: createdAt ?? this.createdAt,
   );
   WishlistRecord copyWithCompanion(WishlistsCompanion data) {
@@ -13705,26 +13948,26 @@ class WishlistRecord extends DataClass implements Insertable<WishlistRecord> {
       name: data.name.present ? data.name.value : this.name,
       price: data.price.present ? data.price.value : this.price,
       priority: data.priority.present ? data.priority.value : this.priority,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
-      targetDate: data.targetDate.present
-          ? data.targetDate.value
-          : this.targetDate,
-      coolingOffDays: data.coolingOffDays.present
-          ? data.coolingOffDays.value
-          : this.coolingOffDays,
-      coolingOffUntil: data.coolingOffUntil.present
-          ? data.coolingOffUntil.value
-          : this.coolingOffUntil,
-      productUrl: data.productUrl.present
-          ? data.productUrl.value
-          : this.productUrl,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
+      targetDate:
+          data.targetDate.present ? data.targetDate.value : this.targetDate,
+      coolingOffDays:
+          data.coolingOffDays.present
+              ? data.coolingOffDays.value
+              : this.coolingOffDays,
+      coolingOffUntil:
+          data.coolingOffUntil.present
+              ? data.coolingOffUntil.value
+              : this.coolingOffUntil,
+      productUrl:
+          data.productUrl.present ? data.productUrl.value : this.productUrl,
       photoPath: data.photoPath.present ? data.photoPath.value : this.photoPath,
       status: data.status.present ? data.status.value : this.status,
-      purchasedTxId: data.purchasedTxId.present
-          ? data.purchasedTxId.value
-          : this.purchasedTxId,
+      purchasedTxId:
+          data.purchasedTxId.present
+              ? data.purchasedTxId.value
+              : this.purchasedTxId,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -14124,30 +14367,35 @@ class $SalaryPlansTable extends SalaryPlans
   SalaryPlanRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalaryPlanRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      totalIncome: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}total_income'],
-      )!,
-      templateType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}template_type'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      title:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}title'],
+          )!,
+      totalIncome:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}total_income'],
+          )!,
+      templateType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}template_type'],
+          )!,
       sourceTransactionId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}source_transaction_id'],
       ),
-      appliedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}applied_at'],
-      )!,
+      appliedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}applied_at'],
+          )!,
     );
   }
 
@@ -14193,9 +14441,10 @@ class SalaryPlanRecord extends DataClass
       title: Value(title),
       totalIncome: Value(totalIncome),
       templateType: Value(templateType),
-      sourceTransactionId: sourceTransactionId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(sourceTransactionId),
+      sourceTransactionId:
+          sourceTransactionId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(sourceTransactionId),
       appliedAt: Value(appliedAt),
     );
   }
@@ -14241,24 +14490,26 @@ class SalaryPlanRecord extends DataClass
     title: title ?? this.title,
     totalIncome: totalIncome ?? this.totalIncome,
     templateType: templateType ?? this.templateType,
-    sourceTransactionId: sourceTransactionId.present
-        ? sourceTransactionId.value
-        : this.sourceTransactionId,
+    sourceTransactionId:
+        sourceTransactionId.present
+            ? sourceTransactionId.value
+            : this.sourceTransactionId,
     appliedAt: appliedAt ?? this.appliedAt,
   );
   SalaryPlanRecord copyWithCompanion(SalaryPlansCompanion data) {
     return SalaryPlanRecord(
       id: data.id.present ? data.id.value : this.id,
       title: data.title.present ? data.title.value : this.title,
-      totalIncome: data.totalIncome.present
-          ? data.totalIncome.value
-          : this.totalIncome,
-      templateType: data.templateType.present
-          ? data.templateType.value
-          : this.templateType,
-      sourceTransactionId: data.sourceTransactionId.present
-          ? data.sourceTransactionId.value
-          : this.sourceTransactionId,
+      totalIncome:
+          data.totalIncome.present ? data.totalIncome.value : this.totalIncome,
+      templateType:
+          data.templateType.present
+              ? data.templateType.value
+              : this.templateType,
+      sourceTransactionId:
+          data.sourceTransactionId.present
+              ? data.sourceTransactionId.value
+              : this.sourceTransactionId,
       appliedAt: data.appliedAt.present ? data.appliedAt.value : this.appliedAt,
     );
   }
@@ -14582,18 +14833,21 @@ class $SalaryPlanItemsTable extends SalaryPlanItems
   SalaryPlanItemRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalaryPlanItemRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      salaryPlanId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}salary_plan_id'],
-      )!,
-      label: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}label'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      salaryPlanId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}salary_plan_id'],
+          )!,
+      label:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}label'],
+          )!,
       categoryId: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}category_id'],
@@ -14602,14 +14856,16 @@ class $SalaryPlanItemsTable extends SalaryPlanItems
         DriftSqlType.string,
         data['${effectivePrefix}goal_id'],
       ),
-      percentage: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}percentage'],
-      )!,
-      allocatedAmount: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}allocated_amount'],
-      )!,
+      percentage:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}percentage'],
+          )!,
+      allocatedAmount:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}allocated_amount'],
+          )!,
     );
   }
 
@@ -14659,12 +14915,12 @@ class SalaryPlanItemRecord extends DataClass
       id: Value(id),
       salaryPlanId: Value(salaryPlanId),
       label: Value(label),
-      categoryId: categoryId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(categoryId),
-      goalId: goalId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(goalId),
+      categoryId:
+          categoryId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(categoryId),
+      goalId:
+          goalId == null && nullToAbsent ? const Value.absent() : Value(goalId),
       percentage: Value(percentage),
       allocatedAmount: Value(allocatedAmount),
     );
@@ -14719,20 +14975,20 @@ class SalaryPlanItemRecord extends DataClass
   SalaryPlanItemRecord copyWithCompanion(SalaryPlanItemsCompanion data) {
     return SalaryPlanItemRecord(
       id: data.id.present ? data.id.value : this.id,
-      salaryPlanId: data.salaryPlanId.present
-          ? data.salaryPlanId.value
-          : this.salaryPlanId,
+      salaryPlanId:
+          data.salaryPlanId.present
+              ? data.salaryPlanId.value
+              : this.salaryPlanId,
       label: data.label.present ? data.label.value : this.label,
-      categoryId: data.categoryId.present
-          ? data.categoryId.value
-          : this.categoryId,
+      categoryId:
+          data.categoryId.present ? data.categoryId.value : this.categoryId,
       goalId: data.goalId.present ? data.goalId.value : this.goalId,
-      percentage: data.percentage.present
-          ? data.percentage.value
-          : this.percentage,
-      allocatedAmount: data.allocatedAmount.present
-          ? data.allocatedAmount.value
-          : this.allocatedAmount,
+      percentage:
+          data.percentage.present ? data.percentage.value : this.percentage,
+      allocatedAmount:
+          data.allocatedAmount.present
+              ? data.allocatedAmount.value
+              : this.allocatedAmount,
     );
   }
 
@@ -15093,26 +15349,31 @@ class $NotificationsTable extends Notifications
   NotificationRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return NotificationRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      platformId: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}platform_id'],
-      )!,
-      kind: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}kind'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      body: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}body'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      platformId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}platform_id'],
+          )!,
+      kind:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}kind'],
+          )!,
+      title:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}title'],
+          )!,
+      body:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}body'],
+          )!,
       deepLink: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}deep_link'],
@@ -15121,14 +15382,16 @@ class $NotificationsTable extends Notifications
         DriftSqlType.string,
         data['${effectivePrefix}reference_id'],
       ),
-      scheduledAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}scheduled_at'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
+      scheduledAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}scheduled_at'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
     );
   }
 
@@ -15186,12 +15449,14 @@ class NotificationRecord extends DataClass
       kind: Value(kind),
       title: Value(title),
       body: Value(body),
-      deepLink: deepLink == null && nullToAbsent
-          ? const Value.absent()
-          : Value(deepLink),
-      referenceId: referenceId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(referenceId),
+      deepLink:
+          deepLink == null && nullToAbsent
+              ? const Value.absent()
+              : Value(deepLink),
+      referenceId:
+          referenceId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(referenceId),
       scheduledAt: Value(scheduledAt),
       status: Value(status),
     );
@@ -15254,19 +15519,16 @@ class NotificationRecord extends DataClass
   NotificationRecord copyWithCompanion(NotificationsCompanion data) {
     return NotificationRecord(
       id: data.id.present ? data.id.value : this.id,
-      platformId: data.platformId.present
-          ? data.platformId.value
-          : this.platformId,
+      platformId:
+          data.platformId.present ? data.platformId.value : this.platformId,
       kind: data.kind.present ? data.kind.value : this.kind,
       title: data.title.present ? data.title.value : this.title,
       body: data.body.present ? data.body.value : this.body,
       deepLink: data.deepLink.present ? data.deepLink.value : this.deepLink,
-      referenceId: data.referenceId.present
-          ? data.referenceId.value
-          : this.referenceId,
-      scheduledAt: data.scheduledAt.present
-          ? data.scheduledAt.value
-          : this.scheduledAt,
+      referenceId:
+          data.referenceId.present ? data.referenceId.value : this.referenceId,
+      scheduledAt:
+          data.scheduledAt.present ? data.scheduledAt.value : this.scheduledAt,
       status: data.status.present ? data.status.value : this.status,
     );
   }
@@ -15558,22 +15820,26 @@ class $AiConversationsTable extends AiConversations
   AiConversationRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AiConversationRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      title: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}title'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
-      updatedAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}updated_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      title:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}title'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
     );
   }
 
@@ -15919,30 +16185,35 @@ class $AiMessagesTable extends AiMessages
   AiMessageRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AiMessageRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      conversationId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}conversation_id'],
-      )!,
-      role: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}role'],
-      )!,
-      content: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}content'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      conversationId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}conversation_id'],
+          )!,
+      role:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}role'],
+          )!,
+      content:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}content'],
+          )!,
       metadataJson: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}metadata_json'],
       ),
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -15987,9 +16258,10 @@ class AiMessageRecord extends DataClass implements Insertable<AiMessageRecord> {
       conversationId: Value(conversationId),
       role: Value(role),
       content: Value(content),
-      metadataJson: metadataJson == null && nullToAbsent
-          ? const Value.absent()
-          : Value(metadataJson),
+      metadataJson:
+          metadataJson == null && nullToAbsent
+              ? const Value.absent()
+              : Value(metadataJson),
       createdAt: Value(createdAt),
     );
   }
@@ -16039,14 +16311,16 @@ class AiMessageRecord extends DataClass implements Insertable<AiMessageRecord> {
   AiMessageRecord copyWithCompanion(AiMessagesCompanion data) {
     return AiMessageRecord(
       id: data.id.present ? data.id.value : this.id,
-      conversationId: data.conversationId.present
-          ? data.conversationId.value
-          : this.conversationId,
+      conversationId:
+          data.conversationId.present
+              ? data.conversationId.value
+              : this.conversationId,
       role: data.role.present ? data.role.value : this.role,
       content: data.content.present ? data.content.value : this.content,
-      metadataJson: data.metadataJson.present
-          ? data.metadataJson.value
-          : this.metadataJson,
+      metadataJson:
+          data.metadataJson.present
+              ? data.metadataJson.value
+              : this.metadataJson,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -16381,38 +16655,46 @@ class $ImportBatchesTable extends ImportBatches
   ImportBatchRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ImportBatchRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      fileName: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}file_name'],
-      )!,
-      walletId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}wallet_id'],
-      )!,
-      totalRows: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}total_rows'],
-      )!,
-      importedRows: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}imported_rows'],
-      )!,
-      skippedDuplicates: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}skipped_duplicates'],
-      )!,
-      status: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}status'],
-      )!,
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      fileName:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}file_name'],
+          )!,
+      walletId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}wallet_id'],
+          )!,
+      totalRows:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}total_rows'],
+          )!,
+      importedRows:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}imported_rows'],
+          )!,
+      skippedDuplicates:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}skipped_duplicates'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -16525,12 +16807,14 @@ class ImportBatchRecord extends DataClass
       fileName: data.fileName.present ? data.fileName.value : this.fileName,
       walletId: data.walletId.present ? data.walletId.value : this.walletId,
       totalRows: data.totalRows.present ? data.totalRows.value : this.totalRows,
-      importedRows: data.importedRows.present
-          ? data.importedRows.value
-          : this.importedRows,
-      skippedDuplicates: data.skippedDuplicates.present
-          ? data.skippedDuplicates.value
-          : this.skippedDuplicates,
+      importedRows:
+          data.importedRows.present
+              ? data.importedRows.value
+              : this.importedRows,
+      skippedDuplicates:
+          data.skippedDuplicates.present
+              ? data.skippedDuplicates.value
+              : this.skippedDuplicates,
       status: data.status.present ? data.status.value : this.status,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
@@ -16875,34 +17159,40 @@ class $AuditLogsTable extends AuditLogs
   AuditLogRecord map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AuditLogRecord(
-      id: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}id'],
-      )!,
-      entityType: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}entity_type'],
-      )!,
-      entityId: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}entity_id'],
-      )!,
-      action: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}action'],
-      )!,
-      summary: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}summary'],
-      )!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      entityType:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}entity_type'],
+          )!,
+      entityId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}entity_id'],
+          )!,
+      action:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}action'],
+          )!,
+      summary:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}summary'],
+          )!,
       payloadJson: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}payload_json'],
       ),
-      createdAt: attachedDatabase.typeMapping.read(
-        DriftSqlType.dateTime,
-        data['${effectivePrefix}created_at'],
-      )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
     );
   }
 
@@ -16951,9 +17241,10 @@ class AuditLogRecord extends DataClass implements Insertable<AuditLogRecord> {
       entityId: Value(entityId),
       action: Value(action),
       summary: Value(summary),
-      payloadJson: payloadJson == null && nullToAbsent
-          ? const Value.absent()
-          : Value(payloadJson),
+      payloadJson:
+          payloadJson == null && nullToAbsent
+              ? const Value.absent()
+              : Value(payloadJson),
       createdAt: Value(createdAt),
     );
   }
@@ -17007,15 +17298,13 @@ class AuditLogRecord extends DataClass implements Insertable<AuditLogRecord> {
   AuditLogRecord copyWithCompanion(AuditLogsCompanion data) {
     return AuditLogRecord(
       id: data.id.present ? data.id.value : this.id,
-      entityType: data.entityType.present
-          ? data.entityType.value
-          : this.entityType,
+      entityType:
+          data.entityType.present ? data.entityType.value : this.entityType,
       entityId: data.entityId.present ? data.entityId.value : this.entityId,
       action: data.action.present ? data.action.value : this.action,
       summary: data.summary.present ? data.summary.value : this.summary,
-      payloadJson: data.payloadJson.present
-          ? data.payloadJson.value
-          : this.payloadJson,
+      payloadJson:
+          data.payloadJson.present ? data.payloadJson.value : this.payloadJson,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -18119,12 +18408,13 @@ class $$AppSettingsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AppSettingsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AppSettingsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AppSettingsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$AppSettingsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AppSettingsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$AppSettingsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -18253,18 +18543,16 @@ class $$AppSettingsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AppSettingsTable, AppSettingRecord>(table),
-                  BaseReferences<
-                    _$AppDatabase,
-                    $AppSettingsTable,
-                    AppSettingRecord
-                  >(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -18287,46 +18575,48 @@ typedef $$AppSettingsTableProcessedTableManager =
       AppSettingRecord,
       PrefetchHooks Function()
     >;
-typedef $$AccountsTableCreateCompanionBuilder = AccountsCompanion Function({
-  required String id,
-  required String name,
-  required String accountType,
-  required String accountClass,
-  Value<String> currency,
-  Value<String> icon,
-  Value<int> colorValue,
-  Value<int> openingBalance,
-  Value<int> cachedBalance,
-  Value<bool> isVisible,
-  Value<bool> includeInTotal,
-  Value<bool> includeInSpendable,
-  Value<bool> isArchived,
-  Value<bool> isSystem,
-  Value<int> sortOrder,
-  required DateTime createdAt,
-  required DateTime updatedAt,
-  Value<int> rowid,
-});
-typedef $$AccountsTableUpdateCompanionBuilder = AccountsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<String> accountType,
-  Value<String> accountClass,
-  Value<String> currency,
-  Value<String> icon,
-  Value<int> colorValue,
-  Value<int> openingBalance,
-  Value<int> cachedBalance,
-  Value<bool> isVisible,
-  Value<bool> includeInTotal,
-  Value<bool> includeInSpendable,
-  Value<bool> isArchived,
-  Value<bool> isSystem,
-  Value<int> sortOrder,
-  Value<DateTime> createdAt,
-  Value<DateTime> updatedAt,
-  Value<int> rowid,
-});
+typedef $$AccountsTableCreateCompanionBuilder =
+    AccountsCompanion Function({
+      required String id,
+      required String name,
+      required String accountType,
+      required String accountClass,
+      Value<String> currency,
+      Value<String> icon,
+      Value<int> colorValue,
+      Value<int> openingBalance,
+      Value<int> cachedBalance,
+      Value<bool> isVisible,
+      Value<bool> includeInTotal,
+      Value<bool> includeInSpendable,
+      Value<bool> isArchived,
+      Value<bool> isSystem,
+      Value<int> sortOrder,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$AccountsTableUpdateCompanionBuilder =
+    AccountsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String> accountType,
+      Value<String> accountClass,
+      Value<String> currency,
+      Value<String> icon,
+      Value<int> colorValue,
+      Value<int> openingBalance,
+      Value<int> cachedBalance,
+      Value<bool> isVisible,
+      Value<bool> includeInTotal,
+      Value<bool> includeInSpendable,
+      Value<bool> isArchived,
+      Value<bool> isSystem,
+      Value<int> sortOrder,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
 
 final class $$AccountsTableReferences
     extends BaseReferences<_$AppDatabase, $AccountsTable, AccountRecord> {
@@ -18335,7 +18625,10 @@ final class $$AccountsTableReferences
   static MultiTypedResultKey<$CategoriesTable, List<CategoryRecord>>
   _categoriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.categories,
-    aliasName: 'accounts__id__categories__ledger_account_id',
+    aliasName: $_aliasNameGenerator(
+      db.accounts.id,
+      db.categories.ledgerAccountId,
+    ),
   );
 
   $$CategoriesTableProcessedTableManager get categoriesRefs {
@@ -18352,7 +18645,7 @@ final class $$AccountsTableReferences
   static MultiTypedResultKey<$LedgerEntriesTable, List<LedgerEntryRecord>>
   _ledgerEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.ledgerEntries,
-    aliasName: 'accounts__id__ledger_entries__account_id',
+    aliasName: $_aliasNameGenerator(db.accounts.id, db.ledgerEntries.accountId),
   );
 
   $$LedgerEntriesTableProcessedTableManager get ledgerEntriesRefs {
@@ -18374,7 +18667,10 @@ final class $$AccountsTableReferences
   _transactionTemplatesRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.transactionTemplates,
-        aliasName: 'accounts__id__transaction_templates__wallet_id',
+        aliasName: $_aliasNameGenerator(
+          db.accounts.id,
+          db.transactionTemplates.walletId,
+        ),
       );
 
   $$TransactionTemplatesTableProcessedTableManager
@@ -18396,7 +18692,7 @@ final class $$AccountsTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.bills,
-    aliasName: 'accounts__id__bills__wallet_id',
+    aliasName: $_aliasNameGenerator(db.accounts.id, db.bills.walletId),
   );
 
   $$BillsTableProcessedTableManager get billsRefs {
@@ -18415,7 +18711,7 @@ final class $$AccountsTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.goals,
-    aliasName: 'accounts__id__goals__source_wallet_id',
+    aliasName: $_aliasNameGenerator(db.accounts.id, db.goals.sourceWalletId),
   );
 
   $$GoalsTableProcessedTableManager get goalsRefs {
@@ -18433,7 +18729,10 @@ final class $$AccountsTableReferences
   static MultiTypedResultKey<$FundAllocationsTable, List<FundAllocationRecord>>
   _fundAllocationsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.fundAllocations,
-    aliasName: 'accounts__id__fund_allocations__wallet_id',
+    aliasName: $_aliasNameGenerator(
+      db.accounts.id,
+      db.fundAllocations.walletId,
+    ),
   );
 
   $$FundAllocationsTableProcessedTableManager get fundAllocationsRefs {
@@ -18454,7 +18753,7 @@ final class $$AccountsTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.debts,
-    aliasName: 'accounts__id__debts__wallet_id',
+    aliasName: $_aliasNameGenerator(db.accounts.id, db.debts.walletId),
   );
 
   $$DebtsTableProcessedTableManager get debtsRefs {
@@ -18472,7 +18771,10 @@ final class $$AccountsTableReferences
   static MultiTypedResultKey<$SplitBillsTable, List<SplitBillRecord>>
   _splitBillsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.splitBills,
-    aliasName: 'accounts__id__split_bills__payer_wallet_id',
+    aliasName: $_aliasNameGenerator(
+      db.accounts.id,
+      db.splitBills.payerWalletId,
+    ),
   );
 
   $$SplitBillsTableProcessedTableManager get splitBillsRefs {
@@ -18490,7 +18792,7 @@ final class $$AccountsTableReferences
   static MultiTypedResultKey<$ImportBatchesTable, List<ImportBatchRecord>>
   _importBatchesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.importBatches,
-    aliasName: 'accounts__id__import_batches__wallet_id',
+    aliasName: $_aliasNameGenerator(db.accounts.id, db.importBatches.walletId),
   );
 
   $$ImportBatchesTableProcessedTableManager get importBatchesRefs {
@@ -19254,12 +19556,12 @@ class $$AccountsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AccountsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AccountsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AccountsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$AccountsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AccountsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$AccountsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -19340,226 +19642,245 @@ class $$AccountsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AccountsTable, AccountRecord>(table),
-                  $$AccountsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                categoriesRefs = false,
-                ledgerEntriesRefs = false,
-                transactionTemplatesRefs = false,
-                billsRefs = false,
-                goalsRefs = false,
-                fundAllocationsRefs = false,
-                debtsRefs = false,
-                splitBillsRefs = false,
-                importBatchesRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (categoriesRefs) db.categories,
-                    if (ledgerEntriesRefs) db.ledgerEntries,
-                    if (transactionTemplatesRefs) db.transactionTemplates,
-                    if (billsRefs) db.bills,
-                    if (goalsRefs) db.goals,
-                    if (fundAllocationsRefs) db.fundAllocations,
-                    if (debtsRefs) db.debts,
-                    if (splitBillsRefs) db.splitBills,
-                    if (importBatchesRefs) db.importBatches,
-                  ],
-                  addJoins: null,
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (categoriesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          CategoryRecord,
-                          $CategoriesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._categoriesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$AccountsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            categoriesRefs = false,
+            ledgerEntriesRefs = false,
+            transactionTemplatesRefs = false,
+            billsRefs = false,
+            goalsRefs = false,
+            fundAllocationsRefs = false,
+            debtsRefs = false,
+            splitBillsRefs = false,
+            importBatchesRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (categoriesRefs) db.categories,
+                if (ledgerEntriesRefs) db.ledgerEntries,
+                if (transactionTemplatesRefs) db.transactionTemplates,
+                if (billsRefs) db.bills,
+                if (goalsRefs) db.goals,
+                if (fundAllocationsRefs) db.fundAllocations,
+                if (debtsRefs) db.debts,
+                if (splitBillsRefs) db.splitBills,
+                if (importBatchesRefs) db.importBatches,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (categoriesRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      CategoryRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._categoriesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).categoriesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'ledger_account_id',
-                          typedResults: items,
-                        ),
-                      if (ledgerEntriesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          LedgerEntryRecord,
-                          $LedgerEntriesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._ledgerEntriesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.ledgerAccountId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (ledgerEntriesRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      LedgerEntryRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._ledgerEntriesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).ledgerEntriesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'account_id',
-                          typedResults: items,
-                        ),
-                      if (transactionTemplatesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          TransactionTemplateRecord,
-                          $TransactionTemplatesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._transactionTemplatesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.accountId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (transactionTemplatesRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      TransactionTemplateRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._transactionTemplatesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionTemplatesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'wallet_id',
-                          typedResults: items,
-                        ),
-                      if (billsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          BillRecord,
-                          $BillsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._billsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.walletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (billsRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      BillRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._billsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).billsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'wallet_id',
-                          typedResults: items,
-                        ),
-                      if (goalsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          GoalRecord,
-                          $GoalsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._goalsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.walletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (goalsRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      GoalRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._goalsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).goalsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'source_wallet_id',
-                          typedResults: items,
-                        ),
-                      if (fundAllocationsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          FundAllocationRecord,
-                          $FundAllocationsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._fundAllocationsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.sourceWalletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (fundAllocationsRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      FundAllocationRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._fundAllocationsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).fundAllocationsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'wallet_id',
-                          typedResults: items,
-                        ),
-                      if (debtsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          DebtRecord,
-                          $DebtsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._debtsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.walletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (debtsRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      DebtRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._debtsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).debtsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'wallet_id',
-                          typedResults: items,
-                        ),
-                      if (splitBillsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          SplitBillRecord,
-                          $SplitBillsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._splitBillsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.walletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (splitBillsRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      SplitBillRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._splitBillsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).splitBillsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'payer_wallet_id',
-                          typedResults: items,
-                        ),
-                      if (importBatchesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          AccountRecord,
-                          $AccountsTable,
-                          ImportBatchRecord,
-                          $ImportBatchesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$AccountsTableReferences
-                              ._importBatchesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.payerWalletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (importBatchesRefs)
+                    await $_getPrefetchedData<
+                      AccountRecord,
+                      $AccountsTable,
+                      ImportBatchRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AccountsTableReferences
+                          ._importBatchesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$AccountsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).importBatchesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'wallet_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.walletId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -19588,43 +19909,47 @@ typedef $$AccountsTableProcessedTableManager =
         bool importBatchesRefs,
       })
     >;
-typedef $$CategoriesTableCreateCompanionBuilder = CategoriesCompanion Function({
-  required String id,
-  required String name,
-  required String kind,
-  Value<String?> parentId,
-  Value<String?> ledgerAccountId,
-  Value<String> icon,
-  Value<int> colorValue,
-  Value<bool> isFavorite,
-  Value<bool> isArchived,
-  Value<bool> isSystem,
-  Value<int> sortOrder,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$CategoriesTableUpdateCompanionBuilder = CategoriesCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<String> kind,
-  Value<String?> parentId,
-  Value<String?> ledgerAccountId,
-  Value<String> icon,
-  Value<int> colorValue,
-  Value<bool> isFavorite,
-  Value<bool> isArchived,
-  Value<bool> isSystem,
-  Value<int> sortOrder,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$CategoriesTableCreateCompanionBuilder =
+    CategoriesCompanion Function({
+      required String id,
+      required String name,
+      required String kind,
+      Value<String?> parentId,
+      Value<String?> ledgerAccountId,
+      Value<String> icon,
+      Value<int> colorValue,
+      Value<bool> isFavorite,
+      Value<bool> isArchived,
+      Value<bool> isSystem,
+      Value<int> sortOrder,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$CategoriesTableUpdateCompanionBuilder =
+    CategoriesCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String> kind,
+      Value<String?> parentId,
+      Value<String?> ledgerAccountId,
+      Value<String> icon,
+      Value<int> colorValue,
+      Value<bool> isFavorite,
+      Value<bool> isArchived,
+      Value<bool> isSystem,
+      Value<int> sortOrder,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$CategoriesTableReferences
     extends BaseReferences<_$AppDatabase, $CategoriesTable, CategoryRecord> {
   $$CategoriesTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $CategoriesTable _parentIdTable(_$AppDatabase db) =>
-      db.categories.createAlias('categories__parent_id__categories__id');
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.categories.parentId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager? get parentId {
     final $_column = $_itemColumn<String>('parent_id');
@@ -19641,7 +19966,9 @@ final class $$CategoriesTableReferences
   }
 
   static $AccountsTable _ledgerAccountIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('categories__ledger_account_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.categories.ledgerAccountId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager? get ledgerAccountId {
     final $_column = $_itemColumn<String>('ledger_account_id');
@@ -19660,14 +19987,19 @@ final class $$CategoriesTableReferences
   static MultiTypedResultKey<$TransactionsTable, List<TransactionRecord>>
   _transactionsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.transactions,
-    aliasName: 'categories__id__transactions__primary_category_id',
+    aliasName: $_aliasNameGenerator(
+      db.categories.id,
+      db.transactions.primaryCategoryId,
+    ),
   );
 
   $$TransactionsTableProcessedTableManager get transactionsRefs {
-    final manager = $$TransactionsTableTableManager($_db, $_db.transactions)
-        .filter(
-          (f) => f.primaryCategoryId.id.sqlEquals($_itemColumn<String>('id')!),
-        );
+    final manager = $$TransactionsTableTableManager(
+      $_db,
+      $_db.transactions,
+    ).filter(
+      (f) => f.primaryCategoryId.id.sqlEquals($_itemColumn<String>('id')!),
+    );
 
     final cache = $_typedResult.readTableOrNull(_transactionsRefsTable($_db));
     return ProcessedTableManager(
@@ -19682,7 +20014,10 @@ final class $$CategoriesTableReferences
   _transactionSplitsRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.transactionSplits,
-        aliasName: 'categories__id__transaction_splits__category_id',
+        aliasName: $_aliasNameGenerator(
+          db.categories.id,
+          db.transactionSplits.categoryId,
+        ),
       );
 
   $$TransactionSplitsTableProcessedTableManager get transactionSplitsRefs {
@@ -19706,7 +20041,10 @@ final class $$CategoriesTableReferences
   _transactionTemplatesRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.transactionTemplates,
-        aliasName: 'categories__id__transaction_templates__category_id',
+        aliasName: $_aliasNameGenerator(
+          db.categories.id,
+          db.transactionTemplates.categoryId,
+        ),
       );
 
   $$TransactionTemplatesTableProcessedTableManager
@@ -19727,7 +20065,7 @@ final class $$CategoriesTableReferences
   static MultiTypedResultKey<$BudgetsTable, List<BudgetRecord>>
   _budgetsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.budgets,
-    aliasName: 'categories__id__budgets__category_id',
+    aliasName: $_aliasNameGenerator(db.categories.id, db.budgets.categoryId),
   );
 
   $$BudgetsTableProcessedTableManager get budgetsRefs {
@@ -19746,7 +20084,7 @@ final class $$CategoriesTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.bills,
-    aliasName: 'categories__id__bills__category_id',
+    aliasName: $_aliasNameGenerator(db.categories.id, db.bills.categoryId),
   );
 
   $$BillsTableProcessedTableManager get billsRefs {
@@ -19764,7 +20102,7 @@ final class $$CategoriesTableReferences
   static MultiTypedResultKey<$SplitBillsTable, List<SplitBillRecord>>
   _splitBillsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.splitBills,
-    aliasName: 'categories__id__split_bills__category_id',
+    aliasName: $_aliasNameGenerator(db.categories.id, db.splitBills.categoryId),
   );
 
   $$SplitBillsTableProcessedTableManager get splitBillsRefs {
@@ -19782,7 +20120,7 @@ final class $$CategoriesTableReferences
   static MultiTypedResultKey<$WishlistsTable, List<WishlistRecord>>
   _wishlistsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.wishlists,
-    aliasName: 'categories__id__wishlists__category_id',
+    aliasName: $_aliasNameGenerator(db.categories.id, db.wishlists.categoryId),
   );
 
   $$WishlistsTableProcessedTableManager get wishlistsRefs {
@@ -19800,7 +20138,10 @@ final class $$CategoriesTableReferences
   static MultiTypedResultKey<$SalaryPlanItemsTable, List<SalaryPlanItemRecord>>
   _salaryPlanItemsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.salaryPlanItems,
-    aliasName: 'categories__id__salary_plan_items__category_id',
+    aliasName: $_aliasNameGenerator(
+      db.categories.id,
+      db.salaryPlanItems.categoryId,
+    ),
   );
 
   $$SalaryPlanItemsTableProcessedTableManager get salaryPlanItemsRefs {
@@ -20555,12 +20896,12 @@ class $$CategoriesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$CategoriesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$CategoriesTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$CategoriesTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$CategoriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$CategoriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$CategoriesTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -20621,246 +20962,268 @@ class $$CategoriesTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$CategoriesTable, CategoryRecord>(table),
-                  $$CategoriesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                parentId = false,
-                ledgerAccountId = false,
-                transactionsRefs = false,
-                transactionSplitsRefs = false,
-                transactionTemplatesRefs = false,
-                budgetsRefs = false,
-                billsRefs = false,
-                splitBillsRefs = false,
-                wishlistsRefs = false,
-                salaryPlanItemsRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (transactionsRefs) db.transactions,
-                    if (transactionSplitsRefs) db.transactionSplits,
-                    if (transactionTemplatesRefs) db.transactionTemplates,
-                    if (budgetsRefs) db.budgets,
-                    if (billsRefs) db.bills,
-                    if (splitBillsRefs) db.splitBills,
-                    if (wishlistsRefs) db.wishlists,
-                    if (salaryPlanItemsRefs) db.salaryPlanItems,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (parentId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$CategoriesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            parentId = false,
+            ledgerAccountId = false,
+            transactionsRefs = false,
+            transactionSplitsRefs = false,
+            transactionTemplatesRefs = false,
+            budgetsRefs = false,
+            billsRefs = false,
+            splitBillsRefs = false,
+            wishlistsRefs = false,
+            salaryPlanItemsRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (transactionsRefs) db.transactions,
+                if (transactionSplitsRefs) db.transactionSplits,
+                if (transactionTemplatesRefs) db.transactionTemplates,
+                if (budgetsRefs) db.budgets,
+                if (billsRefs) db.bills,
+                if (splitBillsRefs) db.splitBills,
+                if (wishlistsRefs) db.wishlists,
+                if (salaryPlanItemsRefs) db.salaryPlanItems,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (parentId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.parentId,
                             referencedTable: $$CategoriesTableReferences
                                 ._parentIdTable(db),
-                            referencedColumn: $$CategoriesTableReferences
-                                ._parentIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (ledgerAccountId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$CategoriesTableReferences
+                                    ._parentIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (ledgerAccountId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.ledgerAccountId,
                             referencedTable: $$CategoriesTableReferences
                                 ._ledgerAccountIdTable(db),
-                            referencedColumn: $$CategoriesTableReferences
-                                ._ledgerAccountIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$CategoriesTableReferences
+                                    ._ledgerAccountIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (transactionsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          TransactionRecord,
-                          $TransactionsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._transactionsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (transactionsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      TransactionRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._transactionsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'primary_category_id',
-                          typedResults: items,
-                        ),
-                      if (transactionSplitsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          TransactionSplitRecord,
-                          $TransactionSplitsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._transactionSplitsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.primaryCategoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (transactionSplitsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      TransactionSplitRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._transactionSplitsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionSplitsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (transactionTemplatesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          TransactionTemplateRecord,
-                          $TransactionTemplatesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._transactionTemplatesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (transactionTemplatesRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      TransactionTemplateRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._transactionTemplatesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionTemplatesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (budgetsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          BudgetRecord,
-                          $BudgetsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._budgetsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (budgetsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      BudgetRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._budgetsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).budgetsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (billsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          BillRecord,
-                          $BillsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._billsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (billsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      BillRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._billsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).billsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (splitBillsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          SplitBillRecord,
-                          $SplitBillsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._splitBillsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (splitBillsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      SplitBillRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._splitBillsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).splitBillsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (wishlistsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          WishlistRecord,
-                          $WishlistsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._wishlistsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (wishlistsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      WishlistRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._wishlistsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).wishlistsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                      if (salaryPlanItemsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          CategoryRecord,
-                          $CategoriesTable,
-                          SalaryPlanItemRecord,
-                          $SalaryPlanItemsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$CategoriesTableReferences
-                              ._salaryPlanItemsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (salaryPlanItemsRefs)
+                    await $_getPrefetchedData<
+                      CategoryRecord,
+                      $CategoriesTable,
+                      SalaryPlanItemRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$CategoriesTableReferences
+                          ._salaryPlanItemsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$CategoriesTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).salaryPlanItemsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'category_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.categoryId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -20941,7 +21304,9 @@ final class $$TransactionsTableReferences
   $$TransactionsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $AccountsTable _primaryWalletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('transactions__primary_wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.transactions.primaryWalletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager? get primaryWalletId {
     final $_column = $_itemColumn<String>('primary_wallet_id');
@@ -20957,9 +21322,13 @@ final class $$TransactionsTableReferences
     );
   }
 
-  static $AccountsTable _destinationWalletIdTable(_$AppDatabase db) => db
-      .accounts
-      .createAlias('transactions__destination_wallet_id__accounts__id');
+  static $AccountsTable _destinationWalletIdTable(_$AppDatabase db) =>
+      db.accounts.createAlias(
+        $_aliasNameGenerator(
+          db.transactions.destinationWalletId,
+          db.accounts.id,
+        ),
+      );
 
   $$AccountsTableProcessedTableManager? get destinationWalletId {
     final $_column = $_itemColumn<String>('destination_wallet_id');
@@ -20975,9 +21344,13 @@ final class $$TransactionsTableReferences
     );
   }
 
-  static $CategoriesTable _primaryCategoryIdTable(_$AppDatabase db) => db
-      .categories
-      .createAlias('transactions__primary_category_id__categories__id');
+  static $CategoriesTable _primaryCategoryIdTable(_$AppDatabase db) =>
+      db.categories.createAlias(
+        $_aliasNameGenerator(
+          db.transactions.primaryCategoryId,
+          db.categories.id,
+        ),
+      );
 
   $$CategoriesTableProcessedTableManager? get primaryCategoryId {
     final $_column = $_itemColumn<String>('primary_category_id');
@@ -20996,7 +21369,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$LedgerEntriesTable, List<LedgerEntryRecord>>
   _ledgerEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.ledgerEntries,
-    aliasName: 'transactions__id__ledger_entries__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.ledgerEntries.transactionId,
+    ),
   );
 
   $$LedgerEntriesTableProcessedTableManager get ledgerEntriesRefs {
@@ -21018,7 +21394,10 @@ final class $$TransactionsTableReferences
   _transactionSplitsRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.transactionSplits,
-        aliasName: 'transactions__id__transaction_splits__transaction_id',
+        aliasName: $_aliasNameGenerator(
+          db.transactions.id,
+          db.transactionSplits.transactionId,
+        ),
       );
 
   $$TransactionSplitsTableProcessedTableManager get transactionSplitsRefs {
@@ -21038,7 +21417,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$TransactionTagsTable, List<TransactionTagRecord>>
   _transactionTagsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.transactionTags,
-    aliasName: 'transactions__id__transaction_tags__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.transactionTags.transactionId,
+    ),
   );
 
   $$TransactionTagsTableProcessedTableManager get transactionTagsRefs {
@@ -21058,7 +21440,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$AttachmentsTable, List<AttachmentRecord>>
   _attachmentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.attachments,
-    aliasName: 'transactions__id__attachments__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.attachments.transactionId,
+    ),
   );
 
   $$AttachmentsTableProcessedTableManager get attachmentsRefs {
@@ -21076,7 +21461,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$BillPaymentsTable, List<BillPaymentRecord>>
   _billPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.billPayments,
-    aliasName: 'transactions__id__bill_payments__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.billPayments.transactionId,
+    ),
   );
 
   $$BillPaymentsTableProcessedTableManager get billPaymentsRefs {
@@ -21098,7 +21486,10 @@ final class $$TransactionsTableReferences
   _goalContributionsRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.goalContributions,
-        aliasName: 'transactions__id__goal_contributions__transaction_id',
+        aliasName: $_aliasNameGenerator(
+          db.transactions.id,
+          db.goalContributions.transactionId,
+        ),
       );
 
   $$GoalContributionsTableProcessedTableManager get goalContributionsRefs {
@@ -21119,7 +21510,10 @@ final class $$TransactionsTableReferences
     _$AppDatabase db,
   ) => MultiTypedResultKey.fromTable(
     db.debts,
-    aliasName: 'transactions__id__debts__disbursement_tx_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.debts.disbursementTxId,
+    ),
   );
 
   $$DebtsTableProcessedTableManager get debtsRefs {
@@ -21136,7 +21530,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$DebtPaymentsTable, List<DebtPaymentRecord>>
   _debtPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.debtPayments,
-    aliasName: 'transactions__id__debt_payments__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.debtPayments.transactionId,
+    ),
   );
 
   $$DebtPaymentsTableProcessedTableManager get debtPaymentsRefs {
@@ -21154,7 +21551,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$SplitBillsTable, List<SplitBillRecord>>
   _splitBillsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.splitBills,
-    aliasName: 'transactions__id__split_bills__transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.splitBills.transactionId,
+    ),
   );
 
   $$SplitBillsTableProcessedTableManager get splitBillsRefs {
@@ -21172,7 +21572,10 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$WishlistsTable, List<WishlistRecord>>
   _wishlistsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.wishlists,
-    aliasName: 'transactions__id__wishlists__purchased_tx_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.wishlists.purchasedTxId,
+    ),
   );
 
   $$WishlistsTableProcessedTableManager get wishlistsRefs {
@@ -21190,15 +21593,19 @@ final class $$TransactionsTableReferences
   static MultiTypedResultKey<$SalaryPlansTable, List<SalaryPlanRecord>>
   _salaryPlansRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.salaryPlans,
-    aliasName: 'transactions__id__salary_plans__source_transaction_id',
+    aliasName: $_aliasNameGenerator(
+      db.transactions.id,
+      db.salaryPlans.sourceTransactionId,
+    ),
   );
 
   $$SalaryPlansTableProcessedTableManager get salaryPlansRefs {
-    final manager = $$SalaryPlansTableTableManager($_db, $_db.salaryPlans)
-        .filter(
-          (f) =>
-              f.sourceTransactionId.id.sqlEquals($_itemColumn<String>('id')!),
-        );
+    final manager = $$SalaryPlansTableTableManager(
+      $_db,
+      $_db.salaryPlans,
+    ).filter(
+      (f) => f.sourceTransactionId.id.sqlEquals($_itemColumn<String>('id')!),
+    );
 
     final cache = $_typedResult.readTableOrNull(_salaryPlansRefsTable($_db));
     return ProcessedTableManager(
@@ -22236,12 +22643,13 @@ class $$TransactionsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TransactionsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TransactionsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TransactionsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$TransactionsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$TransactionsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$TransactionsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -22326,324 +22734,355 @@ class $$TransactionsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$TransactionsTable, TransactionRecord>(table),
-                  $$TransactionsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                primaryWalletId = false,
-                destinationWalletId = false,
-                primaryCategoryId = false,
-                ledgerEntriesRefs = false,
-                transactionSplitsRefs = false,
-                transactionTagsRefs = false,
-                attachmentsRefs = false,
-                billPaymentsRefs = false,
-                goalContributionsRefs = false,
-                debtsRefs = false,
-                debtPaymentsRefs = false,
-                splitBillsRefs = false,
-                wishlistsRefs = false,
-                salaryPlansRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (ledgerEntriesRefs) db.ledgerEntries,
-                    if (transactionSplitsRefs) db.transactionSplits,
-                    if (transactionTagsRefs) db.transactionTags,
-                    if (attachmentsRefs) db.attachments,
-                    if (billPaymentsRefs) db.billPayments,
-                    if (goalContributionsRefs) db.goalContributions,
-                    if (debtsRefs) db.debts,
-                    if (debtPaymentsRefs) db.debtPayments,
-                    if (splitBillsRefs) db.splitBills,
-                    if (wishlistsRefs) db.wishlists,
-                    if (salaryPlansRefs) db.salaryPlans,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (primaryWalletId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$TransactionsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            primaryWalletId = false,
+            destinationWalletId = false,
+            primaryCategoryId = false,
+            ledgerEntriesRefs = false,
+            transactionSplitsRefs = false,
+            transactionTagsRefs = false,
+            attachmentsRefs = false,
+            billPaymentsRefs = false,
+            goalContributionsRefs = false,
+            debtsRefs = false,
+            debtPaymentsRefs = false,
+            splitBillsRefs = false,
+            wishlistsRefs = false,
+            salaryPlansRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (ledgerEntriesRefs) db.ledgerEntries,
+                if (transactionSplitsRefs) db.transactionSplits,
+                if (transactionTagsRefs) db.transactionTags,
+                if (attachmentsRefs) db.attachments,
+                if (billPaymentsRefs) db.billPayments,
+                if (goalContributionsRefs) db.goalContributions,
+                if (debtsRefs) db.debts,
+                if (debtPaymentsRefs) db.debtPayments,
+                if (splitBillsRefs) db.splitBills,
+                if (wishlistsRefs) db.wishlists,
+                if (salaryPlansRefs) db.salaryPlans,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (primaryWalletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.primaryWalletId,
                             referencedTable: $$TransactionsTableReferences
                                 ._primaryWalletIdTable(db),
-                            referencedColumn: $$TransactionsTableReferences
-                                ._primaryWalletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (destinationWalletId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$TransactionsTableReferences
+                                    ._primaryWalletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (destinationWalletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.destinationWalletId,
                             referencedTable: $$TransactionsTableReferences
                                 ._destinationWalletIdTable(db),
-                            referencedColumn: $$TransactionsTableReferences
-                                ._destinationWalletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (primaryCategoryId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$TransactionsTableReferences
+                                    ._destinationWalletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (primaryCategoryId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.primaryCategoryId,
                             referencedTable: $$TransactionsTableReferences
                                 ._primaryCategoryIdTable(db),
-                            referencedColumn: $$TransactionsTableReferences
-                                ._primaryCategoryIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$TransactionsTableReferences
+                                    ._primaryCategoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (ledgerEntriesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          LedgerEntryRecord,
-                          $LedgerEntriesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._ledgerEntriesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (ledgerEntriesRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      LedgerEntryRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._ledgerEntriesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).ledgerEntriesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (transactionSplitsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          TransactionSplitRecord,
-                          $TransactionSplitsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._transactionSplitsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (transactionSplitsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      TransactionSplitRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._transactionSplitsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionSplitsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (transactionTagsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          TransactionTagRecord,
-                          $TransactionTagsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._transactionTagsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (transactionTagsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      TransactionTagRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._transactionTagsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).transactionTagsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (attachmentsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          AttachmentRecord,
-                          $AttachmentsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._attachmentsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (attachmentsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      AttachmentRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._attachmentsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).attachmentsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (billPaymentsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          BillPaymentRecord,
-                          $BillPaymentsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._billPaymentsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (billPaymentsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      BillPaymentRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._billPaymentsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).billPaymentsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (goalContributionsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          GoalContributionRecord,
-                          $GoalContributionsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._goalContributionsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (goalContributionsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      GoalContributionRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._goalContributionsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).goalContributionsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (debtsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          DebtRecord,
-                          $DebtsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._debtsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (debtsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      DebtRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._debtsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).debtsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'disbursement_tx_id',
-                          typedResults: items,
-                        ),
-                      if (debtPaymentsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          DebtPaymentRecord,
-                          $DebtPaymentsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._debtPaymentsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.disbursementTxId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (debtPaymentsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      DebtPaymentRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._debtPaymentsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).debtPaymentsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (splitBillsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          SplitBillRecord,
-                          $SplitBillsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._splitBillsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (splitBillsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      SplitBillRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._splitBillsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).splitBillsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'transaction_id',
-                          typedResults: items,
-                        ),
-                      if (wishlistsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          WishlistRecord,
-                          $WishlistsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._wishlistsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.transactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (wishlistsRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      WishlistRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._wishlistsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).wishlistsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'purchased_tx_id',
-                          typedResults: items,
-                        ),
-                      if (salaryPlansRefs)
-                        await $_getPrefetchedDataByColumns<
-                          TransactionRecord,
-                          $TransactionsTable,
-                          SalaryPlanRecord,
-                          $SalaryPlansTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$TransactionsTableReferences
-                              ._salaryPlansRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.purchasedTxId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (salaryPlansRefs)
+                    await $_getPrefetchedData<
+                      TransactionRecord,
+                      $TransactionsTable,
+                      SalaryPlanRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$TransactionsTableReferences
+                          ._salaryPlansRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$TransactionsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).salaryPlansRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'source_transaction_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.sourceTransactionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -22707,9 +23146,13 @@ final class $$LedgerEntriesTableReferences
     super.$_typedResult,
   );
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('ledger_entries__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(
+          db.ledgerEntries.transactionId,
+          db.transactions.id,
+        ),
+      );
 
   $$TransactionsTableProcessedTableManager get transactionId {
     final $_column = $_itemColumn<String>('transaction_id')!;
@@ -22726,7 +23169,9 @@ final class $$LedgerEntriesTableReferences
   }
 
   static $AccountsTable _accountIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('ledger_entries__account_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.ledgerEntries.accountId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager get accountId {
     final $_column = $_itemColumn<String>('account_id')!;
@@ -22983,12 +23428,16 @@ class $$LedgerEntriesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$LedgerEntriesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$LedgerEntriesTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$LedgerEntriesTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$LedgerEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () =>
+                  $$LedgerEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$LedgerEntriesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -23025,59 +23474,66 @@ class $$LedgerEntriesTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$LedgerEntriesTable, LedgerEntryRecord>(table),
-                  $$LedgerEntriesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$LedgerEntriesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({transactionId = false, accountId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$LedgerEntriesTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$LedgerEntriesTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (accountId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.accountId,
-                        referencedTable: $$LedgerEntriesTableReferences
-                            ._accountIdTable(db),
-                        referencedColumn: $$LedgerEntriesTableReferences
-                            ._accountIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$LedgerEntriesTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$LedgerEntriesTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (accountId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.accountId,
+                            referencedTable: $$LedgerEntriesTableReferences
+                                ._accountIdTable(db),
+                            referencedColumn:
+                                $$LedgerEntriesTableReferences
+                                    ._accountIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -23133,9 +23589,13 @@ final class $$TransactionSplitsTableReferences
     super.$_typedResult,
   );
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('transaction_splits__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(
+          db.transactionSplits.transactionId,
+          db.transactions.id,
+        ),
+      );
 
   $$TransactionsTableProcessedTableManager get transactionId {
     final $_column = $_itemColumn<String>('transaction_id')!;
@@ -23151,8 +23611,10 @@ final class $$TransactionSplitsTableReferences
     );
   }
 
-  static $CategoriesTable _categoryIdTable(_$AppDatabase db) => db.categories
-      .createAlias('transaction_splits__category_id__categories__id');
+  static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.transactionSplits.categoryId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager get categoryId {
     final $_column = $_itemColumn<String>('category_id')!;
@@ -23400,12 +23862,18 @@ class $$TransactionSplitsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TransactionSplitsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TransactionSplitsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TransactionSplitsTableAnnotationComposer(
+          createFilteringComposer:
+              () => $$TransactionSplitsTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$TransactionSplitsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$TransactionSplitsTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -23441,61 +23909,66 @@ class $$TransactionSplitsTableTableManager
                 description: description,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$TransactionSplitsTable, TransactionSplitRecord>(
-                    table,
-                  ),
-                  $$TransactionSplitsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$TransactionSplitsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({transactionId = false, categoryId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$TransactionSplitsTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$TransactionSplitsTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (categoryId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.categoryId,
-                        referencedTable: $$TransactionSplitsTableReferences
-                            ._categoryIdTable(db),
-                        referencedColumn: $$TransactionSplitsTableReferences
-                            ._categoryIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$TransactionSplitsTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$TransactionSplitsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (categoryId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.categoryId,
+                            referencedTable: $$TransactionSplitsTableReferences
+                                ._categoryIdTable(db),
+                            referencedColumn:
+                                $$TransactionSplitsTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -23519,18 +23992,20 @@ typedef $$TransactionSplitsTableProcessedTableManager =
       TransactionSplitRecord,
       PrefetchHooks Function({bool transactionId, bool categoryId})
     >;
-typedef $$TagsTableCreateCompanionBuilder = TagsCompanion Function({
-  required String id,
-  required String name,
-  Value<int> colorValue,
-  Value<int> rowid,
-});
-typedef $$TagsTableUpdateCompanionBuilder = TagsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<int> colorValue,
-  Value<int> rowid,
-});
+typedef $$TagsTableCreateCompanionBuilder =
+    TagsCompanion Function({
+      required String id,
+      required String name,
+      Value<int> colorValue,
+      Value<int> rowid,
+    });
+typedef $$TagsTableUpdateCompanionBuilder =
+    TagsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<int> colorValue,
+      Value<int> rowid,
+    });
 
 final class $$TagsTableReferences
     extends BaseReferences<_$AppDatabase, $TagsTable, TagRecord> {
@@ -23539,7 +24014,7 @@ final class $$TagsTableReferences
   static MultiTypedResultKey<$TransactionTagsTable, List<TransactionTagRecord>>
   _transactionTagsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.transactionTags,
-    aliasName: 'tags__id__transaction_tags__tag_id',
+    aliasName: $_aliasNameGenerator(db.tags.id, db.transactionTags.tagId),
   );
 
   $$TransactionTagsTableProcessedTableManager get transactionTagsRefs {
@@ -23696,12 +24171,12 @@ class $$TagsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TagsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TagsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TagsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$TagsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$TagsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$TagsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -23726,14 +24201,16 @@ class $$TagsTableTableManager
                 colorValue: colorValue,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$TagsTable, TagRecord>(table),
-                  $$TagsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$TagsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({transactionTagsRefs = false}) {
             return PrefetchHooks(
               db: db,
@@ -23744,22 +24221,24 @@ class $$TagsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (transactionTagsRefs)
-                    await $_getPrefetchedDataByColumns<
+                    await $_getPrefetchedData<
                       TagRecord,
                       $TagsTable,
-                      TransactionTagRecord,
-                      $TransactionTagsTable
+                      TransactionTagRecord
                     >(
                       currentTable: table,
                       referencedTable: $$TagsTableReferences
                           ._transactionTagsRefsTable(db),
-                      managerFromTypedResult: (p0) => $$TagsTableReferences(
-                        db,
-                        table,
-                        p0,
-                      ).transactionTagsRefs,
-                      currentColumn: 'id',
-                      referencedColumn: 'tag_id',
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$TagsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).transactionTagsRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.tagId == item.id),
                       typedResults: items,
                     ),
                 ];
@@ -23810,9 +24289,13 @@ final class $$TransactionTagsTableReferences
     super.$_typedResult,
   );
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('transaction_tags__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(
+          db.transactionTags.transactionId,
+          db.transactions.id,
+        ),
+      );
 
   $$TransactionsTableProcessedTableManager get transactionId {
     final $_column = $_itemColumn<String>('transaction_id')!;
@@ -23828,8 +24311,9 @@ final class $$TransactionTagsTableReferences
     );
   }
 
-  static $TagsTable _tagIdTable(_$AppDatabase db) =>
-      db.tags.createAlias('transaction_tags__tag_id__tags__id');
+  static $TagsTable _tagIdTable(_$AppDatabase db) => db.tags.createAlias(
+    $_aliasNameGenerator(db.transactionTags.tagId, db.tags.id),
+  );
 
   $$TagsTableProcessedTableManager get tagId {
     final $_column = $_itemColumn<String>('tag_id')!;
@@ -24036,12 +24520,19 @@ class $$TransactionTagsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TransactionTagsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TransactionTagsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TransactionTagsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$TransactionTagsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$TransactionTagsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$TransactionTagsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> transactionId = const Value.absent(),
@@ -24062,61 +24553,66 @@ class $$TransactionTagsTableTableManager
                 tagId: tagId,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$TransactionTagsTable, TransactionTagRecord>(
-                    table,
-                  ),
-                  $$TransactionTagsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$TransactionTagsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({transactionId = false, tagId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$TransactionTagsTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$TransactionTagsTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (tagId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.tagId,
-                        referencedTable: $$TransactionTagsTableReferences
-                            ._tagIdTable(db),
-                        referencedColumn: $$TransactionTagsTableReferences
-                            ._tagIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$TransactionTagsTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$TransactionTagsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (tagId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.tagId,
+                            referencedTable: $$TransactionTagsTableReferences
+                                ._tagIdTable(db),
+                            referencedColumn:
+                                $$TransactionTagsTableReferences
+                                    ._tagIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -24165,9 +24661,10 @@ final class $$AttachmentsTableReferences
     extends BaseReferences<_$AppDatabase, $AttachmentsTable, AttachmentRecord> {
   $$AttachmentsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('attachments__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.attachments.transactionId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager? get transactionId {
     final $_column = $_itemColumn<String>('transaction_id');
@@ -24372,12 +24869,13 @@ class $$AttachmentsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AttachmentsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AttachmentsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AttachmentsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$AttachmentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AttachmentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$AttachmentsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -24414,48 +24912,52 @@ class $$AttachmentsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AttachmentsTable, AttachmentRecord>(table),
-                  $$AttachmentsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$AttachmentsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({transactionId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$AttachmentsTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$AttachmentsTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$AttachmentsTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$AttachmentsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -24524,7 +25026,9 @@ final class $$TransactionTemplatesTableReferences
   );
 
   static $AccountsTable _walletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('transaction_templates__wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.transactionTemplates.walletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager get walletId {
     final $_column = $_itemColumn<String>('wallet_id')!;
@@ -24540,8 +25044,13 @@ final class $$TransactionTemplatesTableReferences
     );
   }
 
-  static $CategoriesTable _categoryIdTable(_$AppDatabase db) => db.categories
-      .createAlias('transaction_templates__category_id__categories__id');
+  static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
+      db.categories.createAlias(
+        $_aliasNameGenerator(
+          db.transactionTemplates.categoryId,
+          db.categories.id,
+        ),
+      );
 
   $$CategoriesTableProcessedTableManager get categoryId {
     final $_column = $_itemColumn<String>('category_id')!;
@@ -24867,15 +25376,18 @@ class $$TransactionTemplatesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TransactionTemplatesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TransactionTemplatesTableOrderingComposer(
+          createFilteringComposer:
+              () => $$TransactionTemplatesTableFilterComposer(
                 $db: db,
                 $table: table,
               ),
-          createComputedFieldComposer: () =>
-              $$TransactionTemplatesTableAnnotationComposer(
+          createOrderingComposer:
+              () => $$TransactionTemplatesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$TransactionTemplatesTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -24935,62 +25447,68 @@ class $$TransactionTemplatesTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<
-                    $TransactionTemplatesTable,
-                    TransactionTemplateRecord
-                  >(table),
-                  $$TransactionTemplatesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$TransactionTemplatesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({walletId = false, categoryId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (walletId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.walletId,
-                        referencedTable: $$TransactionTemplatesTableReferences
-                            ._walletIdTable(db),
-                        referencedColumn: $$TransactionTemplatesTableReferences
-                            ._walletIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (categoryId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.categoryId,
-                        referencedTable: $$TransactionTemplatesTableReferences
-                            ._categoryIdTable(db),
-                        referencedColumn: $$TransactionTemplatesTableReferences
-                            ._categoryIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (walletId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.walletId,
+                            referencedTable:
+                                $$TransactionTemplatesTableReferences
+                                    ._walletIdTable(db),
+                            referencedColumn:
+                                $$TransactionTemplatesTableReferences
+                                    ._walletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (categoryId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.categoryId,
+                            referencedTable:
+                                $$TransactionTemplatesTableReferences
+                                    ._categoryIdTable(db),
+                            referencedColumn:
+                                $$TransactionTemplatesTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -25014,45 +25532,49 @@ typedef $$TransactionTemplatesTableProcessedTableManager =
       TransactionTemplateRecord,
       PrefetchHooks Function({bool walletId, bool categoryId})
     >;
-typedef $$BudgetsTableCreateCompanionBuilder = BudgetsCompanion Function({
-  required String id,
-  required String name,
-  Value<String?> categoryId,
-  required int limitAmount,
-  required String periodType,
-  required DateTime startDate,
-  required DateTime endDate,
-  Value<bool> rolloverEnabled,
-  Value<int> rolloverAmount,
-  Value<bool> alert80Sent,
-  Value<bool> alert100Sent,
-  Value<bool> isActive,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$BudgetsTableUpdateCompanionBuilder = BudgetsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<String?> categoryId,
-  Value<int> limitAmount,
-  Value<String> periodType,
-  Value<DateTime> startDate,
-  Value<DateTime> endDate,
-  Value<bool> rolloverEnabled,
-  Value<int> rolloverAmount,
-  Value<bool> alert80Sent,
-  Value<bool> alert100Sent,
-  Value<bool> isActive,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$BudgetsTableCreateCompanionBuilder =
+    BudgetsCompanion Function({
+      required String id,
+      required String name,
+      Value<String?> categoryId,
+      required int limitAmount,
+      required String periodType,
+      required DateTime startDate,
+      required DateTime endDate,
+      Value<bool> rolloverEnabled,
+      Value<int> rolloverAmount,
+      Value<bool> alert80Sent,
+      Value<bool> alert100Sent,
+      Value<bool> isActive,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$BudgetsTableUpdateCompanionBuilder =
+    BudgetsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String?> categoryId,
+      Value<int> limitAmount,
+      Value<String> periodType,
+      Value<DateTime> startDate,
+      Value<DateTime> endDate,
+      Value<bool> rolloverEnabled,
+      Value<int> rolloverAmount,
+      Value<bool> alert80Sent,
+      Value<bool> alert100Sent,
+      Value<bool> isActive,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$BudgetsTableReferences
     extends BaseReferences<_$AppDatabase, $BudgetsTable, BudgetRecord> {
   $$BudgetsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
-      db.categories.createAlias('budgets__category_id__categories__id');
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.budgets.categoryId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager? get categoryId {
     final $_column = $_itemColumn<String>('category_id');
@@ -25356,12 +25878,12 @@ class $$BudgetsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$BudgetsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$BudgetsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$BudgetsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$BudgetsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$BudgetsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$BudgetsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -25426,48 +25948,52 @@ class $$BudgetsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$BudgetsTable, BudgetRecord>(table),
-                  $$BudgetsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$BudgetsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({categoryId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (categoryId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.categoryId,
-                        referencedTable: $$BudgetsTableReferences
-                            ._categoryIdTable(db),
-                        referencedColumn: $$BudgetsTableReferences
-                            ._categoryIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (categoryId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.categoryId,
+                            referencedTable: $$BudgetsTableReferences
+                                ._categoryIdTable(db),
+                            referencedColumn:
+                                $$BudgetsTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -25491,47 +26017,49 @@ typedef $$BudgetsTableProcessedTableManager =
       BudgetRecord,
       PrefetchHooks Function({bool categoryId})
     >;
-typedef $$BillsTableCreateCompanionBuilder = BillsCompanion Function({
-  required String id,
-  required String name,
-  Value<String> kind,
-  required int estimatedAmount,
-  required String categoryId,
-  required String walletId,
-  required String frequency,
-  Value<int?> dueDayOfMonth,
-  required DateTime startDate,
-  Value<DateTime?> endDate,
-  Value<bool> isSubscription,
-  Value<String> reminderOffsets,
-  Value<bool> isActive,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$BillsTableUpdateCompanionBuilder = BillsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<String> kind,
-  Value<int> estimatedAmount,
-  Value<String> categoryId,
-  Value<String> walletId,
-  Value<String> frequency,
-  Value<int?> dueDayOfMonth,
-  Value<DateTime> startDate,
-  Value<DateTime?> endDate,
-  Value<bool> isSubscription,
-  Value<String> reminderOffsets,
-  Value<bool> isActive,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$BillsTableCreateCompanionBuilder =
+    BillsCompanion Function({
+      required String id,
+      required String name,
+      Value<String> kind,
+      required int estimatedAmount,
+      required String categoryId,
+      required String walletId,
+      required String frequency,
+      Value<int?> dueDayOfMonth,
+      required DateTime startDate,
+      Value<DateTime?> endDate,
+      Value<bool> isSubscription,
+      Value<String> reminderOffsets,
+      Value<bool> isActive,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$BillsTableUpdateCompanionBuilder =
+    BillsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<String> kind,
+      Value<int> estimatedAmount,
+      Value<String> categoryId,
+      Value<String> walletId,
+      Value<String> frequency,
+      Value<int?> dueDayOfMonth,
+      Value<DateTime> startDate,
+      Value<DateTime?> endDate,
+      Value<bool> isSubscription,
+      Value<String> reminderOffsets,
+      Value<bool> isActive,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$BillsTableReferences
     extends BaseReferences<_$AppDatabase, $BillsTable, BillRecord> {
   $$BillsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
-      db.categories.createAlias('bills__category_id__categories__id');
+  static $CategoriesTable _categoryIdTable(_$AppDatabase db) => db.categories
+      .createAlias($_aliasNameGenerator(db.bills.categoryId, db.categories.id));
 
   $$CategoriesTableProcessedTableManager get categoryId {
     final $_column = $_itemColumn<String>('category_id')!;
@@ -25547,8 +26075,8 @@ final class $$BillsTableReferences
     );
   }
 
-  static $AccountsTable _walletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('bills__wallet_id__accounts__id');
+  static $AccountsTable _walletIdTable(_$AppDatabase db) => db.accounts
+      .createAlias($_aliasNameGenerator(db.bills.walletId, db.accounts.id));
 
   $$AccountsTableProcessedTableManager get walletId {
     final $_column = $_itemColumn<String>('wallet_id')!;
@@ -25567,7 +26095,7 @@ final class $$BillsTableReferences
   static MultiTypedResultKey<$BillOccurrencesTable, List<BillOccurrenceRecord>>
   _billOccurrencesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.billOccurrences,
-    aliasName: 'bills__id__bill_occurrences__bill_id',
+    aliasName: $_aliasNameGenerator(db.bills.id, db.billOccurrences.billId),
   );
 
   $$BillOccurrencesTableProcessedTableManager get billOccurrencesRefs {
@@ -25990,12 +26518,12 @@ class $$BillsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$BillsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$BillsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$BillsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$BillsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$BillsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$BillsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -26064,92 +26592,95 @@ class $$BillsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$BillsTable, BillRecord>(table),
-                  $$BillsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                categoryId = false,
-                walletId = false,
-                billOccurrencesRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (billOccurrencesRefs) db.billOccurrences,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (categoryId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$BillsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            categoryId = false,
+            walletId = false,
+            billOccurrencesRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (billOccurrencesRefs) db.billOccurrences,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (categoryId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.categoryId,
                             referencedTable: $$BillsTableReferences
                                 ._categoryIdTable(db),
-                            referencedColumn: $$BillsTableReferences
-                                ._categoryIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (walletId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$BillsTableReferences._categoryIdTable(db).id,
+                          )
+                          as T;
+                }
+                if (walletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.walletId,
                             referencedTable: $$BillsTableReferences
                                 ._walletIdTable(db),
-                            referencedColumn: $$BillsTableReferences
-                                ._walletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$BillsTableReferences._walletIdTable(db).id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (billOccurrencesRefs)
-                        await $_getPrefetchedDataByColumns<
-                          BillRecord,
-                          $BillsTable,
-                          BillOccurrenceRecord,
-                          $BillOccurrencesTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$BillsTableReferences
-                              ._billOccurrencesRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (billOccurrencesRefs)
+                    await $_getPrefetchedData<
+                      BillRecord,
+                      $BillsTable,
+                      BillOccurrenceRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$BillsTableReferences
+                          ._billOccurrencesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$BillsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).billOccurrencesRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'bill_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.billId == item.id),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -26208,8 +26739,9 @@ final class $$BillOccurrencesTableReferences
     super.$_typedResult,
   );
 
-  static $BillsTable _billIdTable(_$AppDatabase db) =>
-      db.bills.createAlias('bill_occurrences__bill_id__bills__id');
+  static $BillsTable _billIdTable(_$AppDatabase db) => db.bills.createAlias(
+    $_aliasNameGenerator(db.billOccurrences.billId, db.bills.id),
+  );
 
   $$BillsTableProcessedTableManager get billId {
     final $_column = $_itemColumn<String>('bill_id')!;
@@ -26228,7 +26760,10 @@ final class $$BillOccurrencesTableReferences
   static MultiTypedResultKey<$BillPaymentsTable, List<BillPaymentRecord>>
   _billPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.billPayments,
-    aliasName: 'bill_occurrences__id__bill_payments__occurrence_id',
+    aliasName: $_aliasNameGenerator(
+      db.billOccurrences.id,
+      db.billPayments.occurrenceId,
+    ),
   );
 
   $$BillPaymentsTableProcessedTableManager get billPaymentsRefs {
@@ -26497,12 +27032,19 @@ class $$BillOccurrencesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$BillOccurrencesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$BillOccurrencesTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$BillOccurrencesTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$BillOccurrencesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$BillOccurrencesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$BillOccurrencesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -26543,70 +27085,74 @@ class $$BillOccurrencesTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$BillOccurrencesTable, BillOccurrenceRecord>(
-                    table,
-                  ),
-                  $$BillOccurrencesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$BillOccurrencesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({billId = false, billPaymentsRefs = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [if (billPaymentsRefs) db.billPayments],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (billId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.billId,
-                        referencedTable: $$BillOccurrencesTableReferences
-                            ._billIdTable(db),
-                        referencedColumn: $$BillOccurrencesTableReferences
-                            ._billIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (billId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.billId,
+                            referencedTable: $$BillOccurrencesTableReferences
+                                ._billIdTable(db),
+                            referencedColumn:
+                                $$BillOccurrencesTableReferences
+                                    ._billIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (billPaymentsRefs)
-                    await $_getPrefetchedDataByColumns<
+                    await $_getPrefetchedData<
                       BillOccurrenceRecord,
                       $BillOccurrencesTable,
-                      BillPaymentRecord,
-                      $BillPaymentsTable
+                      BillPaymentRecord
                     >(
                       currentTable: table,
                       referencedTable: $$BillOccurrencesTableReferences
                           ._billPaymentsRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$BillOccurrencesTableReferences(
-                            db,
-                            table,
-                            p0,
-                          ).billPaymentsRefs,
-                      currentColumn: 'id',
-                      referencedColumn: 'occurrence_id',
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$BillOccurrencesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).billPaymentsRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.occurrenceId == item.id,
+                          ),
                       typedResults: items,
                     ),
                 ];
@@ -26655,9 +27201,13 @@ final class $$BillPaymentsTableReferences
         BaseReferences<_$AppDatabase, $BillPaymentsTable, BillPaymentRecord> {
   $$BillPaymentsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $BillOccurrencesTable _occurrenceIdTable(_$AppDatabase db) => db
-      .billOccurrences
-      .createAlias('bill_payments__occurrence_id__bill_occurrences__id');
+  static $BillOccurrencesTable _occurrenceIdTable(_$AppDatabase db) =>
+      db.billOccurrences.createAlias(
+        $_aliasNameGenerator(
+          db.billPayments.occurrenceId,
+          db.billOccurrences.id,
+        ),
+      );
 
   $$BillOccurrencesTableProcessedTableManager get occurrenceId {
     final $_column = $_itemColumn<String>('occurrence_id')!;
@@ -26673,9 +27223,10 @@ final class $$BillPaymentsTableReferences
     );
   }
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('bill_payments__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.billPayments.transactionId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager get transactionId {
     final $_column = $_itemColumn<String>('transaction_id')!;
@@ -26919,12 +27470,13 @@ class $$BillPaymentsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$BillPaymentsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$BillPaymentsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$BillPaymentsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$BillPaymentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$BillPaymentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$BillPaymentsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -26957,65 +27509,74 @@ class $$BillPaymentsTableTableManager
                 paidAt: paidAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$BillPaymentsTable, BillPaymentRecord>(table),
-                  $$BillPaymentsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({occurrenceId = false, transactionId = false}) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (occurrenceId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$BillPaymentsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            occurrenceId = false,
+            transactionId = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (occurrenceId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.occurrenceId,
                             referencedTable: $$BillPaymentsTableReferences
                                 ._occurrenceIdTable(db),
-                            referencedColumn: $$BillPaymentsTableReferences
-                                ._occurrenceIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (transactionId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$BillPaymentsTableReferences
+                                    ._occurrenceIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (transactionId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.transactionId,
                             referencedTable: $$BillPaymentsTableReferences
                                 ._transactionIdTable(db),
-                            referencedColumn: $$BillPaymentsTableReferences
-                                ._transactionIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$BillPaymentsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [];
-                  },
-                );
+                return state;
               },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
         ),
       );
 }
@@ -27034,39 +27595,43 @@ typedef $$BillPaymentsTableProcessedTableManager =
       BillPaymentRecord,
       PrefetchHooks Function({bool occurrenceId, bool transactionId})
     >;
-typedef $$GoalsTableCreateCompanionBuilder = GoalsCompanion Function({
-  required String id,
-  required String name,
-  required int targetAmount,
-  Value<int> currentAmount,
-  Value<DateTime?> targetDate,
-  Value<String?> sourceWalletId,
-  Value<String> icon,
-  Value<int> priority,
-  Value<String> status,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$GoalsTableUpdateCompanionBuilder = GoalsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<int> targetAmount,
-  Value<int> currentAmount,
-  Value<DateTime?> targetDate,
-  Value<String?> sourceWalletId,
-  Value<String> icon,
-  Value<int> priority,
-  Value<String> status,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$GoalsTableCreateCompanionBuilder =
+    GoalsCompanion Function({
+      required String id,
+      required String name,
+      required int targetAmount,
+      Value<int> currentAmount,
+      Value<DateTime?> targetDate,
+      Value<String?> sourceWalletId,
+      Value<String> icon,
+      Value<int> priority,
+      Value<String> status,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$GoalsTableUpdateCompanionBuilder =
+    GoalsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<int> targetAmount,
+      Value<int> currentAmount,
+      Value<DateTime?> targetDate,
+      Value<String?> sourceWalletId,
+      Value<String> icon,
+      Value<int> priority,
+      Value<String> status,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$GoalsTableReferences
     extends BaseReferences<_$AppDatabase, $GoalsTable, GoalRecord> {
   $$GoalsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $AccountsTable _sourceWalletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('goals__source_wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.goals.sourceWalletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager? get sourceWalletId {
     final $_column = $_itemColumn<String>('source_wallet_id');
@@ -27089,7 +27654,10 @@ final class $$GoalsTableReferences
   _goalContributionsRefsTable(_$AppDatabase db) =>
       MultiTypedResultKey.fromTable(
         db.goalContributions,
-        aliasName: 'goals__id__goal_contributions__goal_id',
+        aliasName: $_aliasNameGenerator(
+          db.goals.id,
+          db.goalContributions.goalId,
+        ),
       );
 
   $$GoalContributionsTableProcessedTableManager get goalContributionsRefs {
@@ -27109,7 +27677,7 @@ final class $$GoalsTableReferences
   static MultiTypedResultKey<$SalaryPlanItemsTable, List<SalaryPlanItemRecord>>
   _salaryPlanItemsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.salaryPlanItems,
-    aliasName: 'goals__id__salary_plan_items__goal_id',
+    aliasName: $_aliasNameGenerator(db.goals.id, db.salaryPlanItems.goalId),
   );
 
   $$SalaryPlanItemsTableProcessedTableManager get salaryPlanItemsRefs {
@@ -27473,12 +28041,12 @@ class $$GoalsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$GoalsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$GoalsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$GoalsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$GoalsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$GoalsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$GoalsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -27531,102 +28099,107 @@ class $$GoalsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$GoalsTable, GoalRecord>(table),
-                  $$GoalsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                sourceWalletId = false,
-                goalContributionsRefs = false,
-                salaryPlanItemsRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (goalContributionsRefs) db.goalContributions,
-                    if (salaryPlanItemsRefs) db.salaryPlanItems,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (sourceWalletId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$GoalsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            sourceWalletId = false,
+            goalContributionsRefs = false,
+            salaryPlanItemsRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (goalContributionsRefs) db.goalContributions,
+                if (salaryPlanItemsRefs) db.salaryPlanItems,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (sourceWalletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.sourceWalletId,
                             referencedTable: $$GoalsTableReferences
                                 ._sourceWalletIdTable(db),
-                            referencedColumn: $$GoalsTableReferences
-                                ._sourceWalletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$GoalsTableReferences
+                                    ._sourceWalletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (goalContributionsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          GoalRecord,
-                          $GoalsTable,
-                          GoalContributionRecord,
-                          $GoalContributionsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$GoalsTableReferences
-                              ._goalContributionsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (goalContributionsRefs)
+                    await $_getPrefetchedData<
+                      GoalRecord,
+                      $GoalsTable,
+                      GoalContributionRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$GoalsTableReferences
+                          ._goalContributionsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$GoalsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).goalContributionsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'goal_id',
-                          typedResults: items,
-                        ),
-                      if (salaryPlanItemsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          GoalRecord,
-                          $GoalsTable,
-                          SalaryPlanItemRecord,
-                          $SalaryPlanItemsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$GoalsTableReferences
-                              ._salaryPlanItemsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.goalId == item.id),
+                      typedResults: items,
+                    ),
+                  if (salaryPlanItemsRefs)
+                    await $_getPrefetchedData<
+                      GoalRecord,
+                      $GoalsTable,
+                      SalaryPlanItemRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$GoalsTableReferences
+                          ._salaryPlanItemsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$GoalsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).salaryPlanItemsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'goal_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.goalId == item.id),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -27684,7 +28257,9 @@ final class $$FundAllocationsTableReferences
   );
 
   static $AccountsTable _walletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('fund_allocations__wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.fundAllocations.walletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager get walletId {
     final $_column = $_itemColumn<String>('wallet_id')!;
@@ -27889,12 +28464,19 @@ class $$FundAllocationsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$FundAllocationsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$FundAllocationsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$FundAllocationsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$FundAllocationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$FundAllocationsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$FundAllocationsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -27931,50 +28513,52 @@ class $$FundAllocationsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$FundAllocationsTable, FundAllocationRecord>(
-                    table,
-                  ),
-                  $$FundAllocationsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$FundAllocationsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({walletId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (walletId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.walletId,
-                        referencedTable: $$FundAllocationsTableReferences
-                            ._walletIdTable(db),
-                        referencedColumn: $$FundAllocationsTableReferences
-                            ._walletIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (walletId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.walletId,
+                            referencedTable: $$FundAllocationsTableReferences
+                                ._walletIdTable(db),
+                            referencedColumn:
+                                $$FundAllocationsTableReferences
+                                    ._walletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -28034,8 +28618,9 @@ final class $$GoalContributionsTableReferences
     super.$_typedResult,
   );
 
-  static $GoalsTable _goalIdTable(_$AppDatabase db) =>
-      db.goals.createAlias('goal_contributions__goal_id__goals__id');
+  static $GoalsTable _goalIdTable(_$AppDatabase db) => db.goals.createAlias(
+    $_aliasNameGenerator(db.goalContributions.goalId, db.goals.id),
+  );
 
   $$GoalsTableProcessedTableManager get goalId {
     final $_column = $_itemColumn<String>('goal_id')!;
@@ -28051,9 +28636,13 @@ final class $$GoalContributionsTableReferences
     );
   }
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('goal_contributions__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(
+          db.goalContributions.transactionId,
+          db.transactions.id,
+        ),
+      );
 
   $$TransactionsTableProcessedTableManager? get transactionId {
     final $_column = $_itemColumn<String>('transaction_id');
@@ -28325,12 +28914,18 @@ class $$GoalContributionsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$GoalContributionsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$GoalContributionsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$GoalContributionsTableAnnotationComposer(
+          createFilteringComposer:
+              () => $$GoalContributionsTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer:
+              () => $$GoalContributionsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$GoalContributionsTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -28374,61 +28969,66 @@ class $$GoalContributionsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$GoalContributionsTable, GoalContributionRecord>(
-                    table,
-                  ),
-                  $$GoalContributionsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$GoalContributionsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({goalId = false, transactionId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (goalId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.goalId,
-                        referencedTable: $$GoalContributionsTableReferences
-                            ._goalIdTable(db),
-                        referencedColumn: $$GoalContributionsTableReferences
-                            ._goalIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$GoalContributionsTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$GoalContributionsTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (goalId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.goalId,
+                            referencedTable: $$GoalContributionsTableReferences
+                                ._goalIdTable(db),
+                            referencedColumn:
+                                $$GoalContributionsTableReferences
+                                    ._goalIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$GoalContributionsTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$GoalContributionsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -28452,43 +29052,45 @@ typedef $$GoalContributionsTableProcessedTableManager =
       GoalContributionRecord,
       PrefetchHooks Function({bool goalId, bool transactionId})
     >;
-typedef $$DebtsTableCreateCompanionBuilder = DebtsCompanion Function({
-  required String id,
-  required String counterparty,
-  required String kind,
-  required int principalAmount,
-  required int remainingAmount,
-  Value<String?> walletId,
-  Value<String?> disbursementTxId,
-  required DateTime occurredAt,
-  Value<DateTime?> dueDate,
-  Value<String> note,
-  Value<String> status,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$DebtsTableUpdateCompanionBuilder = DebtsCompanion Function({
-  Value<String> id,
-  Value<String> counterparty,
-  Value<String> kind,
-  Value<int> principalAmount,
-  Value<int> remainingAmount,
-  Value<String?> walletId,
-  Value<String?> disbursementTxId,
-  Value<DateTime> occurredAt,
-  Value<DateTime?> dueDate,
-  Value<String> note,
-  Value<String> status,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$DebtsTableCreateCompanionBuilder =
+    DebtsCompanion Function({
+      required String id,
+      required String counterparty,
+      required String kind,
+      required int principalAmount,
+      required int remainingAmount,
+      Value<String?> walletId,
+      Value<String?> disbursementTxId,
+      required DateTime occurredAt,
+      Value<DateTime?> dueDate,
+      Value<String> note,
+      Value<String> status,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$DebtsTableUpdateCompanionBuilder =
+    DebtsCompanion Function({
+      Value<String> id,
+      Value<String> counterparty,
+      Value<String> kind,
+      Value<int> principalAmount,
+      Value<int> remainingAmount,
+      Value<String?> walletId,
+      Value<String?> disbursementTxId,
+      Value<DateTime> occurredAt,
+      Value<DateTime?> dueDate,
+      Value<String> note,
+      Value<String> status,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$DebtsTableReferences
     extends BaseReferences<_$AppDatabase, $DebtsTable, DebtRecord> {
   $$DebtsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $AccountsTable _walletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('debts__wallet_id__accounts__id');
+  static $AccountsTable _walletIdTable(_$AppDatabase db) => db.accounts
+      .createAlias($_aliasNameGenerator(db.debts.walletId, db.accounts.id));
 
   $$AccountsTableProcessedTableManager? get walletId {
     final $_column = $_itemColumn<String>('wallet_id');
@@ -28504,9 +29106,10 @@ final class $$DebtsTableReferences
     );
   }
 
-  static $TransactionsTable _disbursementTxIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('debts__disbursement_tx_id__transactions__id');
+  static $TransactionsTable _disbursementTxIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.debts.disbursementTxId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager? get disbursementTxId {
     final $_column = $_itemColumn<String>('disbursement_tx_id');
@@ -28525,7 +29128,7 @@ final class $$DebtsTableReferences
   static MultiTypedResultKey<$DebtPaymentsTable, List<DebtPaymentRecord>>
   _debtPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.debtPayments,
-    aliasName: 'debts__id__debt_payments__debt_id',
+    aliasName: $_aliasNameGenerator(db.debts.id, db.debtPayments.debtId),
   );
 
   $$DebtPaymentsTableProcessedTableManager get debtPaymentsRefs {
@@ -28546,7 +29149,7 @@ final class $$DebtsTableReferences
   >
   _splitBillMembersRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.splitBillMembers,
-    aliasName: 'debts__id__split_bill_members__debt_id',
+    aliasName: $_aliasNameGenerator(db.debts.id, db.splitBillMembers.debtId),
   );
 
   $$SplitBillMembersTableProcessedTableManager get splitBillMembersRefs {
@@ -28994,12 +29597,12 @@ class $$DebtsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$DebtsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$DebtsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$DebtsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$DebtsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$DebtsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$DebtsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -29060,114 +29663,120 @@ class $$DebtsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$DebtsTable, DebtRecord>(table),
-                  $$DebtsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                walletId = false,
-                disbursementTxId = false,
-                debtPaymentsRefs = false,
-                splitBillMembersRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (debtPaymentsRefs) db.debtPayments,
-                    if (splitBillMembersRefs) db.splitBillMembers,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (walletId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$DebtsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            walletId = false,
+            disbursementTxId = false,
+            debtPaymentsRefs = false,
+            splitBillMembersRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (debtPaymentsRefs) db.debtPayments,
+                if (splitBillMembersRefs) db.splitBillMembers,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (walletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.walletId,
                             referencedTable: $$DebtsTableReferences
                                 ._walletIdTable(db),
-                            referencedColumn: $$DebtsTableReferences
-                                ._walletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (disbursementTxId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$DebtsTableReferences._walletIdTable(db).id,
+                          )
+                          as T;
+                }
+                if (disbursementTxId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.disbursementTxId,
                             referencedTable: $$DebtsTableReferences
                                 ._disbursementTxIdTable(db),
-                            referencedColumn: $$DebtsTableReferences
-                                ._disbursementTxIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$DebtsTableReferences
+                                    ._disbursementTxIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (debtPaymentsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          DebtRecord,
-                          $DebtsTable,
-                          DebtPaymentRecord,
-                          $DebtPaymentsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$DebtsTableReferences
-                              ._debtPaymentsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (debtPaymentsRefs)
+                    await $_getPrefetchedData<
+                      DebtRecord,
+                      $DebtsTable,
+                      DebtPaymentRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$DebtsTableReferences
+                          ._debtPaymentsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$DebtsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).debtPaymentsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'debt_id',
-                          typedResults: items,
-                        ),
-                      if (splitBillMembersRefs)
-                        await $_getPrefetchedDataByColumns<
-                          DebtRecord,
-                          $DebtsTable,
-                          SplitBillMemberRecord,
-                          $SplitBillMembersTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$DebtsTableReferences
-                              ._splitBillMembersRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.debtId == item.id),
+                      typedResults: items,
+                    ),
+                  if (splitBillMembersRefs)
+                    await $_getPrefetchedData<
+                      DebtRecord,
+                      $DebtsTable,
+                      SplitBillMemberRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$DebtsTableReferences
+                          ._splitBillMembersRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$DebtsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).splitBillMembersRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'debt_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) =>
+                              referencedItems.where((e) => e.debtId == item.id),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -29217,8 +29826,9 @@ final class $$DebtPaymentsTableReferences
         BaseReferences<_$AppDatabase, $DebtPaymentsTable, DebtPaymentRecord> {
   $$DebtPaymentsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $DebtsTable _debtIdTable(_$AppDatabase db) =>
-      db.debts.createAlias('debt_payments__debt_id__debts__id');
+  static $DebtsTable _debtIdTable(_$AppDatabase db) => db.debts.createAlias(
+    $_aliasNameGenerator(db.debtPayments.debtId, db.debts.id),
+  );
 
   $$DebtsTableProcessedTableManager get debtId {
     final $_column = $_itemColumn<String>('debt_id')!;
@@ -29234,9 +29844,10 @@ final class $$DebtPaymentsTableReferences
     );
   }
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('debt_payments__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.debtPayments.transactionId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager get transactionId {
     final $_column = $_itemColumn<String>('transaction_id')!;
@@ -29497,12 +30108,13 @@ class $$DebtPaymentsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$DebtPaymentsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$DebtPaymentsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$DebtPaymentsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$DebtPaymentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$DebtPaymentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$DebtPaymentsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -29539,59 +30151,66 @@ class $$DebtPaymentsTableTableManager
                 paidAt: paidAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$DebtPaymentsTable, DebtPaymentRecord>(table),
-                  $$DebtPaymentsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$DebtPaymentsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({debtId = false, transactionId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (debtId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.debtId,
-                        referencedTable: $$DebtPaymentsTableReferences
-                            ._debtIdTable(db),
-                        referencedColumn: $$DebtPaymentsTableReferences
-                            ._debtIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (transactionId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.transactionId,
-                        referencedTable: $$DebtPaymentsTableReferences
-                            ._transactionIdTable(db),
-                        referencedColumn: $$DebtPaymentsTableReferences
-                            ._transactionIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (debtId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.debtId,
+                            referencedTable: $$DebtPaymentsTableReferences
+                                ._debtIdTable(db),
+                            referencedColumn:
+                                $$DebtPaymentsTableReferences
+                                    ._debtIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (transactionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.transactionId,
+                            referencedTable: $$DebtPaymentsTableReferences
+                                ._transactionIdTable(db),
+                            referencedColumn:
+                                $$DebtPaymentsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -29615,43 +30234,47 @@ typedef $$DebtPaymentsTableProcessedTableManager =
       DebtPaymentRecord,
       PrefetchHooks Function({bool debtId, bool transactionId})
     >;
-typedef $$SplitBillsTableCreateCompanionBuilder = SplitBillsCompanion Function({
-  required String id,
-  required String title,
-  required int totalAmount,
-  Value<int> taxAmount,
-  Value<int> serviceAmount,
-  required String payerWalletId,
-  required String categoryId,
-  Value<String?> transactionId,
-  Value<String> splitMode,
-  Value<String> status,
-  required DateTime occurredAt,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$SplitBillsTableUpdateCompanionBuilder = SplitBillsCompanion Function({
-  Value<String> id,
-  Value<String> title,
-  Value<int> totalAmount,
-  Value<int> taxAmount,
-  Value<int> serviceAmount,
-  Value<String> payerWalletId,
-  Value<String> categoryId,
-  Value<String?> transactionId,
-  Value<String> splitMode,
-  Value<String> status,
-  Value<DateTime> occurredAt,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$SplitBillsTableCreateCompanionBuilder =
+    SplitBillsCompanion Function({
+      required String id,
+      required String title,
+      required int totalAmount,
+      Value<int> taxAmount,
+      Value<int> serviceAmount,
+      required String payerWalletId,
+      required String categoryId,
+      Value<String?> transactionId,
+      Value<String> splitMode,
+      Value<String> status,
+      required DateTime occurredAt,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$SplitBillsTableUpdateCompanionBuilder =
+    SplitBillsCompanion Function({
+      Value<String> id,
+      Value<String> title,
+      Value<int> totalAmount,
+      Value<int> taxAmount,
+      Value<int> serviceAmount,
+      Value<String> payerWalletId,
+      Value<String> categoryId,
+      Value<String?> transactionId,
+      Value<String> splitMode,
+      Value<String> status,
+      Value<DateTime> occurredAt,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$SplitBillsTableReferences
     extends BaseReferences<_$AppDatabase, $SplitBillsTable, SplitBillRecord> {
   $$SplitBillsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $AccountsTable _payerWalletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('split_bills__payer_wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.splitBills.payerWalletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager get payerWalletId {
     final $_column = $_itemColumn<String>('payer_wallet_id')!;
@@ -29668,7 +30291,9 @@ final class $$SplitBillsTableReferences
   }
 
   static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
-      db.categories.createAlias('split_bills__category_id__categories__id');
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.splitBills.categoryId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager get categoryId {
     final $_column = $_itemColumn<String>('category_id')!;
@@ -29684,9 +30309,10 @@ final class $$SplitBillsTableReferences
     );
   }
 
-  static $TransactionsTable _transactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('split_bills__transaction_id__transactions__id');
+  static $TransactionsTable _transactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.splitBills.transactionId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager? get transactionId {
     final $_column = $_itemColumn<String>('transaction_id');
@@ -29708,7 +30334,10 @@ final class $$SplitBillsTableReferences
   >
   _splitBillMembersRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.splitBillMembers,
-    aliasName: 'split_bills__id__split_bill_members__split_bill_id',
+    aliasName: $_aliasNameGenerator(
+      db.splitBills.id,
+      db.splitBillMembers.splitBillId,
+    ),
   );
 
   $$SplitBillMembersTableProcessedTableManager get splitBillMembersRefs {
@@ -30161,12 +30790,12 @@ class $$SplitBillsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SplitBillsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SplitBillsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SplitBillsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$SplitBillsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$SplitBillsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$SplitBillsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -30227,104 +30856,115 @@ class $$SplitBillsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$SplitBillsTable, SplitBillRecord>(table),
-                  $$SplitBillsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({
-                payerWalletId = false,
-                categoryId = false,
-                transactionId = false,
-                splitBillMembersRefs = false,
-              }) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (splitBillMembersRefs) db.splitBillMembers,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (payerWalletId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$SplitBillsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            payerWalletId = false,
+            categoryId = false,
+            transactionId = false,
+            splitBillMembersRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (splitBillMembersRefs) db.splitBillMembers,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (payerWalletId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.payerWalletId,
                             referencedTable: $$SplitBillsTableReferences
                                 ._payerWalletIdTable(db),
-                            referencedColumn: $$SplitBillsTableReferences
-                                ._payerWalletIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (categoryId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$SplitBillsTableReferences
+                                    ._payerWalletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (categoryId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.categoryId,
                             referencedTable: $$SplitBillsTableReferences
                                 ._categoryIdTable(db),
-                            referencedColumn: $$SplitBillsTableReferences
-                                ._categoryIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (transactionId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$SplitBillsTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (transactionId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.transactionId,
                             referencedTable: $$SplitBillsTableReferences
                                 ._transactionIdTable(db),
-                            referencedColumn: $$SplitBillsTableReferences
-                                ._transactionIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$SplitBillsTableReferences
+                                    ._transactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (splitBillMembersRefs)
-                        await $_getPrefetchedDataByColumns<
-                          SplitBillRecord,
-                          $SplitBillsTable,
-                          SplitBillMemberRecord,
-                          $SplitBillMembersTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$SplitBillsTableReferences
-                              ._splitBillMembersRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (splitBillMembersRefs)
+                    await $_getPrefetchedData<
+                      SplitBillRecord,
+                      $SplitBillsTable,
+                      SplitBillMemberRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$SplitBillsTableReferences
+                          ._splitBillMembersRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$SplitBillsTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).splitBillMembersRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'split_bill_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.splitBillId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -30386,8 +31026,10 @@ final class $$SplitBillMembersTableReferences
     super.$_typedResult,
   );
 
-  static $SplitBillsTable _splitBillIdTable(_$AppDatabase db) => db.splitBills
-      .createAlias('split_bill_members__split_bill_id__split_bills__id');
+  static $SplitBillsTable _splitBillIdTable(_$AppDatabase db) =>
+      db.splitBills.createAlias(
+        $_aliasNameGenerator(db.splitBillMembers.splitBillId, db.splitBills.id),
+      );
 
   $$SplitBillsTableProcessedTableManager get splitBillId {
     final $_column = $_itemColumn<String>('split_bill_id')!;
@@ -30403,8 +31045,9 @@ final class $$SplitBillMembersTableReferences
     );
   }
 
-  static $DebtsTable _debtIdTable(_$AppDatabase db) =>
-      db.debts.createAlias('split_bill_members__debt_id__debts__id');
+  static $DebtsTable _debtIdTable(_$AppDatabase db) => db.debts.createAlias(
+    $_aliasNameGenerator(db.splitBillMembers.debtId, db.debts.id),
+  );
 
   $$DebtsTableProcessedTableManager? get debtId {
     final $_column = $_itemColumn<String>('debt_id');
@@ -30693,12 +31336,19 @@ class $$SplitBillMembersTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SplitBillMembersTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SplitBillMembersTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SplitBillMembersTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$SplitBillMembersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$SplitBillMembersTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$SplitBillMembersTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -30743,61 +31393,66 @@ class $$SplitBillMembersTableTableManager
                 isSettled: isSettled,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$SplitBillMembersTable, SplitBillMemberRecord>(
-                    table,
-                  ),
-                  $$SplitBillMembersTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$SplitBillMembersTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({splitBillId = false, debtId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (splitBillId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.splitBillId,
-                        referencedTable: $$SplitBillMembersTableReferences
-                            ._splitBillIdTable(db),
-                        referencedColumn: $$SplitBillMembersTableReferences
-                            ._splitBillIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (debtId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.debtId,
-                        referencedTable: $$SplitBillMembersTableReferences
-                            ._debtIdTable(db),
-                        referencedColumn: $$SplitBillMembersTableReferences
-                            ._debtIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (splitBillId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.splitBillId,
+                            referencedTable: $$SplitBillMembersTableReferences
+                                ._splitBillIdTable(db),
+                            referencedColumn:
+                                $$SplitBillMembersTableReferences
+                                    ._splitBillIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (debtId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.debtId,
+                            referencedTable: $$SplitBillMembersTableReferences
+                                ._debtIdTable(db),
+                            referencedColumn:
+                                $$SplitBillMembersTableReferences
+                                    ._debtIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -30821,45 +31476,49 @@ typedef $$SplitBillMembersTableProcessedTableManager =
       SplitBillMemberRecord,
       PrefetchHooks Function({bool splitBillId, bool debtId})
     >;
-typedef $$WishlistsTableCreateCompanionBuilder = WishlistsCompanion Function({
-  required String id,
-  required String name,
-  required int price,
-  Value<int> priority,
-  Value<String?> categoryId,
-  Value<DateTime?> targetDate,
-  Value<int> coolingOffDays,
-  Value<DateTime?> coolingOffUntil,
-  Value<String?> productUrl,
-  Value<String?> photoPath,
-  Value<String> status,
-  Value<String?> purchasedTxId,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$WishlistsTableUpdateCompanionBuilder = WishlistsCompanion Function({
-  Value<String> id,
-  Value<String> name,
-  Value<int> price,
-  Value<int> priority,
-  Value<String?> categoryId,
-  Value<DateTime?> targetDate,
-  Value<int> coolingOffDays,
-  Value<DateTime?> coolingOffUntil,
-  Value<String?> productUrl,
-  Value<String?> photoPath,
-  Value<String> status,
-  Value<String?> purchasedTxId,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$WishlistsTableCreateCompanionBuilder =
+    WishlistsCompanion Function({
+      required String id,
+      required String name,
+      required int price,
+      Value<int> priority,
+      Value<String?> categoryId,
+      Value<DateTime?> targetDate,
+      Value<int> coolingOffDays,
+      Value<DateTime?> coolingOffUntil,
+      Value<String?> productUrl,
+      Value<String?> photoPath,
+      Value<String> status,
+      Value<String?> purchasedTxId,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$WishlistsTableUpdateCompanionBuilder =
+    WishlistsCompanion Function({
+      Value<String> id,
+      Value<String> name,
+      Value<int> price,
+      Value<int> priority,
+      Value<String?> categoryId,
+      Value<DateTime?> targetDate,
+      Value<int> coolingOffDays,
+      Value<DateTime?> coolingOffUntil,
+      Value<String?> productUrl,
+      Value<String?> photoPath,
+      Value<String> status,
+      Value<String?> purchasedTxId,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$WishlistsTableReferences
     extends BaseReferences<_$AppDatabase, $WishlistsTable, WishlistRecord> {
   $$WishlistsTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
-      db.categories.createAlias('wishlists__category_id__categories__id');
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.wishlists.categoryId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager? get categoryId {
     final $_column = $_itemColumn<String>('category_id');
@@ -30875,9 +31534,10 @@ final class $$WishlistsTableReferences
     );
   }
 
-  static $TransactionsTable _purchasedTxIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('wishlists__purchased_tx_id__transactions__id');
+  static $TransactionsTable _purchasedTxIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(db.wishlists.purchasedTxId, db.transactions.id),
+      );
 
   $$TransactionsTableProcessedTableManager? get purchasedTxId {
     final $_column = $_itemColumn<String>('purchased_tx_id');
@@ -31233,12 +31893,12 @@ class $$WishlistsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$WishlistsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$WishlistsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$WishlistsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$WishlistsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$WishlistsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$WishlistsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -31303,59 +31963,66 @@ class $$WishlistsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$WishlistsTable, WishlistRecord>(table),
-                  $$WishlistsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$WishlistsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({categoryId = false, purchasedTxId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (categoryId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.categoryId,
-                        referencedTable: $$WishlistsTableReferences
-                            ._categoryIdTable(db),
-                        referencedColumn: $$WishlistsTableReferences
-                            ._categoryIdTable(db)
-                            .id,
-                      ) as T;
-                    }
-                    if (purchasedTxId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.purchasedTxId,
-                        referencedTable: $$WishlistsTableReferences
-                            ._purchasedTxIdTable(db),
-                        referencedColumn: $$WishlistsTableReferences
-                            ._purchasedTxIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (categoryId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.categoryId,
+                            referencedTable: $$WishlistsTableReferences
+                                ._categoryIdTable(db),
+                            referencedColumn:
+                                $$WishlistsTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (purchasedTxId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.purchasedTxId,
+                            referencedTable: $$WishlistsTableReferences
+                                ._purchasedTxIdTable(db),
+                            referencedColumn:
+                                $$WishlistsTableReferences
+                                    ._purchasedTxIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -31404,9 +32071,13 @@ final class $$SalaryPlansTableReferences
     extends BaseReferences<_$AppDatabase, $SalaryPlansTable, SalaryPlanRecord> {
   $$SalaryPlansTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $TransactionsTable _sourceTransactionIdTable(_$AppDatabase db) => db
-      .transactions
-      .createAlias('salary_plans__source_transaction_id__transactions__id');
+  static $TransactionsTable _sourceTransactionIdTable(_$AppDatabase db) =>
+      db.transactions.createAlias(
+        $_aliasNameGenerator(
+          db.salaryPlans.sourceTransactionId,
+          db.transactions.id,
+        ),
+      );
 
   $$TransactionsTableProcessedTableManager? get sourceTransactionId {
     final $_column = $_itemColumn<String>('source_transaction_id');
@@ -31425,7 +32096,10 @@ final class $$SalaryPlansTableReferences
   static MultiTypedResultKey<$SalaryPlanItemsTable, List<SalaryPlanItemRecord>>
   _salaryPlanItemsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.salaryPlanItems,
-    aliasName: 'salary_plans__id__salary_plan_items__salary_plan_id',
+    aliasName: $_aliasNameGenerator(
+      db.salaryPlans.id,
+      db.salaryPlanItems.salaryPlanId,
+    ),
   );
 
   $$SalaryPlanItemsTableProcessedTableManager get salaryPlanItemsRefs {
@@ -31684,12 +32358,13 @@ class $$SalaryPlansTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SalaryPlansTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SalaryPlansTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SalaryPlansTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$SalaryPlansTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$SalaryPlansTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () =>
+                  $$SalaryPlansTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -31726,77 +32401,85 @@ class $$SalaryPlansTableTableManager
                 appliedAt: appliedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$SalaryPlansTable, SalaryPlanRecord>(table),
-                  $$SalaryPlansTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({sourceTransactionId = false, salaryPlanItemsRefs = false}) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [
-                    if (salaryPlanItemsRefs) db.salaryPlanItems,
-                  ],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (sourceTransactionId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$SalaryPlansTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            sourceTransactionId = false,
+            salaryPlanItemsRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (salaryPlanItemsRefs) db.salaryPlanItems,
+              ],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (sourceTransactionId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.sourceTransactionId,
                             referencedTable: $$SalaryPlansTableReferences
                                 ._sourceTransactionIdTable(db),
-                            referencedColumn: $$SalaryPlansTableReferences
-                                ._sourceTransactionIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$SalaryPlansTableReferences
+                                    ._sourceTransactionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [
-                      if (salaryPlanItemsRefs)
-                        await $_getPrefetchedDataByColumns<
-                          SalaryPlanRecord,
-                          $SalaryPlansTable,
-                          SalaryPlanItemRecord,
-                          $SalaryPlanItemsTable
-                        >(
-                          currentTable: table,
-                          referencedTable: $$SalaryPlansTableReferences
-                              ._salaryPlanItemsRefsTable(db),
-                          managerFromTypedResult: (p0) =>
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (salaryPlanItemsRefs)
+                    await $_getPrefetchedData<
+                      SalaryPlanRecord,
+                      $SalaryPlansTable,
+                      SalaryPlanItemRecord
+                    >(
+                      currentTable: table,
+                      referencedTable: $$SalaryPlansTableReferences
+                          ._salaryPlanItemsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
                               $$SalaryPlansTableReferences(
                                 db,
                                 table,
                                 p0,
                               ).salaryPlanItemsRefs,
-                          currentColumn: 'id',
-                          referencedColumn: 'salary_plan_id',
-                          typedResults: items,
-                        ),
-                    ];
-                  },
-                );
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.salaryPlanId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
               },
+            );
+          },
         ),
       );
 }
@@ -31854,9 +32537,13 @@ final class $$SalaryPlanItemsTableReferences
     super.$_typedResult,
   );
 
-  static $SalaryPlansTable _salaryPlanIdTable(_$AppDatabase db) => db
-      .salaryPlans
-      .createAlias('salary_plan_items__salary_plan_id__salary_plans__id');
+  static $SalaryPlansTable _salaryPlanIdTable(_$AppDatabase db) =>
+      db.salaryPlans.createAlias(
+        $_aliasNameGenerator(
+          db.salaryPlanItems.salaryPlanId,
+          db.salaryPlans.id,
+        ),
+      );
 
   $$SalaryPlansTableProcessedTableManager get salaryPlanId {
     final $_column = $_itemColumn<String>('salary_plan_id')!;
@@ -31872,8 +32559,10 @@ final class $$SalaryPlanItemsTableReferences
     );
   }
 
-  static $CategoriesTable _categoryIdTable(_$AppDatabase db) => db.categories
-      .createAlias('salary_plan_items__category_id__categories__id');
+  static $CategoriesTable _categoryIdTable(_$AppDatabase db) =>
+      db.categories.createAlias(
+        $_aliasNameGenerator(db.salaryPlanItems.categoryId, db.categories.id),
+      );
 
   $$CategoriesTableProcessedTableManager? get categoryId {
     final $_column = $_itemColumn<String>('category_id');
@@ -31889,8 +32578,9 @@ final class $$SalaryPlanItemsTableReferences
     );
   }
 
-  static $GoalsTable _goalIdTable(_$AppDatabase db) =>
-      db.goals.createAlias('salary_plan_items__goal_id__goals__id');
+  static $GoalsTable _goalIdTable(_$AppDatabase db) => db.goals.createAlias(
+    $_aliasNameGenerator(db.salaryPlanItems.goalId, db.goals.id),
+  );
 
   $$GoalsTableProcessedTableManager? get goalId {
     final $_column = $_itemColumn<String>('goal_id');
@@ -32226,12 +32916,19 @@ class $$SalaryPlanItemsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SalaryPlanItemsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SalaryPlanItemsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SalaryPlanItemsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$SalaryPlanItemsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$SalaryPlanItemsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$SalaryPlanItemsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -32272,78 +32969,89 @@ class $$SalaryPlanItemsTableTableManager
                 allocatedAmount: allocatedAmount,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$SalaryPlanItemsTable, SalaryPlanItemRecord>(
-                    table,
-                  ),
-                  $$SalaryPlanItemsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
-          prefetchHooksCallback:
-              ({salaryPlanId = false, categoryId = false, goalId = false}) {
-                return PrefetchHooks(
-                  db: db,
-                  explicitlyWatchedTables: [],
-                  addJoins:
-                      <
-                        T extends TableManagerState<
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic,
-                          dynamic
-                        >
-                      >(state) {
-                        if (salaryPlanId) {
-                          state = state.withJoin(
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$SalaryPlanItemsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            salaryPlanId = false,
+            categoryId = false,
+            goalId = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (salaryPlanId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.salaryPlanId,
                             referencedTable: $$SalaryPlanItemsTableReferences
                                 ._salaryPlanIdTable(db),
-                            referencedColumn: $$SalaryPlanItemsTableReferences
-                                ._salaryPlanIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (categoryId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$SalaryPlanItemsTableReferences
+                                    ._salaryPlanIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (categoryId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.categoryId,
                             referencedTable: $$SalaryPlanItemsTableReferences
                                 ._categoryIdTable(db),
-                            referencedColumn: $$SalaryPlanItemsTableReferences
-                                ._categoryIdTable(db)
-                                .id,
-                          ) as T;
-                        }
-                        if (goalId) {
-                          state = state.withJoin(
+                            referencedColumn:
+                                $$SalaryPlanItemsTableReferences
+                                    ._categoryIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+                if (goalId) {
+                  state =
+                      state.withJoin(
                             currentTable: table,
                             currentColumn: table.goalId,
                             referencedTable: $$SalaryPlanItemsTableReferences
                                 ._goalIdTable(db),
-                            referencedColumn: $$SalaryPlanItemsTableReferences
-                                ._goalIdTable(db)
-                                .id,
-                          ) as T;
-                        }
+                            referencedColumn:
+                                $$SalaryPlanItemsTableReferences
+                                    ._goalIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                        return state;
-                      },
-                  getPrefetchedDataCallback: (items) async {
-                    return [];
-                  },
-                );
+                return state;
               },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
         ),
       );
 }
@@ -32569,12 +33277,16 @@ class $$NotificationsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$NotificationsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$NotificationsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$NotificationsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$NotificationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () =>
+                  $$NotificationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$NotificationsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -32623,18 +33335,16 @@ class $$NotificationsTableTableManager
                 status: status,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$NotificationsTable, NotificationRecord>(table),
-                  BaseReferences<
-                    _$AppDatabase,
-                    $NotificationsTable,
-                    NotificationRecord
-                  >(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -32690,7 +33400,10 @@ final class $$AiConversationsTableReferences
   static MultiTypedResultKey<$AiMessagesTable, List<AiMessageRecord>>
   _aiMessagesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.aiMessages,
-    aliasName: 'ai_conversations__id__ai_messages__conversation_id',
+    aliasName: $_aliasNameGenerator(
+      db.aiConversations.id,
+      db.aiMessages.conversationId,
+    ),
   );
 
   $$AiMessagesTableProcessedTableManager get aiMessagesRefs {
@@ -32860,12 +33573,19 @@ class $$AiConversationsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AiConversationsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AiConversationsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AiConversationsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () =>
+                  $$AiConversationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AiConversationsTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$AiConversationsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -32894,16 +33614,16 @@ class $$AiConversationsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AiConversationsTable, AiConversationRecord>(
-                    table,
-                  ),
-                  $$AiConversationsTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$AiConversationsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({aiMessagesRefs = false}) {
             return PrefetchHooks(
               db: db,
@@ -32912,23 +33632,25 @@ class $$AiConversationsTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (aiMessagesRefs)
-                    await $_getPrefetchedDataByColumns<
+                    await $_getPrefetchedData<
                       AiConversationRecord,
                       $AiConversationsTable,
-                      AiMessageRecord,
-                      $AiMessagesTable
+                      AiMessageRecord
                     >(
                       currentTable: table,
                       referencedTable: $$AiConversationsTableReferences
                           ._aiMessagesRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$AiConversationsTableReferences(
-                            db,
-                            table,
-                            p0,
-                          ).aiMessagesRefs,
-                      currentColumn: 'id',
-                      referencedColumn: 'conversation_id',
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$AiConversationsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).aiMessagesRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.conversationId == item.id,
+                          ),
                       typedResults: items,
                     ),
                 ];
@@ -32953,32 +33675,38 @@ typedef $$AiConversationsTableProcessedTableManager =
       AiConversationRecord,
       PrefetchHooks Function({bool aiMessagesRefs})
     >;
-typedef $$AiMessagesTableCreateCompanionBuilder = AiMessagesCompanion Function({
-  required String id,
-  required String conversationId,
-  required String role,
-  required String content,
-  Value<String?> metadataJson,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$AiMessagesTableUpdateCompanionBuilder = AiMessagesCompanion Function({
-  Value<String> id,
-  Value<String> conversationId,
-  Value<String> role,
-  Value<String> content,
-  Value<String?> metadataJson,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$AiMessagesTableCreateCompanionBuilder =
+    AiMessagesCompanion Function({
+      required String id,
+      required String conversationId,
+      required String role,
+      required String content,
+      Value<String?> metadataJson,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$AiMessagesTableUpdateCompanionBuilder =
+    AiMessagesCompanion Function({
+      Value<String> id,
+      Value<String> conversationId,
+      Value<String> role,
+      Value<String> content,
+      Value<String?> metadataJson,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 final class $$AiMessagesTableReferences
     extends BaseReferences<_$AppDatabase, $AiMessagesTable, AiMessageRecord> {
   $$AiMessagesTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
-  static $AiConversationsTable _conversationIdTable(_$AppDatabase db) => db
-      .aiConversations
-      .createAlias('ai_messages__conversation_id__ai_conversations__id');
+  static $AiConversationsTable _conversationIdTable(_$AppDatabase db) =>
+      db.aiConversations.createAlias(
+        $_aliasNameGenerator(
+          db.aiMessages.conversationId,
+          db.aiConversations.id,
+        ),
+      );
 
   $$AiConversationsTableProcessedTableManager get conversationId {
     final $_column = $_itemColumn<String>('conversation_id')!;
@@ -33181,12 +33909,12 @@ class $$AiMessagesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AiMessagesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AiMessagesTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AiMessagesTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$AiMessagesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AiMessagesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$AiMessagesTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -33223,48 +33951,52 @@ class $$AiMessagesTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AiMessagesTable, AiMessageRecord>(table),
-                  $$AiMessagesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$AiMessagesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({conversationId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (conversationId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.conversationId,
-                        referencedTable: $$AiMessagesTableReferences
-                            ._conversationIdTable(db),
-                        referencedColumn: $$AiMessagesTableReferences
-                            ._conversationIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (conversationId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.conversationId,
+                            referencedTable: $$AiMessagesTableReferences
+                                ._conversationIdTable(db),
+                            referencedColumn:
+                                $$AiMessagesTableReferences
+                                    ._conversationIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -33323,7 +34055,9 @@ final class $$ImportBatchesTableReferences
   );
 
   static $AccountsTable _walletIdTable(_$AppDatabase db) =>
-      db.accounts.createAlias('import_batches__wallet_id__accounts__id');
+      db.accounts.createAlias(
+        $_aliasNameGenerator(db.importBatches.walletId, db.accounts.id),
+      );
 
   $$AccountsTableProcessedTableManager get walletId {
     final $_column = $_itemColumn<String>('wallet_id')!;
@@ -33554,12 +34288,16 @@ class $$ImportBatchesTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$ImportBatchesTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$ImportBatchesTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$ImportBatchesTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$ImportBatchesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () =>
+                  $$ImportBatchesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$ImportBatchesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -33604,48 +34342,52 @@ class $$ImportBatchesTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$ImportBatchesTable, ImportBatchRecord>(table),
-                  $$ImportBatchesTableReferences(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          $$ImportBatchesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: ({walletId = false}) {
             return PrefetchHooks(
               db: db,
               explicitlyWatchedTables: [],
-              addJoins:
-                  <
-                    T extends TableManagerState<
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic,
-                      dynamic
-                    >
-                  >(state) {
-                    if (walletId) {
-                      state = state.withJoin(
-                        currentTable: table,
-                        currentColumn: table.walletId,
-                        referencedTable: $$ImportBatchesTableReferences
-                            ._walletIdTable(db),
-                        referencedColumn: $$ImportBatchesTableReferences
-                            ._walletIdTable(db)
-                            .id,
-                      ) as T;
-                    }
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (walletId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.walletId,
+                            referencedTable: $$ImportBatchesTableReferences
+                                ._walletIdTable(db),
+                            referencedColumn:
+                                $$ImportBatchesTableReferences
+                                    ._walletIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
 
-                    return state;
-                  },
+                return state;
+              },
               getPrefetchedDataCallback: (items) async {
                 return [];
               },
@@ -33669,26 +34411,28 @@ typedef $$ImportBatchesTableProcessedTableManager =
       ImportBatchRecord,
       PrefetchHooks Function({bool walletId})
     >;
-typedef $$AuditLogsTableCreateCompanionBuilder = AuditLogsCompanion Function({
-  required String id,
-  required String entityType,
-  required String entityId,
-  required String action,
-  required String summary,
-  Value<String?> payloadJson,
-  required DateTime createdAt,
-  Value<int> rowid,
-});
-typedef $$AuditLogsTableUpdateCompanionBuilder = AuditLogsCompanion Function({
-  Value<String> id,
-  Value<String> entityType,
-  Value<String> entityId,
-  Value<String> action,
-  Value<String> summary,
-  Value<String?> payloadJson,
-  Value<DateTime> createdAt,
-  Value<int> rowid,
-});
+typedef $$AuditLogsTableCreateCompanionBuilder =
+    AuditLogsCompanion Function({
+      required String id,
+      required String entityType,
+      required String entityId,
+      required String action,
+      required String summary,
+      Value<String?> payloadJson,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$AuditLogsTableUpdateCompanionBuilder =
+    AuditLogsCompanion Function({
+      Value<String> id,
+      Value<String> entityType,
+      Value<String> entityId,
+      Value<String> action,
+      Value<String> summary,
+      Value<String?> payloadJson,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
 
 class $$AuditLogsTableFilterComposer
     extends Composer<_$AppDatabase, $AuditLogsTable> {
@@ -33838,12 +34582,12 @@ class $$AuditLogsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$AuditLogsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$AuditLogsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$AuditLogsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer:
+              () => $$AuditLogsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$AuditLogsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$AuditLogsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -33884,18 +34628,16 @@ class $$AuditLogsTableTableManager
                 createdAt: createdAt,
                 rowid: rowid,
               ),
-          withReferenceMapper: (p0) => p0
-              .map(
-                (e) => (
-                  e.readTable<$AuditLogsTable, AuditLogRecord>(table),
-                  BaseReferences<
-                    _$AppDatabase,
-                    $AuditLogsTable,
-                    AuditLogRecord
-                  >(db, table, e),
-                ),
-              )
-              .toList(),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable(table),
+                          BaseReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
           prefetchHooksCallback: null,
         ),
       );

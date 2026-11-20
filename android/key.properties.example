@@ -1,0 +1,7 @@
+# Copy this file to android/key.properties for local release builds.
+# android/key.properties is gitignored and must never be committed.
+# In CI the same file is generated from GitHub secrets.
+storeFile=upload-keystore.jks
+storePassword=GANTI_DENGAN_PASSWORD_KEYSTORE
+keyAlias=upload
+keyPassword=GANTI_DENGAN_PASSWORD_KEY

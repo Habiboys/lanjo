@@ -5,7 +5,7 @@
 -keep class io.flutter.view.** { *; }
 -keep class io.flutter.** { *; }
 -keep class io.flutter.plugins.** { *; }
--keep class com.example.lanjo.** { *; }
+-keep class com.habiboys.lanjo.** { *; }
 
 # Keep flutter_local_notifications receivers & Gson serialized models
 -keep class com.dexterous.** { *; }

@@ -1,4 +1,4 @@
-package com.example.lanjo
+package com.habiboys.lanjo
 
 import android.app.Notification
 import android.content.Context

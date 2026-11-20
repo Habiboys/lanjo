@@ -56,7 +56,7 @@ class WalletsPage extends ConsumerWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   isExpanded: true,
-                  initialValue: type,
+                  value: type,
                   decoration: const InputDecoration(labelText: 'Jenis'),
                   items: const [
                     DropdownMenuItem(value: 'cash', child: Text('Tunai (Cash)')),

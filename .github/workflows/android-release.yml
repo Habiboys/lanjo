@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       track:
-        description: 'Play track (beta = closed testing)'
+        description: 'Play track (alpha = Closed testing - Alpha)'
         required: true
-        default: beta
+        default: alpha
   # Every push/merge to main publishes a new build to closed testing.
   push:
     branches: [main]
@@ -121,5 +121,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: ${{ env.PACKAGE_NAME }}
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          tracks: ${{ github.event.inputs.track || 'beta' }}
+          tracks: ${{ github.event.inputs.track || 'alpha' }}
           status: completed

@@ -98,23 +98,8 @@ jobs:
           path: build/app/outputs/bundle/release/app-release.aab
           if-no-files-found: error
 
-      # Closed-testing tracks have custom names (legacy "alpha"); "beta" is open
-      # testing. Print the tracks that actually exist so a wrong name is obvious.
-      - name: Auth to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-
-      - name: Print available Play tracks
-        run: |
-          TOKEN=$(gcloud auth print-access-token)
-          API="https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${PACKAGE_NAME}"
-          EDIT=$(curl -sf -X POST -H "Authorization: Bearer $TOKEN" "$API/edits" -d '{}' \
-            | tr -d ' \n' | sed -n 's/.*"id":"\([^"]*\)".*/\1/p')
-          echo "Play edit: $EDIT"
-          curl -sf -H "Authorization: Bearer $TOKEN" "$API/edits/$EDIT/tracks" \
-            | tr '{' '\n' | grep -o '"track":"[^"]*"' | sort -u
-
+      # "alpha" is the Closed testing - Alpha track in Play Console; Play's "beta"
+      # track is open testing.
       - name: Publish to Play closed testing
         uses: r0adkll/upload-google-play@v1
         with:

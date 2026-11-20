@@ -91,3 +91,9 @@ flutter {
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
+
+// Applied only when google-services.json is present (local file or restored in CI
+// from GOOGLE_SERVICES_JSON_BASE64) so builds remain functional without secrets.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}

@@ -50,6 +50,9 @@ app.*.map.json
 *.jks
 *.keystore
 
+# Firebase Android config — restored in CI from GitHub Secret GOOGLE_SERVICES_JSON_BASE64
+/android/app/google-services.json
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile

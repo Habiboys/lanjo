@@ -413,11 +413,6 @@ class _AndroidNativeSettingsPageState
                           ),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Tips Xiaomi / Android 13+: Jika saklar "Lanjo" terkunci abu-abu (Setelan dibatasi) saat pasang APK manual, buka Info App → ikon ⋮ di kanan atas → Izinkan setelan terbatas (atau install via Google Play Closed Testing).',
-                        style: theme.textTheme.bodySmall,
-                      ),
                       const SizedBox(height: 12),
                       Row(
                         children: [

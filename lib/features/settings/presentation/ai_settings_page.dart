@@ -217,11 +217,14 @@ class _AiSettingsPageState extends ConsumerState<AiSettingsPage> {
                         SizedBox(
                           width: double.infinity,
                           child: SegmentedButton<AiProvider>(
+                            showSelectedIcon: false,
                             segments: const [
                               ButtonSegment(
                                 value: AiProvider.gemini,
                                 label: Text(
                                   'Google Gemini',
+                                  maxLines: 1,
+                                  softWrap: false,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -229,6 +232,8 @@ class _AiSettingsPageState extends ConsumerState<AiSettingsPage> {
                                 value: AiProvider.opencode,
                                 label: Text(
                                   'OpenCode',
+                                  maxLines: 1,
+                                  softWrap: false,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),

@@ -459,9 +459,26 @@ class _DebtFormDialogState extends ConsumerState<_DebtFormDialog> {
             SizedBox(
               width: double.infinity,
               child: SegmentedButton<String>(
+                showSelectedIcon: false,
                 segments: const [
-                  ButtonSegment(value: 'debt', label: Text('Utang Saya')),
-                  ButtonSegment(value: 'receivable', label: Text('Piutang')),
+                  ButtonSegment(
+                    value: 'debt',
+                    label: Text(
+                      'Utang Saya',
+                      maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  ButtonSegment(
+                    value: 'receivable',
+                    label: Text(
+                      'Piutang',
+                      maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
                 selected: {_kind},
                 onSelectionChanged: isEditing

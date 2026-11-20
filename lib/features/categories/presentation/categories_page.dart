@@ -34,9 +34,26 @@ class CategoriesPage extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SegmentedButton<String>(
+                showSelectedIcon: false,
                 segments: const [
-                  ButtonSegment(value: 'expense', label: Text('Pengeluaran')),
-                  ButtonSegment(value: 'income', label: Text('Pemasukan')),
+                  ButtonSegment(
+                    value: 'expense',
+                    label: Text(
+                      'Pengeluaran',
+                      maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  ButtonSegment(
+                    value: 'income',
+                    label: Text(
+                      'Pemasukan',
+                      maxLines: 1,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
                 selected: {kind},
                 onSelectionChanged: isEditing

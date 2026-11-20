@@ -221,7 +221,7 @@ class SettingsPage extends ConsumerWidget {
                   color: ArusColors.primaryLight,
                   title: 'Fitur Pintar Android & Izin',
                   subtitle:
-                      'Izin Kamera/Galeri/Notif, Widget, Auto-Deteksi Clipboard & Share Struk',
+                      'Izin Perangkat, Widget, Deteksi Notifikasi Bank, Quick Tile & Share Struk',
                   onTap: () => context.push('/settings/android-native'),
                 ),
                 const Divider(indent: 66),

@@ -15,6 +15,7 @@ import 'package:lanjo/features/ai_assistant/presentation/ai_quick_expense_page.d
 import 'package:lanjo/features/dashboard/presentation/dashboard_page.dart';
 import 'package:lanjo/features/plans/presentation/plans_hub_page.dart';
 import 'package:lanjo/features/settings/presentation/android_native_settings_page.dart';
+import 'package:lanjo/features/transactions/presentation/transaction_form_page.dart';
 
 void main() {
   setUpAll(() async {
@@ -289,6 +290,31 @@ void main() {
       scrollable: find.byType(Scrollable).first,
     );
     expect(find.text('Buka Pengaturan Izin Akses Notifikasi'), findsOneWidget);
+    expect(find.textContaining('Mode Aman Sideload'), findsNothing);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          appDatabaseProvider.overrideWithValue(db),
+          nativeBridgeServiceProvider.overrideWithValue(bridge),
+        ],
+        child: MaterialApp(
+          theme: ArusTheme.light(),
+          home: const TransactionFormPage(),
+        ),
+      ),
+    );
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 250));
+    expect(tester.takeException(), isNull);
+    final seg = tester.widget<SegmentedButton<String>>(
+      find.byType(SegmentedButton<String>),
+    );
+    expect(seg.showSelectedIcon, isFalse);
+    await tester.tap(find.text('Transfer'));
+    await tester.pump();
+    expect(find.byIcon(Icons.check), findsNothing);
 
     final pasted = await bridge.enqueueFinancialText(
       body: 'Transfer Rp75.000 ke PLN via BRImo berhasil.',

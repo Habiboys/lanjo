@@ -375,11 +375,44 @@ class _TransactionFormPageState extends ConsumerState<TransactionFormPage> {
               children: [
                 if (widget.editTransactionId == null) ...[
                   SegmentedButton<String>(
+                    showSelectedIcon: false,
                     segments: const [
-                      ButtonSegment(value: 'expense', label: Text('Keluar')),
-                      ButtonSegment(value: 'income', label: Text('Masuk')),
-                      ButtonSegment(value: 'transfer', label: Text('Transfer')),
-                      ButtonSegment(value: 'refund', label: Text('Refund')),
+                      ButtonSegment(
+                        value: 'expense',
+                        label: Text(
+                          'Keluar',
+                          maxLines: 1,
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ButtonSegment(
+                        value: 'income',
+                        label: Text(
+                          'Masuk',
+                          maxLines: 1,
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ButtonSegment(
+                        value: 'transfer',
+                        label: Text(
+                          'Transfer',
+                          maxLines: 1,
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ButtonSegment(
+                        value: 'refund',
+                        label: Text(
+                          'Refund',
+                          maxLines: 1,
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ],
                     selected: {_type},
                     onSelectionChanged: (s) {

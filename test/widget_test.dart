@@ -283,6 +283,12 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('Fitur Pintar Android & Izin'), findsOneWidget);
     expect(find.text('Minta Semua Izin'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Buka Pengaturan Izin Akses Notifikasi'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Buka Pengaturan Izin Akses Notifikasi'), findsOneWidget);
 
     final pasted = await bridge.enqueueFinancialText(
       body: 'Transfer Rp75.000 ke PLN via BRImo berhasil.',

@@ -45,6 +45,9 @@ class _ArusAppState extends ConsumerState<ArusApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed && widget.enableBackgroundServices) {
+      // Refresh Smart Inbox in case LanjoNotificationListener captured a
+      // transaction notification while the app was in background.
+      ref.read(smartInboxRevisionProvider.notifier).state++;
       _scanClipboardOnResume();
     }
   }

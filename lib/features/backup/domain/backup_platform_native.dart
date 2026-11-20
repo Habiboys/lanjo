@@ -70,6 +70,12 @@ Future<void> restoreDatabaseAndAttachmentsImpl({
   }
   try {
     await db.close();
+    for (final suffix in const ['-wal', '-shm']) {
+      final sidecar = File('${dbFile.path}$suffix');
+      if (await sidecar.exists()) {
+        await sidecar.delete();
+      }
+    }
     await dbFile.writeAsBytes(dbBytes, flush: true);
 
     final attPath = await AppDatabase.getAttachmentsDirectoryPath();
@@ -80,6 +86,12 @@ Future<void> restoreDatabaseAndAttachmentsImpl({
     }
     await onReopenDatabase();
   } catch (e) {
+    for (final suffix in const ['-wal', '-shm']) {
+      final sidecar = File('${dbFile.path}$suffix');
+      if (await sidecar.exists()) {
+        await sidecar.delete();
+      }
+    }
     if (await safetySnapshot.exists()) {
       await safetySnapshot.copy(dbFile.path);
     }

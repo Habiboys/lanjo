@@ -130,10 +130,16 @@ class BackupService {
   }
 
   /// Restores database & attachments atomically after creating a safety snapshot.
+  ///
+  /// Because [restoreDatabaseAndAttachmentsImpl] closes [db] before overwriting
+  /// the SQLite file, callers using Riverpod / lazy isolate databases must
+  /// pass [resolveNotifications] so reminder rescheduling runs against the
+  /// newly reopened database connection rather than the closed instance.
   Future<BackupManifest> restoreFromBytes({
     required Uint8List bytes,
     required String password,
     required Future<void> Function() onReopenDatabase,
+    LocalNotificationService Function()? resolveNotifications,
   }) async {
     final archive = _decryptAndVerifyArchive(bytes, password);
     final manifestFile = archive.findFile('manifest.json')!;
@@ -165,7 +171,13 @@ class BackupService {
       attachments: attachments,
       onReopenDatabase: onReopenDatabase,
     );
-    await _notifications.rescheduleAllFromDatabase();
+    final targetNotifications = resolveNotifications?.call();
+    if (targetNotifications != null) {
+      await targetNotifications.initialize(
+        onTap: _notifications.onNotificationTap,
+      );
+      await targetNotifications.rescheduleAllFromDatabase();
+    }
     return manifest;
   }
 

@@ -86,6 +86,18 @@
             </intent-filter>
         </service>
 
+        <!-- Smart Notification Listener: 100% local on-device payment notification detection -->
+        <service
+            android:name=".LanjoNotificationListener"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />

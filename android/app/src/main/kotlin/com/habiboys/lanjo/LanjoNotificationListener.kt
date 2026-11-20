@@ -15,6 +15,10 @@ class LanjoNotificationListener : NotificationListenerService() {
         if (sbn == null) return
         val pkg = sbn.packageName ?: return
         if (pkg == packageName) return
+        if (sbn.isOngoing) return
+
+        val notification = sbn.notification ?: return
+        if ((notification.flags and Notification.FLAG_GROUP_SUMMARY) != 0) return
 
         val prefs = getSharedPreferences(
             LanjoWidgetProvider.PREFS_NAME,
@@ -22,11 +26,15 @@ class LanjoNotificationListener : NotificationListenerService() {
         )
         if (!prefs.getBoolean("auto_detect_enabled", true)) return
 
-        val extras = sbn.notification?.extras ?: return
+        val extras = notification.extras ?: return
         val title = extras.getCharSequence(Notification.EXTRA_TITLE)?.toString()?.trim() ?: ""
         val text = extras.getCharSequence(Notification.EXTRA_TEXT)?.toString()?.trim() ?: ""
         val bigText = extras.getCharSequence(Notification.EXTRA_BIG_TEXT)?.toString()?.trim() ?: ""
-        val body = if (bigText.length > text.length) bigText else text
+        val lines = extras.getCharSequenceArray(Notification.EXTRA_TEXT_LINES)
+            ?.joinToString(" ") { it.toString().trim() }
+            ?.trim()
+            ?: ""
+        val body = listOf(bigText, text, lines).maxByOrNull { it.length } ?: ""
         if (title.isEmpty() && body.isEmpty()) return
 
         parseAndEnqueue(
@@ -43,33 +51,41 @@ class LanjoNotificationListener : NotificationListenerService() {
             "com.bca" to "BCA mobile",
             "com.bca.mybca.omni.android" to "myBCA",
             "id.bmri.livin" to "Livin' Mandiri",
+            "com.bankmandiri.mandirionline" to "Livin' Mandiri",
+            "com.mandiri.livin" to "Livin' Mandiri",
             "id.co.bri.brimo" to "BRImo",
+            "id.co.bri.brimo.android" to "BRImo",
             "src.com.bni" to "BNI Mobile",
             "id.bni.wondr" to "wondr BNI",
             "com.jago.digitalBanking" to "Bank Jago",
             "id.co.bankbkemobile.digitalbank" to "SeaBank",
             "com.bcadigital.blu" to "blu BCA",
+            "id.co.hanabank.linebank" to "LINE Bank",
+            "id.co.bankraya.raya" to "Bank Raya",
             "com.gojek.app" to "GoPay",
             "com.gojek.gopay" to "GoPay",
+            "com.gopay.app" to "GoPay",
             "id.dana" to "DANA",
             "ovo.id" to "OVO",
             "com.shopee.id" to "ShopeePay",
+            "com.shopeepay.id" to "ShopeePay",
             "com.telkom.mwallet" to "LinkAja"
         )
 
         private val RUPIAH_REGEX = Regex(
-            """(?:Rp\.?|IDR)\s*([0-9]{1,3}(?:[.,][0-9]{3})+(?:[.,][0-9]{1,2})?|[0-9]{4,12})""",
+            """(?:Rp\.?|IDR)\s*([0-9]{1,3}(?:[.,][0-9]{3})+(?:[.,][0-9]{1,2})?|[0-9]{3,12})""",
             RegexOption.IGNORE_CASE
         )
 
         private val INCOME_KEYWORDS = listOf(
-            "diterima", "uang masuk", "transfer masuk", "kredit", "top up berhasil",
-            "menerima", "refund", "cashback diterima", "gaji"
+            "diterima", "uang masuk", "transfer masuk", "dana masuk", "pemasukan",
+            "kredit", "top up berhasil", "menerima", "refund", "cashback", "gaji"
         )
 
         private val EXPENSE_KEYWORDS = listOf(
-            "pembayaran", "berhasil", "qris", "transfer ke", "debit",
-            "bayar", "pembelian", "transaksi", "terkirim"
+            "pembayaran", "berhasil", "sukses", "qris", "transfer ke", "debit",
+            "bayar", "pembelian", "transaksi", "terkirim", "mutasi", "potongan",
+            "belanja", "tagihan", "tarik"
         )
 
         fun parseAndEnqueue(
@@ -172,6 +188,8 @@ class LanjoNotificationListener : NotificationListenerService() {
                 l.contains("shopee") -> "ShopeePay"
                 l.contains("jago") -> "Bank Jago"
                 l.contains("seabank") -> "SeaBank"
+                l.contains("linkaja") -> "LinkAja"
+                l.contains("blu") -> "blu BCA"
                 pkg.contains(".") -> pkg.substringAfterLast('.').replaceFirstChar {
                     it.titlecase(Locale.ROOT)
                 }

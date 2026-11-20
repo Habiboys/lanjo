@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../app/theme/app_theme.dart';
 import '../../../core/providers/core_providers.dart';
 import '../../../core/providers/service_providers.dart';
 import '../../../core/utils/date_utils.dart';
@@ -130,6 +131,7 @@ class _BackupPageState extends ConsumerState<BackupPage> {
         onReopenDatabase: () async {
           ref.invalidate(appDatabaseProvider);
         },
+        resolveNotifications: () => ref.read(localNotificationServiceProvider),
       );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -154,14 +156,48 @@ class _BackupPageState extends ConsumerState<BackupPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Card(
-            color: Theme.of(context).colorScheme.tertiaryContainer,
-            child: const ListTile(
-              leading: Icon(LucideIcons.alertTriangle, size: 20),
-              title: Text('Data Tersimpan Lokal di Perangkat'),
-              subtitle: Text(
-                'Menghapus aplikasi atau kehilangan perangkat tanpa backup akan menghilangkan data keuanganmu. Backup terenkripsi tidak menyertakan API Key AI atau PIN.',
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: ArusColors.warning.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: ArusColors.warning.withValues(alpha: 0.35),
               ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 2),
+                  child: Icon(
+                    LucideIcons.alertTriangle,
+                    size: 20,
+                    color: ArusColors.warning,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Data Tersimpan Lokal di Perangkat',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Menghapus aplikasi atau kehilangan perangkat tanpa backup akan menghilangkan data keuanganmu. Backup terenkripsi tidak menyertakan API Key AI atau PIN.',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: context.lanjoInk.withValues(alpha: 0.8),
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 12),

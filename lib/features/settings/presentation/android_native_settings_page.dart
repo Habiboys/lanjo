@@ -25,6 +25,7 @@ class _AndroidNativeSettingsPageState
     extends ConsumerState<AndroidNativeSettingsPage>
     with WidgetsBindingObserver {
   Map<String, bool> _permStatuses = const {};
+  bool _listenerGranted = false;
   bool _autoDetectEnabled = true;
   bool _loading = true;
 
@@ -51,13 +52,44 @@ class _AndroidNativeSettingsPageState
   Future<void> _refreshStatus() async {
     final bridge = ref.read(nativeBridgeServiceProvider);
     final perms = await bridge.getPermissionStatuses();
+    final listenerEnabled = await bridge.isNotificationListenerEnabled();
     final enabled = await bridge.getAutoDetectEnabled();
     if (!mounted) return;
     setState(() {
       _permStatuses = perms;
+      _listenerGranted = listenerEnabled;
       _autoDetectEnabled = enabled;
       _loading = false;
     });
+  }
+
+  Future<void> _promptNotificationListenerAccess() async {
+    final bridge = ref.read(nativeBridgeServiceProvider);
+    final proceed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Izin Akses Notifikasi Transaksi'),
+        content: const Text(
+          'Lanjo hanya membaca notifikasi pembayaran/mutasi (seperti BCA, Livin\', BRImo, BNI, Jago, SeaBank, GoPay, OVO, DANA, ShopeePay, QRIS) untuk mengekstrak nominal dan nama transaksi.\n\n'
+          '• Semua pembacaan diproses 100% lokal & offline di HP Anda.\n'
+          '• Teks notifikasi tidak pernah dikirim ke server mana pun.\n\n'
+          'Di halaman Pengaturan Android berikutnya, cari nama "Lanjo" lalu aktifkan saklarnya.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Batal'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Buka Pengaturan Android'),
+          ),
+        ],
+      ),
+    );
+    if (proceed == true) {
+      await bridge.openNotificationListenerSettings();
+    }
   }
 
   Future<void> _requestPerm(String key) async {
@@ -323,10 +355,10 @@ class _AndroidNativeSettingsPageState
               children: [
                 SwitchListTile(
                   title: const Text(
-                    'Auto-Deteksi Clipboard & Share Mutasi (100% Offline)',
+                    'Deteksi Otomatis Notifikasi & Clipboard (100% Offline)',
                   ),
                   subtitle: const Text(
-                    'Saat kamu menyalin SMS/notifikasi BCA, Livin\', BRImo, BNI, Jago, SeaBank, GoPay, OVO, DANA, ShopeePay atau Share ke Lanjo, nominal otomatis masuk ke Smart Inbox Beranda.',
+                    'Membaca notifikasi pembayaran & salinan mutasi BCA, Livin\', BRImo, BNI, Jago, SeaBank, GoPay, OVO, DANA, ShopeePay & QRIS secara lokal di perangkat.',
                   ),
                   value: _autoDetectEnabled,
                   onChanged: (v) async {
@@ -344,22 +376,47 @@ class _AndroidNativeSettingsPageState
                     children: [
                       Row(
                         children: [
-                          const Icon(
-                            LucideIcons.info,
-                            size: 17,
-                            color: ArusColors.primary,
+                          Icon(
+                            _listenerGranted
+                                ? LucideIcons.circleCheck
+                                : LucideIcons.shieldAlert,
+                            size: 18,
+                            color: _listenerGranted
+                                ? ArusColors.income
+                                : ArusColors.warning,
                           ),
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              'Mode Aman Sideload: pakai Copy/Clipboard atau Bagikan (Share) agar APK selalu lolos instalasi di Xiaomi/Android 13+.',
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: context.lanjoInk,
-                                fontWeight: FontWeight.w500,
+                              _loading
+                                  ? 'Memeriksa status Akses Notifikasi Android...'
+                                  : (_listenerGranted
+                                      ? 'Izin Akses Notifikasi Android: Aktif'
+                                      : 'Izin Akses Notifikasi belum diaktifkan di Pengaturan Android'),
+                              style: theme.textTheme.titleSmall?.copyWith(
+                                color: _listenerGranted
+                                    ? ArusColors.income
+                                    : ArusColors.warning,
                               ),
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton.icon(
+                          onPressed: _promptNotificationListenerAccess,
+                          icon: const Icon(LucideIcons.shieldCheck, size: 17),
+                          label: const Text(
+                            'Buka Pengaturan Izin Akses Notifikasi',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Tips Xiaomi / Android 13+: Jika saklar "Lanjo" terkunci abu-abu (Setelan dibatasi) saat pasang APK manual, buka Info App → ikon ⋮ di kanan atas → Izinkan setelan terbatas (atau install via Google Play Closed Testing).',
+                        style: theme.textTheme.bodySmall,
                       ),
                       const SizedBox(height: 12),
                       Row(

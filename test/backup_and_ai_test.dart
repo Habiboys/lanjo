@@ -1,15 +1,18 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart' show Value;
 import 'package:drift/native.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lanjo/core/database/app_database.dart';
 import 'package:lanjo/core/database/ledger_engine.dart';
 import 'package:lanjo/core/errors/arus_exception.dart';
 import 'package:lanjo/core/network/gemini_client.dart';
 import 'package:lanjo/core/notifications/local_notification_service.dart';
+import 'package:lanjo/core/providers/core_providers.dart';
+import 'package:lanjo/core/providers/service_providers.dart';
 import 'package:lanjo/core/security/secure_storage_service.dart';
 import 'package:lanjo/features/ai_assistant/domain/ai_finance_service.dart';
 import 'package:lanjo/features/backup/domain/backup_service.dart';
@@ -199,6 +202,89 @@ void main() {
     );
 
     await fileDb.close();
+  });
+
+  test('BackupService restoreFromBytes reopens isolate DB before rescheduling notifications', () async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    final tempDir = await Directory.systemTemp.createTemp('arus_restore_iso_');
+    const pathChannel = MethodChannel('plugins.flutter.io/path_provider');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(pathChannel, (call) async {
+      if (call.method == 'getApplicationDocumentsDirectory' ||
+          call.method == 'getTemporaryDirectory') {
+        return tempDir.path;
+      }
+      return tempDir.path;
+    });
+
+    final container = ProviderContainer();
+    addTearDown(() async {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(pathChannel, null);
+      container.dispose();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      if (await tempDir.exists()) {
+        try {
+          await tempDir.delete(recursive: true);
+        } catch (_) {}
+      }
+    });
+
+    final db = container.read(appDatabaseProvider);
+    final ledger = container.read(ledgerEngineProvider);
+    final notif = container.read(localNotificationServiceProvider);
+    await db.select(db.categories).get();
+    final walletId = await ledger.createWallet(
+      name: 'Mandiri Backup',
+      accountType: 'bank',
+      icon: 'bank',
+      colorValue: 0xFF0F766E,
+      openingBalance: 500000,
+    );
+    await notif.scheduleReminder(
+      kind: 'bill',
+      title: 'Bayar WiFi',
+      body: 'Jatuh tempo besok',
+      scheduledAt: DateTime.now().add(const Duration(days: 1)),
+      referenceId: 'bill_1',
+    );
+
+    final backupSvc = container.read(backupServiceProvider);
+    final outPath = p.join(tempDir.path, 'restore_test.arusbackup');
+    final xFile = await backupSvc.createEncryptedBackup(
+      password: 'restore_pass_123',
+      includeAttachments: false,
+      destinationPath: outPath,
+    );
+    final bytes = await File(xFile.path).readAsBytes();
+
+    // Mutate DB after backup so we verify restore rolls state back cleanly.
+    final extraId = await ledger.createWallet(
+      name: 'Dompet Sementara',
+      accountType: 'cash',
+      icon: 'wallet',
+      colorValue: 0xFFD97706,
+      openingBalance: 100000,
+    );
+    expect(await ledger.computeAccountBalance(extraId), 100000);
+
+    // Must complete without "over isolate channel, but the connection was closed!"
+    final manifest = await backupSvc.restoreFromBytes(
+      bytes: bytes,
+      password: 'restore_pass_123',
+      onReopenDatabase: () async {
+        container.invalidate(appDatabaseProvider);
+      },
+      resolveNotifications: () =>
+          container.read(localNotificationServiceProvider),
+    );
+    expect(manifest.schemaVersion, 2);
+
+    final reopenedLedger = container.read(ledgerEngineProvider);
+    expect(await reopenedLedger.computeAccountBalance(walletId), 500000);
+    final reopenedDb = container.read(appDatabaseProvider);
+    final wallets = await reopenedDb.select(reopenedDb.accounts).get();
+    expect(wallets.any((w) => w.id == extraId), isFalse);
   });
 
   test('GeminiClient prioritizes standard Flash aliases and filters TTS/image models', () async {

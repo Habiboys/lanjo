@@ -176,7 +176,34 @@ class MainActivity : FlutterFragmentActivity() {
 
                 "getSmartInboxItems" -> {
                     val raw = prefs.getString("smart_inbox_queue", "[]") ?: "[]"
-                    result.success(raw)
+                    val arr = try {
+                        JSONArray(raw)
+                    } catch (_: Exception) {
+                        JSONArray()
+                    }
+                    val cleaned = JSONArray()
+                    var droppedAny = false
+                    for (i in 0 until arr.length()) {
+                        val obj = arr.optJSONObject(i) ?: continue
+                        val pkg = obj.optString("packageName", "").trim()
+                        val title = obj.optString("title", "")
+                        val body = obj.optString("body", "")
+                        val isAllowedPkg = pkg.isEmpty() ||
+                            pkg == "clipboard" ||
+                            pkg == "share" ||
+                            LanjoNotificationListener.KNOWN_APPS.containsKey(pkg)
+                        val isPromo = LanjoNotificationListener.isPromoOrNonTransaction("$title $body")
+                        if (isAllowedPkg && !isPromo) {
+                            cleaned.put(obj)
+                        } else {
+                            droppedAny = true
+                        }
+                    }
+                    val sanitized = cleaned.toString()
+                    if (droppedAny) {
+                        prefs.edit().putString("smart_inbox_queue", sanitized).apply()
+                    }
+                    result.success(sanitized)
                 }
 
                 "removeSmartInboxItem" -> {

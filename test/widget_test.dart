@@ -235,6 +235,56 @@ void main() {
     expect(livinIncome.amount, 1250000);
     expect(livinIncome.type, 'income');
 
+    // Non-bank apps (e.g. Gmail forwarding someone else's bank alert) are ignored
+    // when background listener requires a known financial app package.
+    expect(NativeBridgeService.isKnownBankPackage('com.google.android.gm'), isFalse);
+    expect(NativeBridgeService.isKnownBankPackage('com.jago.digitalBanking'), isTrue);
+    final gmailForeignAlert = NativeBridgeService.parseFinancialNotificationLocal(
+      packageName: 'com.google.android.gm',
+      title: 'Jago',
+      body: 'Kamu telah membayar ke BERKAH PHOTO COPY Rp19.000 Halo LAILA QADRIYAH,',
+      requireKnownApp: true,
+    );
+    expect(gmailForeignAlert, isNull);
+
+    // Promo & OTP notifications must never enter Smart Inbox even from GoPay/BRImo.
+    final gopayPromo = NativeBridgeService.parseFinancialNotificationLocal(
+      packageName: 'com.gojek.app',
+      title: 'Belanja makin hemat di Alfamart!',
+      body: 'Nikmati harga spesial promo PSM, bayar pakai GoPay dan dapatkan cashback Rp2.000',
+      requireKnownApp: true,
+    );
+    expect(gopayPromo, isNull);
+
+    final otpAlert = NativeBridgeService.parseFinancialNotificationLocal(
+      packageName: 'id.co.bri.brimo',
+      title: 'Keamanan',
+      body: 'Kode OTP 123456 untuk transaksi Rp50.000. Jangan berikan ke siapa pun.',
+      requireKnownApp: true,
+    );
+    expect(otpAlert, isNull);
+
+    // Real settled cashback stays supported as income.
+    final settledCashback = NativeBridgeService.parseFinancialNotificationLocal(
+      packageName: 'com.gojek.app',
+      title: 'Cashback Masuk',
+      body: 'Cashback Rp5.000 berhasil masuk ke saldo GoPay.',
+      requireKnownApp: true,
+    );
+    expect(settledCashback, isNotNull);
+    expect(settledCashback!.type, 'income');
+    expect(settledCashback.amount, 5000);
+
+    // Manual clipboard paste prioritizes title ("Jago") over body ("BRI" / "QRIS").
+    final pastedJago = NativeBridgeService.parseFinancialNotificationLocal(
+      packageName: 'clipboard',
+      title: 'Jago',
+      body: 'Kamu telah membayar ke BERKAH PHOTO COPY Rp19.000 via QRIS BRI',
+    );
+    expect(pastedJago, isNotNull);
+    expect(pastedJago!.sourceApp, 'Bank Jago');
+    expect(pastedJago.amount, 19000);
+
     late AppDatabase db;
     final bridge = NativeBridgeService(useNativeChannel: false);
     await bridge.simulateBankNotification();

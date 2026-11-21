@@ -47,7 +47,7 @@ class LanjoNotificationListener : NotificationListenerService() {
     }
 
     companion object {
-        private val KNOWN_APPS = mapOf(
+        internal val KNOWN_APPS = mapOf(
             "com.bca" to "BCA mobile",
             "com.bca.mybca.omni.android" to "myBCA",
             "id.bmri.livin" to "Livin' Mandiri",
@@ -60,6 +60,13 @@ class LanjoNotificationListener : NotificationListenerService() {
             "com.jago.digitalBanking" to "Bank Jago",
             "id.co.bankbkemobile.digitalbank" to "SeaBank",
             "com.bcadigital.blu" to "blu BCA",
+            "com.btpn.dc" to "Jenius",
+            "id.co.cimbniaga.mobile.android" to "OCTO Mobile",
+            "com.cimb.octomobile" to "OCTO Mobile",
+            "com.bsm.activity2" to "BSI Mobile",
+            "com.bankbsi.byond" to "BYOND BSI",
+            "net.myinfosys.PermataMobileX" to "PermataME",
+            "com.bnc.finance" to "neobank",
             "id.co.hanabank.linebank" to "LINE Bank",
             "id.co.bankraya.raya" to "Bank Raya",
             "com.gojek.app" to "GoPay",
@@ -77,9 +84,21 @@ class LanjoNotificationListener : NotificationListenerService() {
             RegexOption.IGNORE_CASE
         )
 
+        private val PROMO_OR_NON_TX_KEYWORDS = listOf(
+            "promo", "nikmati harga", "nikmati promo", "nikmati diskon",
+            "nikmati cashback", "nikmati gratis", "harga spesial", "spesial buat",
+            "khusus buat", "makin hemat", "hemat hingga", "hemat s.d",
+            "dapatkan cashback", "dapetin cashback", "voucher", "kupon", "diskon",
+            "mulai dari", "klaim", "kesempatan", "penawaran", "flash sale",
+            "undian", "serbu", "undang teman", "gratis ongkir",
+            "jangan lewatkan", "cashback s.d", "cashback hingga",
+            "kode otp", "kode verifikasi", "jangan berikan",
+            "kode rahasia", "bersifat rahasia"
+        )
+
         private val INCOME_KEYWORDS = listOf(
             "diterima", "uang masuk", "transfer masuk", "dana masuk", "pemasukan",
-            "kredit", "top up berhasil", "menerima", "refund", "cashback", "gaji"
+            "kredit", "top up berhasil", "menerima", "refund", "gaji"
         )
 
         private val EXPENSE_KEYWORDS = listOf(
@@ -88,6 +107,32 @@ class LanjoNotificationListener : NotificationListenerService() {
             "belanja", "tagihan", "tarik"
         )
 
+        private val SOURCE_PATTERNS = listOf(
+            Regex("""\bjago\b""") to "Bank Jago",
+            Regex("""brimo|\bbri\b""") to "BRImo",
+            Regex("""mybca|\bbca\b""") to "BCA mobile",
+            Regex("""livin|mandiri""") to "Livin' Mandiri",
+            Regex("""wondr|\bbni\b""") to "wondr BNI",
+            Regex("""gopay""") to "GoPay",
+            Regex("""\bdana\b""") to "DANA",
+            Regex("""\bovo\b""") to "OVO",
+            Regex("""shopee""") to "ShopeePay",
+            Regex("""seabank""") to "SeaBank",
+            Regex("""jenius""") to "Jenius",
+            Regex("""byond|\bbsi\b""") to "BSI Mobile",
+            Regex("""octo|cimb""") to "OCTO Mobile",
+            Regex("""permata""") to "PermataME",
+            Regex("""neobank|\bbnc\b""") to "neobank",
+            Regex("""linkaja""") to "LinkAja",
+            Regex("""\bblu\b""") to "blu BCA",
+            Regex("""\bqris\b""") to "QRIS"
+        )
+
+        internal fun isPromoOrNonTransaction(text: String): Boolean {
+            val lower = text.lowercase(Locale.ROOT)
+            return PROMO_OR_NON_TX_KEYWORDS.any { lower.contains(it) }
+        }
+
         fun parseAndEnqueue(
             context: Context,
             packageName: String,
@@ -95,23 +140,30 @@ class LanjoNotificationListener : NotificationListenerService() {
             body: String,
             requireKnownAppOrKeyword: Boolean = false
         ): JSONObject? {
-            val combined = "$title $body".trim()
-            val lower = combined.lowercase(Locale.ROOT)
             val knownAppName = KNOWN_APPS[packageName]
+            if (requireKnownAppOrKeyword && knownAppName == null) return null
 
-            val hasFinancialCue = knownAppName != null ||
-                INCOME_KEYWORDS.any { lower.contains(it) } ||
+            val combined = "$title $body".trim()
+            if (isPromoOrNonTransaction(combined)) return null
+
+            val lower = combined.lowercase(Locale.ROOT)
+            val isSettledCashback = lower.contains("cashback") &&
+                (lower.contains("masuk") ||
+                    lower.contains("diterima") ||
+                    lower.contains("berhasil"))
+            val isIncome = isSettledCashback ||
+                INCOME_KEYWORDS.any { lower.contains(it) }
+            val hasFinancialCue = isIncome ||
                 EXPENSE_KEYWORDS.any { lower.contains(it) }
-            if (requireKnownAppOrKeyword && !hasFinancialCue) return null
+            if (!hasFinancialCue) return null
 
             val match = RUPIAH_REGEX.find(combined) ?: return null
             val rawNum = match.groupValues[1]
             val amount = parseRupiahDigits(rawNum)
             if (amount <= 0) return null
 
-            val isIncome = INCOME_KEYWORDS.any { lower.contains(it) }
             val type = if (isIncome) "income" else "expense"
-            val appLabel = knownAppName ?: inferSourceLabel(combined, packageName)
+            val appLabel = knownAppName ?: inferSourceLabel(title, body, packageName)
 
             val prefs = context.getSharedPreferences(
                 LanjoWidgetProvider.PREFS_NAME,
@@ -174,25 +226,20 @@ class LanjoNotificationListener : NotificationListenerService() {
             return digitsOnly.toLongOrNull()?.coerceAtMost(2_000_000_000L)?.toInt() ?: 0
         }
 
-        private fun inferSourceLabel(text: String, pkg: String): String {
-            val l = text.lowercase(Locale.ROOT)
+        private fun inferSourceLabel(title: String, body: String, pkg: String): String {
+            val titleLower = title.lowercase(Locale.ROOT)
+            for ((pattern, label) in SOURCE_PATTERNS) {
+                if (pattern.containsMatchIn(titleLower)) return label
+            }
+            val bodyLower = body.lowercase(Locale.ROOT)
+            for ((pattern, label) in SOURCE_PATTERNS) {
+                if (pattern.containsMatchIn(bodyLower)) return label
+            }
             return when {
-                l.contains("qris") -> "QRIS"
-                l.contains("bca") -> "BCA"
-                l.contains("mandiri") || l.contains("livin") -> "Livin' Mandiri"
-                l.contains("bri") || l.contains("brimo") -> "BRImo"
-                l.contains("bni") || l.contains("wondr") -> "BNI"
-                l.contains("gopay") -> "GoPay"
-                l.contains("dana") -> "DANA"
-                l.contains("ovo") -> "OVO"
-                l.contains("shopee") -> "ShopeePay"
-                l.contains("jago") -> "Bank Jago"
-                l.contains("seabank") -> "SeaBank"
-                l.contains("linkaja") -> "LinkAja"
-                l.contains("blu") -> "blu BCA"
-                pkg.contains(".") -> pkg.substringAfterLast('.').replaceFirstChar {
-                    it.titlecase(Locale.ROOT)
-                }
+                pkg.isNotEmpty() && pkg != "clipboard" && pkg != "share" && pkg.contains(".") ->
+                    pkg.substringAfterLast('.').replaceFirstChar {
+                        it.titlecase(Locale.ROOT)
+                    }
                 else -> "Notifikasi Bank"
             }
         }

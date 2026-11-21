@@ -368,11 +368,13 @@ class NativeBridgeService {
         'debit',
       ];
       if (!cues.any(lower.contains)) return null;
+      if (isPromoOrNonTransactionText(text)) return null;
 
       _lastClipboardScanned = text;
       return await enqueueFinancialText(
         title: 'Terdeteksi dari Clipboard',
         body: text,
+        app: 'clipboard',
       );
     } catch (_) {
       return null;
@@ -412,13 +414,97 @@ class NativeBridgeService {
     return parsed;
   }
 
+  /// Known official Android package names of Indonesian banks & e-wallets.
+  static const Map<String, String> knownBankPackages = {
+    'com.bca': 'BCA mobile',
+    'com.bca.mybca.omni.android': 'myBCA',
+    'id.bmri.livin': "Livin' Mandiri",
+    'com.bankmandiri.mandirionline': "Livin' Mandiri",
+    'com.mandiri.livin': "Livin' Mandiri",
+    'id.co.bri.brimo': 'BRImo',
+    'id.co.bri.brimo.android': 'BRImo',
+    'src.com.bni': 'BNI Mobile',
+    'id.bni.wondr': 'wondr BNI',
+    'com.jago.digitalBanking': 'Bank Jago',
+    'id.co.bankbkemobile.digitalbank': 'SeaBank',
+    'com.bcadigital.blu': 'blu BCA',
+    'com.btpn.dc': 'Jenius',
+    'id.co.cimbniaga.mobile.android': 'OCTO Mobile',
+    'com.cimb.octomobile': 'OCTO Mobile',
+    'com.bsm.activity2': 'BSI Mobile',
+    'com.bankbsi.byond': 'BYOND BSI',
+    'net.myinfosys.PermataMobileX': 'PermataME',
+    'com.bnc.finance': 'neobank',
+    'id.co.hanabank.linebank': 'LINE Bank',
+    'id.co.bankraya.raya': 'Bank Raya',
+    'com.gojek.app': 'GoPay',
+    'com.gojek.gopay': 'GoPay',
+    'com.gopay.app': 'GoPay',
+    'id.dana': 'DANA',
+    'ovo.id': 'OVO',
+    'com.shopee.id': 'ShopeePay',
+    'com.shopeepay.id': 'ShopeePay',
+    'com.telkom.mwallet': 'LinkAja',
+  };
+
+  static bool isKnownBankPackage(String packageName) =>
+      knownBankPackages.containsKey(packageName);
+
+  static const _promoOrNonTxKeywords = [
+    'promo',
+    'nikmati harga',
+    'nikmati promo',
+    'nikmati diskon',
+    'nikmati cashback',
+    'nikmati gratis',
+    'harga spesial',
+    'spesial buat',
+    'khusus buat',
+    'makin hemat',
+    'hemat hingga',
+    'hemat s.d',
+    'dapatkan cashback',
+    'dapetin cashback',
+    'voucher',
+    'kupon',
+    'diskon',
+    'mulai dari',
+    'klaim',
+    'kesempatan',
+    'penawaran',
+    'flash sale',
+    'undian',
+    'serbu',
+    'undang teman',
+    'gratis ongkir',
+    'jangan lewatkan',
+    'cashback s.d',
+    'cashback hingga',
+    'kode otp',
+    'kode verifikasi',
+    'jangan berikan',
+    'kode rahasia',
+    'bersifat rahasia',
+  ];
+
+  static bool isPromoOrNonTransactionText(String text) {
+    final lower = text.toLowerCase();
+    return _promoOrNonTxKeywords.any(lower.contains);
+  }
+
   /// Pure-Dart offline financial notification parser mirroring Kotlin's LanjoNotificationListener.
   static SmartInboxItem? parseFinancialNotificationLocal({
     required String packageName,
     required String title,
     required String body,
+    bool requireKnownApp = false,
   }) {
+    final knownApp = knownBankPackages[packageName];
+    if (requireKnownApp && knownApp == null) return null;
+
     final combined = '$title $body'.trim();
+    if (isPromoOrNonTransactionText(combined)) return null;
+
     final regex = RegExp(
       r'(?:Rp\.?|IDR)\s*([0-9]{1,3}(?:[.,][0-9]{3})+(?:[.,][0-9]{1,2})?|[0-9]{4,12})',
       caseSensitive: false,
@@ -438,29 +524,23 @@ class NativeBridgeService {
     if (amount <= 0) return null;
 
     final lower = combined.toLowerCase();
-    final isIncome = [
-      'diterima',
-      'uang masuk',
-      'transfer masuk',
-      'kredit',
-      'top up berhasil',
-      'refund',
-      'gaji',
-    ].any(lower.contains);
+    final isSettledCashback = lower.contains('cashback') &&
+        (lower.contains('masuk') ||
+            lower.contains('diterima') ||
+            lower.contains('berhasil'));
+    final isIncome = isSettledCashback ||
+        const [
+          'diterima',
+          'uang masuk',
+          'transfer masuk',
+          'dana masuk',
+          'kredit',
+          'top up berhasil',
+          'refund',
+          'gaji',
+        ].any(lower.contains);
 
-    final sourceApp = switch (packageName) {
-      'com.bca' || 'com.bca.mybca.omni.android' => 'BCA mobile',
-      'id.bmri.livin' => "Livin' Mandiri",
-      'id.co.bri.brimo' => 'BRImo',
-      'id.bni.wondr' || 'src.com.bni' => 'wondr BNI',
-      'com.jago.digitalBanking' => 'Bank Jago',
-      'id.co.bankbkemobile.digitalbank' => 'SeaBank',
-      'com.gojek.app' || 'com.gojek.gopay' => 'GoPay',
-      'id.dana' => 'DANA',
-      'ovo.id' => 'OVO',
-      'com.shopee.id' => 'ShopeePay',
-      _ => _inferSourceAppFromText(lower),
-    };
+    final sourceApp = knownApp ?? _inferSourceApp(title, body);
 
     return SmartInboxItem(
       id: const Uuid().v4(),
@@ -475,7 +555,7 @@ class NativeBridgeService {
   }
 
   static final _sourcePatterns = <(RegExp, String)>[
-    (RegExp(r'qris'), 'QRIS'),
+    (RegExp(r'\bjago\b'), 'Bank Jago'),
     (RegExp(r'brimo|\bbri\b'), 'BRImo'),
     (RegExp(r'mybca|\bbca\b'), 'BCA mobile'),
     (RegExp(r'livin|mandiri'), "Livin' Mandiri"),
@@ -484,14 +564,25 @@ class NativeBridgeService {
     (RegExp(r'\bdana\b'), 'DANA'),
     (RegExp(r'\bovo\b'), 'OVO'),
     (RegExp(r'shopee'), 'ShopeePay'),
-    (RegExp(r'\bjago\b'), 'Bank Jago'),
     (RegExp(r'seabank'), 'SeaBank'),
+    (RegExp(r'jenius'), 'Jenius'),
+    (RegExp(r'byond|\bbsi\b'), 'BSI Mobile'),
+    (RegExp(r'octo|cimb'), 'OCTO Mobile'),
+    (RegExp(r'permata'), 'PermataME'),
+    (RegExp(r'neobank|\bbnc\b'), 'neobank'),
     (RegExp(r'linkaja'), 'LinkAja'),
+    (RegExp(r'\bblu\b'), 'blu BCA'),
+    (RegExp(r'\bqris\b'), 'QRIS'),
   ];
 
-  static String _inferSourceAppFromText(String lower) {
+  static String _inferSourceApp(String title, String body) {
+    final titleLower = title.toLowerCase();
     for (final (pattern, label) in _sourcePatterns) {
-      if (pattern.hasMatch(lower)) return label;
+      if (pattern.hasMatch(titleLower)) return label;
+    }
+    final bodyLower = body.toLowerCase();
+    for (final (pattern, label) in _sourcePatterns) {
+      if (pattern.hasMatch(bodyLower)) return label;
     }
     return 'Notifikasi Bank';
   }

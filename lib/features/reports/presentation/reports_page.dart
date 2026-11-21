@@ -312,7 +312,7 @@ class _ReportsPageState extends ConsumerState<ReportsPage> {
                               .watch(safeToSpendProvider)
                               .valueOrNull
                               ?.dailySafeSpend ??
-                          r.averageDailyExpense,
+                          r.averageDailyDiscretionaryExpense,
                     ),
                     const SizedBox(height: 12),
 
@@ -778,14 +778,16 @@ class _CashflowHeatmapCalendarCardState
     final today = DateTime(now.year, now.month, now.day);
     final benchmark = widget.dailySafeBenchmark > 0
         ? widget.dailySafeBenchmark
-        : (widget.report.averageDailyExpense > 0
-            ? widget.report.averageDailyExpense
+        : (widget.report.averageDailyDiscretionaryExpense > 0
+            ? widget.report.averageDailyDiscretionaryExpense
             : 100000);
 
     final selected = _selectedDay ??
         (today.year == year && today.month == month ? today : firstDay);
     final selectedFlow =
         widget.report.dailyCashflow[selected] ?? (income: 0, expense: 0);
+    final selectedBill = widget.report.billExpenseOn(selected);
+    final selectedDiscretionary = widget.report.discretionaryExpenseOn(selected);
 
     return Card(
       child: Padding(
@@ -794,14 +796,16 @@ class _CashflowHeatmapCalendarCardState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Kalender Heatmap Harian',
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    'Kalender Heatmap Harian',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Text(
                   ArusDateUtils.formatMonthYear(firstDay),
                   style: theme.textTheme.labelMedium?.copyWith(
@@ -813,7 +817,7 @@ class _CashflowHeatmapCalendarCardState
             ),
             const SizedBox(height: 4),
             Text(
-              'Hijau = di bawah batas aman (${MoneyFormatter.formatCompact(benchmark)}/hr) • Merah = melebihi batas.',
+              'Hijau = di bawah batas aman (${MoneyFormatter.formatCompact(benchmark)}/hr, di luar tagihan) • Merah = melebihi batas.',
               style: theme.textTheme.bodySmall,
             ),
             const SizedBox(height: 12),
@@ -860,7 +864,8 @@ class _CashflowHeatmapCalendarCardState
                 final isFuture = date.isAfter(today);
                 final flow = widget.report.dailyCashflow[date] ??
                     (income: 0, expense: 0);
-                final exp = flow.expense;
+                final billExp = widget.report.billExpenseOn(date);
+                final exp = widget.report.discretionaryExpenseOn(date);
                 final isSelected = selected.year == date.year &&
                     selected.month == date.month &&
                     selected.day == date.day;
@@ -919,14 +924,33 @@ class _CashflowHeatmapCalendarCardState
                             color: textColor,
                           ),
                         ),
-                        if (flow.income > 0)
-                          Container(
-                            width: 4,
-                            height: 4,
-                            margin: const EdgeInsets.only(top: 2),
-                            decoration: BoxDecoration(
-                              color: context.lanjoPrimary,
-                              shape: BoxShape.circle,
+                        if (flow.income > 0 || billExp > 0)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (flow.income > 0)
+                                  Container(
+                                    width: 4,
+                                    height: 4,
+                                    decoration: BoxDecoration(
+                                      color: context.lanjoPrimary,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                if (flow.income > 0 && billExp > 0)
+                                  const SizedBox(width: 2),
+                                if (billExp > 0)
+                                  Container(
+                                    width: 4,
+                                    height: 4,
+                                    decoration: const BoxDecoration(
+                                      color: ArusColors.warning,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                       ],
@@ -951,13 +975,28 @@ class _CashflowHeatmapCalendarCardState
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: Text(
-                      ArusDateUtils.formatShortDate(selected),
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          ArusDateUtils.formatShortDate(selected),
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        if (selectedBill > 0)
+                          Text(
+                            'Tagihan ${MoneyFormatter.formatCompact(selectedBill)} (di luar batas harian)',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              fontSize: 11,
+                              color: context.lanjoMuted,
+                            ),
+                          ),
+                      ],
                     ),
                   ),
+                  const SizedBox(width: 8),
                   if (selectedFlow.income > 0) ...[
                     Text(
                       '+${MoneyFormatter.formatCompact(selectedFlow.income)}',
@@ -970,15 +1009,15 @@ class _CashflowHeatmapCalendarCardState
                     const SizedBox(width: 10),
                   ],
                   Text(
-                    selectedFlow.expense > 0
-                        ? '-${MoneyFormatter.format(selectedFlow.expense)}'
+                    selectedDiscretionary > 0
+                        ? '-${MoneyFormatter.format(selectedDiscretionary)}'
                         : 'Rp0 (Hemat)',
                     style: lanjoMoneyStyle(
                       context,
                       fontSize: 13,
-                      color: selectedFlow.expense > benchmark
+                      color: selectedDiscretionary > benchmark
                           ? ArusColors.expense
-                          : (selectedFlow.expense > 0
+                          : (selectedDiscretionary > 0
                               ? context.lanjoInk
                               : ArusColors.income),
                     ),
@@ -1076,7 +1115,10 @@ class _FinancialHealthScoreCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         Text(
                           'Skor Kesehatan Finansial',
@@ -1084,7 +1126,6 @@ class _FinancialHealthScoreCard extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const SizedBox(width: 8),
                         LanjoPillBadge(label: gradeLabel, color: badgeColor),
                       ],
                     ),

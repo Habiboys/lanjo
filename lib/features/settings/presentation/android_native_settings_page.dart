@@ -8,6 +8,7 @@ import '../../../core/money/money_formatter.dart';
 import '../../../core/providers/core_providers.dart';
 import '../../../core/providers/service_providers.dart';
 import '../../../core/widgets/lanjo_ui.dart';
+import '../../reports/domain/report_service.dart';
 
 /// Dedicated configuration and testing hub for Android native features:
 /// Home Screen Widget, Runtime Device Permissions (Notifications, Camera,
@@ -116,17 +117,8 @@ class _AndroidNativeSettingsPageState
     final sts = await ref.read(safeToSpendProvider.future);
     final settings = ref.read(appSettingsProvider).valueOrNull;
     final txs = ref.read(transactionsStreamProvider).valueOrNull ?? const [];
-    final now = DateTime.now();
-    var todayExp = 0;
-    for (final tx in txs) {
-      if (tx.occurredAt.year == now.year &&
-          tx.occurredAt.month == now.month &&
-          tx.occurredAt.day == now.day) {
-        if (tx.type == 'expense') todayExp += tx.amount;
-        if (tx.type == 'refund') todayExp -= tx.amount;
-      }
-    }
-    if (todayExp < 0) todayExp = 0;
+    final todayExp =
+        ReportService.discretionaryExpenseForDay(txs, DateTime.now());
 
     await ref.read(nativeBridgeServiceProvider).syncHomeWidget(
           sts: sts,

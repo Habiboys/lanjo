@@ -7,6 +7,7 @@ import 'package:lanjo/core/notifications/local_notification_service.dart';
 import 'package:lanjo/features/bills/domain/bill_service.dart';
 import 'package:lanjo/features/budgets/domain/budget_service.dart';
 import 'package:lanjo/features/goals/domain/goal_service.dart';
+import 'package:lanjo/features/reports/domain/report_service.dart';
 import 'package:lanjo/features/safe_to_spend/domain/safe_to_spend_service.dart';
 import 'package:lanjo/features/split_bill/domain/split_bill_service.dart';
 
@@ -257,5 +258,82 @@ void main() {
     // Unused wallet deletes cleanly while keeping ledger balanced
     expect(await ledger.deleteWalletIfUnused(bank), isTrue);
     expect((await ledger.verifyLedgerIntegrity()).isBalanced, isTrue);
+  });
+
+  test('Scheduled bill payment via BillService is excluded from discretionary heatmap spend while preserved in totals', () async {
+    final bank = await ledger.createWallet(
+      name: 'BCA',
+      accountType: 'bank',
+      icon: 'bank',
+      colorValue: 0xFF0F766E,
+      openingBalance: 5000000,
+    );
+
+    final day1 = DateTime(2026, 11, 10, 10);
+    final day2 = DateTime(2026, 11, 11, 10);
+
+    await bills.createBill(
+      name: 'Listrik & Air',
+      kind: 'expense',
+      estimatedAmount: 800000,
+      categoryId: DefaultCategoryIds.bills,
+      walletId: bank,
+      frequency: 'monthly',
+      firstDueDate: day1,
+    );
+    await bills.createBill(
+      name: 'Sewa Kost',
+      kind: 'expense',
+      estimatedAmount: 1200000,
+      categoryId: DefaultCategoryIds.bills,
+      walletId: bank,
+      frequency: 'monthly',
+      firstDueDate: day2,
+    );
+
+    final occs = await bills.getUpcomingAndActiveOccurrences(kind: 'expense');
+    final billOcc1 = occs.firstWhere((e) => e.bill.name == 'Listrik & Air');
+    final billOcc2 = occs.firstWhere((e) => e.bill.name == 'Sewa Kost');
+
+    await bills.confirmPayment(
+      occurrenceId: billOcc1.occurrence.id,
+      actualAmount: 800000,
+      paidAt: day1,
+    );
+    await bills.confirmPayment(
+      occurrenceId: billOcc2.occurrence.id,
+      actualAmount: 1200000,
+      paidAt: day2,
+    );
+
+    await ledger.recordExpense(
+      walletId: bank,
+      amount: 45000,
+      splits: const [
+        CategorySplitInput(
+          categoryId: DefaultCategoryIds.food,
+          amount: 45000,
+        ),
+      ],
+      occurredAt: day2,
+      description: 'Makan Siang',
+    );
+
+    final report = await ReportService(db).generateSummary(
+      start: DateTime(2026, 11, 1),
+      end: DateTime(2026, 11, 30, 23, 59),
+    );
+
+    expect(report.totalConsumptionExpense, 2045000);
+    expect(report.totalBillExpense, 2000000);
+    expect(report.totalDiscretionaryExpense, 45000);
+    expect(report.billExpenseOn(day1), 800000);
+    expect(report.discretionaryExpenseOn(day1), 0);
+    expect(report.billExpenseOn(day2), 1200000);
+    expect(report.discretionaryExpenseOn(day2), 45000);
+
+    final allTxs = await db.select(db.transactions).get();
+    expect(ReportService.discretionaryExpenseForDay(allTxs, day1), 0);
+    expect(ReportService.discretionaryExpenseForDay(allTxs, day2), 45000);
   });
 }

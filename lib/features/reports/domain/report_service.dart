@@ -43,6 +43,7 @@ class FinancialSummaryReport {
     required this.expenseByCategory,
     required this.topMerchants,
     required this.dailyCashflow,
+    this.dailyBillExpense = const {},
   });
 
   final DateTime start;
@@ -57,6 +58,10 @@ class FinancialSummaryReport {
   final List<MerchantSpendSummary> topMerchants;
   final Map<DateTime, ({int income, int expense})> dailyCashflow;
 
+  /// Daily expenses tagged with `source == 'bill'` (scheduled commitments
+  /// pre-deducted from Safe-to-Spend).
+  final Map<DateTime, int> dailyBillExpense;
+
   int get elapsedDaysInRange {
     final now = DateTime.now();
     final startDay = DateTime(start.year, start.month, start.day);
@@ -65,11 +70,34 @@ class FinancialSummaryReport {
     return math.max(1, endDay.difference(startDay).inDays + 1);
   }
 
+  int get totalBillExpense => dailyBillExpense.values.fold(0, (a, b) => a + b);
+
+  int get totalDiscretionaryExpense =>
+      math.max(0, totalConsumptionExpense - totalBillExpense);
+
   int get activeExpenseDaysCount =>
       dailyCashflow.values.where((d) => d.expense > 0).length;
 
   int get averageDailyExpense =>
       (totalConsumptionExpense / elapsedDaysInRange).round();
+
+  int get averageDailyDiscretionaryExpense =>
+      (totalDiscretionaryExpense / elapsedDaysInRange).round();
+
+  /// Returns scheduled bill payments on [day].
+  int billExpenseOn(DateTime day) {
+    final key = DateTime(day.year, day.month, day.day);
+    return dailyBillExpense[key] ?? 0;
+  }
+
+  /// Returns daily discretionary spending on [day] excluding scheduled bills.
+  int discretionaryExpenseOn(DateTime day) {
+    final key = DateTime(day.year, day.month, day.day);
+    return math.max(
+      0,
+      (dailyCashflow[key]?.expense ?? 0) - (dailyBillExpense[key] ?? 0),
+    );
+  }
 
   int get averageActiveDayExpense => activeExpenseDaysCount > 0
       ? (totalConsumptionExpense / activeExpenseDaysCount).round()
@@ -150,6 +178,25 @@ class ReportService {
 
   final AppDatabase db;
 
+  /// Computes discretionary spending on [day], excluding scheduled bill
+  /// payments (`source == 'bill'`) already deducted from Safe-to-Spend.
+  static int discretionaryExpenseForDay(
+    Iterable<TransactionRecord> txs,
+    DateTime day,
+  ) {
+    var total = 0;
+    for (final tx in txs) {
+      if (tx.status != 'posted' || tx.source == 'bill') continue;
+      if (tx.occurredAt.year == day.year &&
+          tx.occurredAt.month == day.month &&
+          tx.occurredAt.day == day.day) {
+        if (tx.type == 'expense') total += tx.amount;
+        if (tx.type == 'refund') total -= tx.amount;
+      }
+    }
+    return math.max(0, total);
+  }
+
   Future<FinancialSummaryReport> generateSummary({
     required DateTime start,
     required DateTime end,
@@ -172,6 +219,7 @@ class ReportService {
     final txById = <String, TransactionRecord>{};
     final merchantAgg = <String, ({int total, int count})>{};
     final daily = <DateTime, ({int income, int expense})>{};
+    final dailyBill = <DateTime, int>{};
 
     for (final tx in txs) {
       txById[tx.id] = tx;
@@ -197,6 +245,9 @@ class ReportService {
             income: dayPrev.income,
             expense: dayPrev.expense + tx.amount,
           );
+          if (tx.source == 'bill') {
+            dailyBill[dayKey] = (dailyBill[dayKey] ?? 0) + tx.amount;
+          }
           final mName = (tx.merchant?.trim().isNotEmpty == true)
               ? tx.merchant!.trim()
               : (tx.description.trim().isNotEmpty ? tx.description.trim() : null);
@@ -214,6 +265,9 @@ class ReportService {
             income: dayPrev.income,
             expense: math.max(0, dayPrev.expense - tx.amount),
           );
+          if (tx.source == 'bill') {
+            dailyBill[dayKey] = math.max(0, (dailyBill[dayKey] ?? 0) - tx.amount);
+          }
         case 'debt_disbursement':
         case 'debt_repayment':
           // Debt principal alters cashflow, not personal consumption/income (FR-13, FR-21)
@@ -300,6 +354,7 @@ class ReportService {
       expenseByCategory: slices,
       topMerchants: merchants.take(10).toList(),
       dailyCashflow: daily,
+      dailyBillExpense: dailyBill,
     );
   }
 

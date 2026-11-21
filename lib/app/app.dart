@@ -7,6 +7,7 @@ import '../core/database/app_database.dart';
 import '../core/providers/core_providers.dart';
 import '../core/providers/service_providers.dart';
 import '../core/widgets/app_lock_gate.dart';
+import '../features/reports/domain/report_service.dart';
 import 'router/app_router.dart';
 import 'theme/app_theme.dart';
 
@@ -136,17 +137,8 @@ class _ArusAppState extends ConsumerState<ArusApp> with WidgetsBindingObserver {
     if (sts == null) return;
     final settings = ref.read(appSettingsProvider).valueOrNull;
     final txs = ref.read(transactionsStreamProvider).valueOrNull ?? const [];
-    final now = DateTime.now();
-    var todayExpense = 0;
-    for (final tx in txs) {
-      if (tx.occurredAt.year == now.year &&
-          tx.occurredAt.month == now.month &&
-          tx.occurredAt.day == now.day) {
-        if (tx.type == 'expense') todayExpense += tx.amount;
-        if (tx.type == 'refund') todayExpense -= tx.amount;
-      }
-    }
-    if (todayExpense < 0) todayExpense = 0;
+    final todayExpense =
+        ReportService.discretionaryExpenseForDay(txs, DateTime.now());
     ref.read(nativeBridgeServiceProvider).syncHomeWidget(
           sts: sts,
           todayExpense: todayExpense,

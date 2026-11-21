@@ -206,7 +206,9 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         tx.occurredAt.day,
       );
       if (tx.type == 'expense') {
-        dailySpend[d] = (dailySpend[d] ?? 0) + tx.amount;
+        if (tx.source != 'bill') {
+          dailySpend[d] = (dailySpend[d] ?? 0) + tx.amount;
+        }
         final cid = tx.primaryCategoryId;
         if (cid != null) {
           if (!d.isBefore(sevenDaysAgo)) {
@@ -215,7 +217,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
             prevCatSpend[cid] = (prevCatSpend[cid] ?? 0) + tx.amount;
           }
         }
-      } else if (tx.type == 'refund') {
+      } else if (tx.type == 'refund' && tx.source != 'bill') {
         dailySpend[d] = (dailySpend[d] ?? 0) - tx.amount;
       }
     }

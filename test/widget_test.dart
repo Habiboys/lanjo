@@ -8,12 +8,15 @@ import 'package:lanjo/app/theme/app_theme.dart';
 import 'package:lanjo/core/database/app_database.dart';
 import 'package:lanjo/core/database/ledger_engine.dart';
 import 'package:lanjo/core/native/native_bridge_service.dart';
+import 'package:lanjo/core/notifications/local_notification_service.dart';
 import 'package:lanjo/core/providers/core_providers.dart';
 import 'package:lanjo/core/widgets/catat_bottom_sheet.dart';
 import 'package:lanjo/core/widgets/swipe_action_card.dart';
 import 'package:lanjo/features/ai_assistant/presentation/ai_quick_expense_page.dart';
+import 'package:lanjo/features/bills/domain/bill_service.dart';
 import 'package:lanjo/features/dashboard/presentation/dashboard_page.dart';
 import 'package:lanjo/features/plans/presentation/plans_hub_page.dart';
+import 'package:lanjo/features/reports/presentation/reports_page.dart';
 import 'package:lanjo/features/settings/presentation/android_native_settings_page.dart';
 import 'package:lanjo/features/settings/presentation/appearance_settings_page.dart';
 import 'package:lanjo/features/transactions/presentation/transaction_form_page.dart';
@@ -400,6 +403,108 @@ void main() {
       scrollable: find.byType(Scrollable).first,
     );
     expect(find.text('Kustom #E11D48'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(seconds: 1));
+    await db.close();
+  });
+
+  testWidgets(
+      'ReportsPage heatmap keeps bill-payment days out of discretionary red benchmark',
+      (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+
+    late AppDatabase db;
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day, 10);
+
+    await tester.runAsync(() async {
+      db = AppDatabase(NativeDatabase.memory());
+      await db.select(db.appSettings).get();
+      final ledger = LedgerEngine(db);
+      final bills = BillService(db, ledger, LocalNotificationService(db));
+
+      final walletId = await ledger.createWallet(
+        name: 'Bank Utama',
+        accountType: 'bank',
+        icon: 'bank',
+        colorValue: 0xFF0F766E,
+        openingBalance: 9000000,
+      );
+
+      await bills.createBill(
+        name: 'Tagihan Kontrakan',
+        kind: 'expense',
+        estimatedAmount: 1500000,
+        categoryId: DefaultCategoryIds.bills,
+        walletId: walletId,
+        frequency: 'monthly',
+        firstDueDate: today,
+      );
+      final occs = await bills.getUpcomingAndActiveOccurrences(kind: 'expense');
+      await bills.confirmPayment(
+        occurrenceId: occs.single.occurrence.id,
+        actualAmount: 1500000,
+        paidAt: today,
+      );
+
+      await ledger.recordExpense(
+        walletId: walletId,
+        amount: 25000,
+        splits: const [
+          CategorySplitInput(
+            categoryId: DefaultCategoryIds.food,
+            amount: 25000,
+          ),
+        ],
+        occurredAt: today,
+        description: 'Kopi Pagi',
+      );
+    });
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          appDatabaseProvider.overrideWithValue(db),
+        ],
+        child: MaterialApp(
+          theme: ArusTheme.light(),
+          home: const ReportsPage(),
+        ),
+      ),
+    );
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 120)));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    await tester.scrollUntilVisible(
+      find.text('Kalender Heatmap Harian'),
+      300,
+      scrollable: find.descendant(
+        of: find.byType(ListView),
+        matching: find.byType(Scrollable),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Kalender Heatmap Harian'), findsOneWidget);
+    expect(find.textContaining('di luar tagihan'), findsWidgets);
+    expect(find.textContaining('di luar batas harian'), findsOneWidget);
+    expect(find.text('-Rp25.000'), findsOneWidget);
+
+    final dailySpendText = tester.widget<Text>(find.text('-Rp25.000'));
+    expect(dailySpendText.style?.color, isNot(ArusColors.expense));
+
+    final todayCellText = tester.widget<Text>(
+      find.descendant(
+        of: find.byType(GridView),
+        matching: find.text('${now.day}'),
+      ),
+    );
+    expect(todayCellText.style?.color, isNot(ArusColors.expense));
     expect(tester.takeException(), isNull);
 
     await tester.pumpWidget(const SizedBox.shrink());
